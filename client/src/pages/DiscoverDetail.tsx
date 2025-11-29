@@ -97,7 +97,7 @@ export default function DiscoverDetail() {
         <div className="text-center space-y-4">
           <h1 className="font-serif text-2xl text-foreground">Discovery Not Found</h1>
           <p className="text-muted-foreground">The path you seek has faded into the mist.</p>
-          <Link href="/">
+          <Link href="/" onClick={() => setIsPageLoading(true)}>
             <Button variant="outline" data-testid="button-back-home">
               Return Home
             </Button>
@@ -137,7 +137,7 @@ export default function DiscoverDetail() {
 
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
         
-        <Link href="/" className="absolute top-6 right-6 z-20">
+        <Link href="/" onClick={() => setIsPageLoading(true)} className="absolute top-6 right-6 z-20">
           <Button 
             variant="outline" 
             size="icon" 

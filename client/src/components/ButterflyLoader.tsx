@@ -27,136 +27,138 @@ export function ButterflyLoader({ isLoading, onComplete }: ButterflyLoaderProps)
       data-testid="butterfly-loader"
     >
       <style>{`
-        @keyframes ink-butterfly-flutter {
-          0%, 100% { transform: scaleX(1); }
-          25% { transform: scaleX(0.4); }
-          50% { transform: scaleX(1); }
-          75% { transform: scaleX(0.4); }
+        @keyframes ink-butterfly-flap {
+          0%, 100% { transform: scaleX(1) rotateZ(0deg); }
+          25% { transform: scaleX(0.5) rotateZ(-8deg); }
+          50% { transform: scaleX(1) rotateZ(0deg); }
+          75% { transform: scaleX(0.5) rotateZ(8deg); }
         }
-        @keyframes ink-butterfly-fly-away {
+        @keyframes ink-butterfly-away {
           0% {
-            transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1) rotateZ(0deg);
             opacity: 1;
           }
           100% {
-            transform: translate(-120px, -200px) scale(0.3);
+            transform: translate(-140px, -220px) scale(0.3) rotateZ(-45deg);
             opacity: 0;
           }
         }
       `}</style>
       
-      <div style={{ animation: 'ink-butterfly-fly-away 1.6s cubic-bezier(0.4, 0, 0.6, 1) forwards' }}>
+      <div style={{ animation: 'ink-butterfly-away 1.6s cubic-bezier(0.4, 0, 0.6, 1) forwards' }}>
         <svg
-          width="140"
-          height="120"
-          viewBox="0 0 140 120"
+          width="160"
+          height="140"
+          viewBox="0 0 160 140"
           className="drop-shadow-2xl"
         >
-          {/* Left Upper Wing - elegant ink brush style */}
-          <g style={{ transformOrigin: '70px 60px', animation: 'ink-butterfly-flutter 0.5s ease-in-out infinite' }}>
-            <ellipse
-              cx="45"
-              cy="45"
-              rx="24"
-              ry="32"
+          {/* Left Upper Wing */}
+          <g style={{ transformOrigin: '80px 70px', animation: 'ink-butterfly-flap 0.5s ease-in-out infinite' }}>
+            <path
+              d="M 80 70 Q 50 40, 40 20 Q 35 45, 50 65 Z"
               fill="hsl(20 8% 18%)"
-              opacity="0.9"
-              transform="rotate(-25 45 45)"
+              opacity="0.92"
+              filter="drop-shadow(1px 1px 2px rgba(0,0,0,0.3))"
             />
             <path
-              d="M 30 50 Q 25 40, 28 25 Q 35 32, 40 45"
-              fill="hsl(20 8% 20%)"
-              opacity="0.6"
+              d="M 55 50 Q 48 38, 45 25"
+              stroke="hsl(20 8% 20%)"
+              strokeWidth="1"
+              fill="none"
+              opacity="0.4"
             />
           </g>
 
-          {/* Right Upper Wing - elegant ink brush style */}
-          <g style={{ transformOrigin: '70px 60px', animation: 'ink-butterfly-flutter 0.5s ease-in-out infinite', animationDelay: '0.12s' }}>
-            <ellipse
-              cx="95"
-              cy="45"
-              rx="24"
-              ry="32"
+          {/* Right Upper Wing */}
+          <g style={{ transformOrigin: '80px 70px', animation: 'ink-butterfly-flap 0.5s ease-in-out infinite', animationDelay: '0.12s' }}>
+            <path
+              d="M 80 70 Q 110 40, 120 20 Q 125 45, 110 65 Z"
               fill="hsl(20 8% 18%)"
-              opacity="0.9"
-              transform="rotate(25 95 45)"
+              opacity="0.92"
+              filter="drop-shadow(1px 1px 2px rgba(0,0,0,0.3))"
             />
             <path
-              d="M 110 50 Q 115 40, 112 25 Q 105 32, 100 45"
-              fill="hsl(20 8% 20%)"
-              opacity="0.6"
-            />
-          </g>
-
-          {/* Left Lower Wing - elegant ink brush style */}
-          <g style={{ transformOrigin: '70px 60px', animation: 'ink-butterfly-flutter 0.5s ease-in-out infinite', animationDelay: '0.08s' }}>
-            <ellipse
-              cx="42"
-              cy="78"
-              rx="18"
-              ry="26"
-              fill="hsl(20 8% 20%)"
-              opacity="0.85"
-              transform="rotate(-20 42 78)"
-            />
-            <path
-              d="M 32 85 Q 28 95, 32 105"
-              stroke="hsl(20 8% 18%)"
-              strokeWidth="1.5"
+              d="M 105 50 Q 112 38, 115 25"
+              stroke="hsl(20 8% 20%)"
+              strokeWidth="1"
               fill="none"
-              opacity="0.5"
+              opacity="0.4"
             />
           </g>
 
-          {/* Right Lower Wing - elegant ink brush style */}
-          <g style={{ transformOrigin: '70px 60px', animation: 'ink-butterfly-flutter 0.5s ease-in-out infinite', animationDelay: '0.2s' }}>
-            <ellipse
-              cx="98"
-              cy="78"
-              rx="18"
-              ry="26"
+          {/* Left Lower Wing */}
+          <g style={{ transformOrigin: '80px 70px', animation: 'ink-butterfly-flap 0.5s ease-in-out infinite', animationDelay: '0.08s' }}>
+            <path
+              d="M 80 70 Q 48 85, 38 110 Q 45 88, 60 78 Z"
               fill="hsl(20 8% 20%)"
-              opacity="0.85"
-              transform="rotate(20 98 78)"
+              opacity="0.88"
+              filter="drop-shadow(1px 1px 2px rgba(0,0,0,0.3))"
             />
             <path
-              d="M 108 85 Q 112 95, 108 105"
+              d="M 50 90 Q 42 105, 40 120"
               stroke="hsl(20 8% 18%)"
-              strokeWidth="1.5"
+              strokeWidth="1"
               fill="none"
-              opacity="0.5"
+              opacity="0.3"
             />
           </g>
 
-          {/* Body - elegant ink brush stroke */}
+          {/* Right Lower Wing */}
+          <g style={{ transformOrigin: '80px 70px', animation: 'ink-butterfly-flap 0.5s ease-in-out infinite', animationDelay: '0.2s' }}>
+            <path
+              d="M 80 70 Q 112 85, 122 110 Q 115 88, 100 78 Z"
+              fill="hsl(20 8% 20%)"
+              opacity="0.88"
+              filter="drop-shadow(1px 1px 2px rgba(0,0,0,0.3))"
+            />
+            <path
+              d="M 110 90 Q 118 105, 120 120"
+              stroke="hsl(20 8% 18%)"
+              strokeWidth="1"
+              fill="none"
+              opacity="0.3"
+            />
+          </g>
+
+          {/* Body - thick ink stroke */}
           <ellipse
-            cx="70"
-            cy="60"
-            rx="6"
-            ry="26"
+            cx="80"
+            cy="70"
+            rx="5"
+            ry="32"
             fill="hsl(20 8% 12%)"
-            opacity="0.95"
+            opacity="0.96"
+            filter="drop-shadow(2px 2px 3px rgba(0,0,0,0.4))"
           />
 
           {/* Head */}
-          <circle cx="70" cy="38" r="8" fill="hsl(20 8% 10%)" opacity="0.98" />
+          <circle 
+            cx="80" 
+            cy="44" 
+            r="8" 
+            fill="hsl(20 8% 10%)" 
+            opacity="0.98"
+            filter="drop-shadow(1px 1px 2px rgba(0,0,0,0.4))"
+          />
 
-          {/* Antennae - delicate brush strokes */}
+          {/* Antennae - delicate ink strokes */}
           <path
-            d="M 66 32 Q 62 22, 60 10"
+            d="M 76 38 Q 72 28, 70 12"
             stroke="hsl(20 8% 14%)"
             strokeWidth="1.5"
             fill="none"
             strokeLinecap="round"
             opacity="0.8"
+            filter="drop-shadow(0.5px 0.5px 1px rgba(0,0,0,0.2))"
           />
           <path
-            d="M 74 32 Q 78 22, 80 10"
+            d="M 84 38 Q 88 28, 90 12"
             stroke="hsl(20 8% 14%)"
             strokeWidth="1.5"
             fill="none"
             strokeLinecap="round"
             opacity="0.8"
+            filter="drop-shadow(0.5px 0.5px 1px rgba(0,0,0,0.2))"
           />
         </svg>
       </div>
