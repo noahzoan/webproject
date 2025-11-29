@@ -32,7 +32,7 @@ const translations = {
   },
 };
 
-export function BrushstrokeMenu({ isOpen, onToggle, language, onLanguageChange }: BrushstrokeMenuProps) {
+export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageChange }: BrushstrokeMenuProps) {
   const t = translations[language];
   
   const menuItems = [

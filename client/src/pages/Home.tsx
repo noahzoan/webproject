@@ -18,11 +18,31 @@ const iconComponents: Record<string, typeof Droplets> = {
   mountain: Mountain,
 };
 
+const translations = {
+  en: {
+    title: "Ecological Civilization",
+    subtitle: "Discover the Stories Within",
+    description: "Each element in this traditional landscape holds centuries of wisdom and cultural significance. Hover or tap on the glowing areas to uncover hidden stories about conservation, heritage, culture, and the timeless connection between humanity and nature.",
+    dragToExplore: "Drag to explore",
+    scrollToExplore: "Scroll to explore",
+  },
+  zh: {
+    title: "生态文明",
+    subtitle: "发现内在的故事",
+    description: "传统风景中的每一个元素都蕴含着几个世纪的智慧和文化意义。悬停或点击发光区域以发现有关保护、遗产、文化以及人类与自然之间永恒联系的隐藏故事。",
+    dragToExplore: "拖动以探索",
+    scrollToExplore: "滚动以探索",
+  },
+};
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [language, setLanguage] = useState<"en" | "zh">("en");
   const isMobile = useIsMobile();
+  
+  const t = translations[language];
   
   const { data: discoveries = [], isLoading } = useQuery<DiscoveryContent[]>({
     queryKey: ['/api/discoveries'],
@@ -131,7 +151,12 @@ export default function Home() {
     <div className="min-h-screen bg-background overflow-hidden">
       <ButterflyLoader isLoading={isNavigating} />
       
-      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} />
+      <BrushstrokeMenu 
+        isOpen={menuOpen} 
+        onToggle={() => setMenuOpen(!menuOpen)}
+        language={language}
+        onLanguageChange={setLanguage}
+      />
       <ShowAllToggle showAll={showAll} onToggle={() => setShowAll(!showAll)} />
 
       <div
@@ -162,6 +187,13 @@ export default function Home() {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/30" />
             
+            {/* Title overlay */}
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-center z-20">
+              <h1 className="font-display text-5xl md:text-7xl text-white drop-shadow-lg" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}>
+                {t.title}
+              </h1>
+            </div>
+            
             <div className="absolute inset-0">
               {discoveries.map((discovery) => (
                 <InteractiveHotspot
@@ -175,7 +207,7 @@ export default function Home() {
 
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
               <p className="text-sm font-medium text-white/80 drop-shadow-lg">
-                {isMobile ? 'Drag to explore' : 'Scroll to explore'}
+                {isMobile ? t.dragToExplore : t.scrollToExplore}
               </p>
               <svg 
                 viewBox="0 0 24 24" 
@@ -197,12 +229,10 @@ export default function Home() {
         <section className="relative bg-background py-20 px-6">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h2 className="font-serif text-3xl md:text-4xl text-foreground">
-              Discover the Stories Within
+              {t.subtitle}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Each element in this traditional landscape holds centuries of wisdom and cultural significance. 
-              Hover or tap on the glowing areas to uncover hidden stories about conservation, heritage, 
-              culture, and the timeless connection between humanity and nature.
+              {t.description}
             </p>
             
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-12">
