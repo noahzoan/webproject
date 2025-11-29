@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Footer } from "@/components/Footer";
 import { BrushstrokeMenu } from "@/components/BrushstrokeMenu";
+import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,6 +33,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 export default function Contact() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<ContactFormData>({
@@ -75,7 +77,8 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-background">
-      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} />
+      <ButterflyLoader isLoading={isNavigating} />
+      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language="en" onLanguageChange={() => {}} />
 
       <header className="relative h-[35vh] min-h-[280px] overflow-hidden">
         <div 
@@ -99,7 +102,7 @@ export default function Contact() {
 
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
         
-        <Link href="/" className="absolute top-6 right-6 z-20">
+        <Link href="/" onClick={() => setIsNavigating(true)} className="absolute top-6 right-6 z-20">
           <Button 
             variant="outline" 
             size="icon" 

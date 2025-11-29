@@ -4,14 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Footer } from "@/components/Footer";
 import { BrushstrokeMenu } from "@/components/BrushstrokeMenu";
+import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useState } from "react";
 
 export default function About() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
-      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} />
+      <ButterflyLoader isLoading={isNavigating} />
+      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language="en" onLanguageChange={() => {}} />
 
       <header className="relative h-[40vh] min-h-[300px] overflow-hidden">
         <div 
@@ -119,12 +122,12 @@ export default function About() {
             Start your discovery today.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/">
+            <Link href="/" onClick={() => setIsNavigating(true)}>
               <Button data-testid="button-explore">
                 Explore the Landscape
               </Button>
             </Link>
-            <Link href="/contact">
+            <Link href="/contact" onClick={() => setIsNavigating(true)}>
               <Button variant="outline" data-testid="button-contact">
                 Get in Touch
               </Button>

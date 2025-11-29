@@ -157,7 +157,10 @@ export default function Home() {
         language={language}
         onLanguageChange={setLanguage}
       />
-      <ShowAllToggle showAll={showAll} onToggle={() => setShowAll(!showAll)} />
+      
+      <div className="fixed top-6 right-6 z-[49]">
+        <ShowAllToggle showAll={showAll} onToggle={() => setShowAll(!showAll)} />
+      </div>
 
       <div
         ref={containerRef}
