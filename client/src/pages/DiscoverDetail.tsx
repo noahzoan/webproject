@@ -70,9 +70,10 @@ export default function DiscoverDetail() {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsPageLoading(false), 100);
+    setIsPageLoading(true);
+    const timer = setTimeout(() => setIsPageLoading(false), 1700);
     return () => clearTimeout(timer);
-  }, []);
+  }, [slug]);
 
   const relatedTopics = relatedTopicsMap[slug] || [];
   const subtitle = subtitleMap[slug] || "Discover More";

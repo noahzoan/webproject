@@ -188,7 +188,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/30" />
             
             {/* Title overlay */}
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-center z-20">
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 text-center z-20">
               <h1 className="font-display text-5xl md:text-7xl text-white drop-shadow-lg" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}>
                 {t.title}
               </h1>

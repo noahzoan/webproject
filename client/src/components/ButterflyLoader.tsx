@@ -14,7 +14,7 @@ export function ButterflyLoader({ isLoading, onComplete }: ButterflyLoaderProps)
       const timer = setTimeout(() => {
         setIsAnimating(false);
         onComplete?.();
-      }, 1400);
+      }, 1600);
       return () => clearTimeout(timer);
     }
   }, [isLoading, onComplete]);
@@ -23,122 +23,128 @@ export function ButterflyLoader({ isLoading, onComplete }: ButterflyLoaderProps)
 
   return (
     <div 
-      className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm flex items-center justify-center"
+      className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm flex items-center justify-center pointer-events-none"
       data-testid="butterfly-loader"
     >
       <style>{`
-        @keyframes flutter-wings {
-          0%, 100% { transform: scaleX(1) }
-          50% { transform: scaleX(0.2) }
+        @keyframes butterfly-flutter {
+          0%, 100% { transform: scaleX(1) skewY(0deg); opacity: 1; }
+          25% { transform: scaleX(0.3) skewY(-2deg); opacity: 0.9; }
+          50% { transform: scaleX(1) skewY(0deg); opacity: 1; }
+          75% { transform: scaleX(0.3) skewY(2deg); opacity: 0.9; }
         }
-        @keyframes ink-float-away {
+        @keyframes ink-ascend-away {
           0% {
-            transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1) rotate(0deg);
             opacity: 1;
+            filter: blur(0px);
           }
-          80% {
-            opacity: 0.6;
+          50% {
+            opacity: 0.8;
           }
           100% {
-            transform: translate(-100px, -150px) scale(0.5);
+            transform: translate(-80px, -250px) scale(0.4) rotate(-25deg);
             opacity: 0;
+            filter: blur(2px);
           }
         }
       `}</style>
       
-      <div style={{ animation: 'ink-float-away 1.4s ease-in forwards' }}>
+      <div style={{ animation: 'ink-ascend-away 1.6s cubic-bezier(0.4, 0, 0.6, 1) forwards' }}>
         <svg
-          width="120"
-          height="120"
-          viewBox="0 0 120 120"
-          className="drop-shadow-lg"
+          width="140"
+          height="140"
+          viewBox="0 0 140 140"
+          className="drop-shadow-2xl"
         >
-          {/* Left Wings - Ink Brush Style */}
-          <g style={{ transformOrigin: '60px 60px', animation: 'flutter-wings 0.4s ease-in-out infinite' }}>
-            {/* Upper left wing */}
+          {/* Left Wings - Large solid ink shapes */}
+          <g style={{ transformOrigin: '70px 70px', animation: 'butterfly-flutter 0.5s ease-in-out infinite' }}>
+            {/* Upper left wing - solid filled ink shape */}
             <path
-              d="M 60 60 Q 30 40, 25 25 Q 20 35, 28 50 Q 35 60, 60 60"
-              fill="hsl(20 10% 20%)"
-              opacity="0.85"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d="M 70 70 Q 35 50, 28 28 Q 25 38, 32 55 Q 42 68, 70 70"
+              fill="hsl(20 8% 18%)"
+              opacity="0.95"
+              style={{ filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.3))' }}
             />
-            {/* Lower left wing */}
+            {/* Lower left wing - solid filled ink shape */}
             <path
-              d="M 60 60 Q 35 75, 28 95 Q 22 85, 30 70 Q 40 62, 60 60"
-              fill="hsl(20 10% 25%)"
-              opacity="0.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d="M 70 70 Q 40 88, 32 110 Q 28 98, 38 78 Q 48 72, 70 70"
+              fill="hsl(20 10% 22%)"
+              opacity="0.92"
+              style={{ filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.3))' }}
             />
           </g>
 
-          {/* Right Wings - Ink Brush Style */}
-          <g style={{ transformOrigin: '60px 60px', animation: 'flutter-wings 0.4s ease-in-out infinite', animationDelay: '0.1s' }}>
-            {/* Upper right wing */}
+          {/* Right Wings - Large solid ink shapes */}
+          <g style={{ transformOrigin: '70px 70px', animation: 'butterfly-flutter 0.5s ease-in-out infinite', animationDelay: '0.12s' }}>
+            {/* Upper right wing - solid filled ink shape */}
             <path
-              d="M 60 60 Q 90 40, 95 25 Q 100 35, 92 50 Q 85 60, 60 60"
-              fill="hsl(20 10% 20%)"
-              opacity="0.85"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d="M 70 70 Q 105 50, 112 28 Q 115 38, 108 55 Q 98 68, 70 70"
+              fill="hsl(20 8% 18%)"
+              opacity="0.95"
+              style={{ filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.3))' }}
             />
-            {/* Lower right wing */}
+            {/* Lower right wing - solid filled ink shape */}
             <path
-              d="M 60 60 Q 85 75, 92 95 Q 98 85, 90 70 Q 80 62, 60 60"
-              fill="hsl(20 10% 25%)"
-              opacity="0.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d="M 70 70 Q 100 88, 108 110 Q 112 98, 102 78 Q 92 72, 70 70"
+              fill="hsl(20 10% 22%)"
+              opacity="0.92"
+              style={{ filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.3))' }}
             />
           </g>
 
-          {/* Body - Ink Brush Strokes */}
+          {/* Body - Thick solid ink brush stroke */}
           <ellipse
-            cx="60"
-            cy="60"
-            rx="6"
-            ry="24"
-            fill="hsl(20 10% 15%)"
-            opacity="0.9"
+            cx="70"
+            cy="70"
+            rx="8"
+            ry="28"
+            fill="hsl(20 8% 12%)"
+            opacity="0.98"
+            style={{ filter: 'drop-shadow(2px 2px 3px rgba(0,0,0,0.4))' }}
           />
 
-          {/* Head */}
-          <circle cx="60" cy="40" r="7" fill="hsl(20 10% 12%)" opacity="0.95" />
+          {/* Head - Solid circle */}
+          <circle 
+            cx="70" 
+            cy="48" 
+            r="9" 
+            fill="hsl(20 8% 10%)" 
+            opacity="0.99"
+            style={{ filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.4))' }}
+          />
 
-          {/* Antennae - Ink brush style */}
+          {/* Left Antenna */}
           <path
-            d="M 56 35 Q 52 28, 50 18"
-            stroke="hsl(20 10% 15%)"
+            d="M 65 42 Q 60 32, 58 18 Q 57 16, 60 15 Q 62 17, 63 20 Q 64 28, 66 38"
+            fill="hsl(20 8% 14%)"
+            opacity="0.85"
+            style={{ filter: 'drop-shadow(1px 1px 1px rgba(0,0,0,0.3))' }}
+          />
+          
+          {/* Right Antenna */}
+          <path
+            d="M 75 42 Q 80 32, 82 18 Q 83 16, 80 15 Q 78 17, 77 20 Q 76 28, 74 38"
+            fill="hsl(20 8% 14%)"
+            opacity="0.85"
+            style={{ filter: 'drop-shadow(1px 1px 1px rgba(0,0,0,0.3))' }}
+          />
+
+          {/* Wing Details - Fine ink strokes for texture */}
+          <path
+            d="M 42 60 Q 38 68, 36 78"
+            stroke="hsl(20 8% 20%)"
             strokeWidth="2"
             fill="none"
+            opacity="0.4"
             strokeLinecap="round"
-            opacity="0.8"
           />
           <path
-            d="M 64 35 Q 68 28, 70 18"
-            stroke="hsl(20 10% 15%)"
+            d="M 98 60 Q 102 68, 104 78"
+            stroke="hsl(20 8% 20%)"
             strokeWidth="2"
             fill="none"
-            strokeLinecap="round"
-            opacity="0.8"
-          />
-
-          {/* Wing Details - Fine ink strokes */}
-          <path
-            d="M 35 45 Q 30 50, 28 60"
-            stroke="hsl(20 10% 22%)"
-            strokeWidth="1.5"
-            fill="none"
-            opacity="0.5"
-            strokeLinecap="round"
-          />
-          <path
-            d="M 85 45 Q 90 50, 92 60"
-            stroke="hsl(20 10% 22%)"
-            strokeWidth="1.5"
-            fill="none"
-            opacity="0.5"
+            opacity="0.4"
             strokeLinecap="round"
           />
         </svg>
