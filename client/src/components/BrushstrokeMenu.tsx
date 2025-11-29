@@ -99,8 +99,9 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
         <div 
           className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg animate-fade-in"
           data-testid="menu-overlay"
+          onClick={onToggle}
         >
-          <div className="flex flex-col items-center justify-center h-full relative">
+          <div className="flex flex-col items-center justify-center h-full relative w-full" onClick={(e) => e.stopPropagation()}>
             <nav className="flex flex-col items-center gap-8 mb-12">
               {menuItems.map((item, index) => (
                 <Link
@@ -120,15 +121,16 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
               ))}
             </nav>
 
-            {/* Language Toggle */}
-            <div className="fixed bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 animate-menu-slide" style={{ animationDelay: '0.5s' }}>
+            {/* Language Toggle - centered below menu */}
+            <div className="absolute bottom-24 w-full flex flex-col items-center gap-4 animate-menu-slide" style={{ animationDelay: '0.5s' }}>
               <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
                 <Globe className="w-4 h-4" />
                 <span>{t.language}:</span>
               </div>
               <div className="flex gap-4">
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     onLanguageChange("en");
                     onToggle();
                   }}
@@ -142,7 +144,8 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
                   {t.english}
                 </button>
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     onLanguageChange("zh");
                     onToggle();
                   }}
@@ -158,7 +161,7 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
               </div>
             </div>
 
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground opacity-30">
+            <div className="absolute bottom-12 w-full flex flex-col items-center gap-2 text-muted-foreground opacity-30">
               <svg viewBox="0 0 60 30" className="w-16 h-8">
                 <path
                   d="M5 15 Q15 5, 30 15 T55 15"
