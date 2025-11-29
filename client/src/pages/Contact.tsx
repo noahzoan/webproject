@@ -34,6 +34,7 @@ export default function Contact() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [language, setLanguage] = useState<"en" | "zh">("en");
   const { toast } = useToast();
 
   const form = useForm<ContactFormData>({
@@ -78,7 +79,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
       <ButterflyLoader isLoading={isNavigating} />
-      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language="en" onLanguageChange={() => {}} />
+      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language={language} onLanguageChange={setLanguage} />
 
       <header className="relative h-[35vh] min-h-[280px] overflow-hidden">
         <div 

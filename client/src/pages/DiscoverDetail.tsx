@@ -63,6 +63,7 @@ export default function DiscoverDetail() {
   const slug = params?.slug || "";
   const [menuOpen, setMenuOpen] = useState(false);
   const [isPageLoading, setIsPageLoading] = useState(true);
+  const [language, setLanguage] = useState<"en" | "zh">("en");
 
   const { data: discovery, isLoading, error } = useQuery<DiscoveryContent>({
     queryKey: ['/api/discoveries', slug],
@@ -109,7 +110,7 @@ export default function DiscoverDetail() {
   return (
     <div className="min-h-screen bg-background">
       <ButterflyLoader isLoading={isPageLoading} />
-      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} />
+      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language={language} onLanguageChange={setLanguage} />
 
       <header className="relative h-[50vh] min-h-[400px] overflow-hidden">
         <div 

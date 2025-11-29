@@ -10,11 +10,12 @@ import { useState } from "react";
 export default function About() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [language, setLanguage] = useState<"en" | "zh">("en");
 
   return (
     <div className="min-h-screen bg-background">
       <ButterflyLoader isLoading={isNavigating} />
-      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language="en" onLanguageChange={() => {}} />
+      <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language={language} onLanguageChange={setLanguage} />
 
       <header className="relative h-[40vh] min-h-[300px] overflow-hidden">
         <div 

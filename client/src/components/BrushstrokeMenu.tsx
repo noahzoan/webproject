@@ -121,7 +121,7 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
             </nav>
 
             {/* Language Toggle */}
-            <div className="fixed bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 animate-menu-slide" style={{ animationDelay: '0.5s' }}>
+            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 animate-menu-slide" style={{ animationDelay: '0.5s' }}>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Globe className="w-4 h-4" />
                 <span>{t.language}:</span>
