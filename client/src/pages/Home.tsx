@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Droplets, Building2, Flower2, Waypoints, Mountain, Loader2, TreePine, Zap, Heart, BookOpen, Paintbrush } from "lucide-react";
+import { Droplets, Building2, Flower2, Waypoints, Mountain, Loader2, TreePine, Zap, Heart, BookOpen, Paintbrush, Library, Video, Users } from "lucide-react";
 import type { DiscoveryContent } from "@shared/schema";
 import landscapeImage from "@assets/generated_images/traditional_asian_landscape_painting.png";
 
@@ -22,6 +22,9 @@ const iconComponents: Record<string, typeof Droplets> = {
   heart: Heart,
   book: BookOpen,
   paintbrush: Paintbrush,
+  library: Library,
+  video: Video,
+  users: Users,
 };
 
 const translations = {
@@ -40,6 +43,9 @@ const translations = {
       culture: "Arts & Culture",
       community: "Community",
       exploration: "Exploration",
+      resources: "Resources",
+      multimedia: "Multimedia",
+      contributors: "Contributors",
     },
   },
   zh: {
@@ -57,6 +63,9 @@ const translations = {
       culture: "文化艺术",
       community: "社区联结",
       exploration: "探索发现",
+      resources: "资源中心",
+      multimedia: "多媒体",
+      contributors: "贡献者",
     },
   },
 };
@@ -236,7 +245,9 @@ export default function Home() {
             </div>
             
             <div className="absolute inset-0">
-              {discoveries.map((discovery) => (
+              {discoveries
+                .filter((d) => d.positionX >= 0 && d.positionY >= 0)
+                .map((discovery) => (
                 <InteractiveHotspot
                   key={discovery.id}
                   discovery={discovery}

@@ -52,6 +52,18 @@ const translations = {
         { title: "Green Technology", slug: "technology" },
         { title: "Community", slug: "community" },
       ],
+      resources: [
+        { title: "Multimedia", slug: "multimedia" },
+        { title: "Contributors", slug: "contributors" },
+      ],
+      multimedia: [
+        { title: "Resources", slug: "resources" },
+        { title: "Exploration", slug: "exploration" },
+      ],
+      contributors: [
+        { title: "Resources", slug: "resources" },
+        { title: "Community", slug: "community" },
+      ],
     },
     subtitles: {
       restoration: "Healing the Land",
@@ -62,6 +74,9 @@ const translations = {
       culture: "Gardens of the Soul",
       community: "Bridges of Connection",
       exploration: "Peaks of Enlightenment",
+      resources: "Knowledge for Action",
+      multimedia: "Experience Through Media",
+      contributors: "The Voices Behind This Work",
     },
     highlights: {
       restoration: {
@@ -88,6 +103,15 @@ const translations = {
       exploration: {
         0: "The mountain does not move, yet teaches us everything about the journey."
       },
+      resources: {
+        0: "Knowledge without action is incomplete; action without knowledge is reckless."
+      },
+      multimedia: {
+        0: "To see is to begin to understand; to experience is to truly know."
+      },
+      contributors: {
+        0: "Great work is never accomplished alone, but through the harmony of many hands."
+      },
     },
     titles: {
       restoration: "Ecological Restoration",
@@ -98,6 +122,9 @@ const translations = {
       culture: "Arts & Culture",
       community: "Community",
       exploration: "Exploration",
+      resources: "Resources",
+      multimedia: "Multimedia",
+      contributors: "Contributors",
     },
     fullDescriptions: {
       restoration: "Ecological restoration represents hope in action—the deliberate recovery of ecosystems that have been degraded or destroyed. Through reforestation and habitat renewal, communities are healing the land.",
@@ -108,6 +135,9 @@ const translations = {
       culture: "The art of the traditional garden represents the pinnacle of cultural achievement—a perfect fusion of philosophy, art, and horticulture that creates spaces for contemplation and connection with nature.",
       community: "Bridges in Asian landscapes serve as powerful symbols of connection—linking not just physical spaces, but also past and present, humanity and nature, the earthly and the divine.",
       exploration: "Mountains have always held a special place in Asian spirituality and art. Representing the axis between earth and heaven, these majestic peaks inspire journeys both physical and spiritual.",
+      resources: "A curated collection of educational resources to deepen your understanding of ecological civilization. From scholarly articles to practical guides, these materials support learning and action.",
+      multimedia: "Experience ecological civilization through video documentaries, virtual tours, and interactive experiences. These multimedia resources bring the concepts to life through engaging visual storytelling.",
+      contributors: "Meet the scholars, artists, practitioners, and community members who contribute to the ecological civilization movement. Their diverse expertise and dedication make this work possible.",
     },
     sections: {
       restoration: [
@@ -149,6 +179,21 @@ const translations = {
         { title: "Sacred Summits", content: "Throughout Asia, certain mountains are venerated as sacred sites where heaven and earth meet. Pilgrims have climbed these peaks for millennia, seeking spiritual transformation, wisdom, and connection with the divine. The journey itself—with its challenges and rewards—is considered as important as reaching the summit." },
         { title: "Artistic Inspiration", content: "Mountain landscapes have inspired countless works of art, from classical ink paintings to poetry and music. Artists sought to capture not just the physical appearance of mountains but their essential spirit—the sense of timelessness, majesty, and transcendence they evoke." },
         { title: "Ecological Treasures", content: "Mountain ecosystems harbor remarkable biodiversity, with species found nowhere else on Earth. Many traditional communities living in mountain regions developed sustainable practices that protected these ecosystems while meeting their needs—wisdom that remains relevant today." },
+      ],
+      resources: [
+        { title: "Educational Materials", content: "Access research papers, case studies, and educational curricula designed to introduce ecological civilization concepts to learners of all ages. These materials bridge traditional wisdom with contemporary environmental science." },
+        { title: "Practical Guides", content: "Find step-by-step guides for sustainable living, community organizing, and ecological restoration projects. These resources translate theory into action, helping individuals and communities make meaningful change." },
+        { title: "Further Reading", content: "Explore a bibliography of essential texts on ecological civilization, traditional wisdom, and sustainable development. These recommended readings provide deeper context for the themes explored throughout this site." },
+      ],
+      multimedia: [
+        { title: "Video Documentaries", content: "Watch documentary films exploring ecological restoration projects, traditional practices, and communities building sustainable futures. These films capture the human stories behind the ecological transformation." },
+        { title: "Virtual Tours", content: "Take virtual tours of sacred mountains, traditional gardens, and restored ecosystems. Experience these remarkable places from anywhere in the world through immersive 360-degree imagery." },
+        { title: "Interactive Experiences", content: "Engage with interactive maps, timelines, and educational games that make learning about ecological civilization an active experience. These tools are designed for explorers of all ages." },
+      ],
+      contributors: [
+        { title: "Project Team", content: "Learn about the core team behind this educational initiative—educators, researchers, designers, and developers who work together to create meaningful experiences for visitors." },
+        { title: "Contributing Scholars", content: "Meet the academics and researchers whose work informs our content. These experts bring deep knowledge of ecology, philosophy, cultural heritage, and sustainable development." },
+        { title: "Community Partners", content: "Discover the organizations and communities partnering with us to advance ecological civilization. From local restoration projects to international networks, these partners extend our impact." },
       ],
     },
   },
@@ -193,6 +238,18 @@ const translations = {
         { title: "绿色科技", slug: "technology" },
         { title: "社区联结", slug: "community" },
       ],
+      resources: [
+        { title: "多媒体", slug: "multimedia" },
+        { title: "贡献者", slug: "contributors" },
+      ],
+      multimedia: [
+        { title: "资源中心", slug: "resources" },
+        { title: "探索发现", slug: "exploration" },
+      ],
+      contributors: [
+        { title: "资源中心", slug: "resources" },
+        { title: "社区联结", slug: "community" },
+      ],
     },
     subtitles: {
       restoration: "修复大地",
@@ -203,6 +260,9 @@ const translations = {
       culture: "心灵的园林",
       community: "连接的桥梁",
       exploration: "悟道之巅",
+      resources: "知行合一",
+      multimedia: "光影之旅",
+      contributors: "同行者",
     },
     highlights: {
       restoration: {
@@ -229,6 +289,15 @@ const translations = {
       exploration: {
         0: "山不动，却教会我们关于旅程的一切。"
       },
+      resources: {
+        0: "知而不行非真知，行而不知是莽行。"
+      },
+      multimedia: {
+        0: "观之始能知，体验方能悟。"
+      },
+      contributors: {
+        0: "大业非独成，众手共和谐。"
+      },
     },
     titles: {
       restoration: "生态修复",
@@ -239,6 +308,9 @@ const translations = {
       culture: "文化艺术",
       community: "社区联结",
       exploration: "探索发现",
+      resources: "资源中心",
+      multimedia: "多媒体",
+      contributors: "贡献者",
     },
     fullDescriptions: {
       restoration: "生态修复代表着行动中的希望——对退化或被破坏的生态系统的刻意恢复。通过植树造林和栖息地更新，社区正在治愈大地。",
@@ -249,6 +321,9 @@ const translations = {
       culture: "传统园林的艺术代表着文化成就的巅峰——哲学、艺术和园艺的完美融合，创造出供人沉思和与自然连接的空间。",
       community: "亚洲景观中的桥梁是连接的有力象征——不仅连接物理空间，还连接过去与现在、人类与自然、尘世与神圣。",
       exploration: "山脉在亚洲灵性和艺术中一直占有特殊地位。作为天地之间的轴心，这些雄伟的山峰激发着身体和精神的双重旅程。",
+      resources: "精心策划的教育资源集合，帮助您深入了解生态文明。从学术文章到实用指南，这些材料支持学习和行动。",
+      multimedia: "通过视频纪录片、虚拟游览和互动体验感受生态文明。这些多媒体资源通过引人入胜的视觉叙事将概念带入生活。",
+      contributors: "认识为生态文明运动做出贡献的学者、艺术家、实践者和社区成员。他们多元的专业知识和奉献使这项工作成为可能。",
     },
     sections: {
       restoration: [
@@ -290,6 +365,21 @@ const translations = {
         { title: "神圣之巅", content: "在整个亚洲，某些山脉被尊为天地相接的神圣之地。几千年来，朝圣者攀登这些山峰，寻求精神转化、智慧和与神圣的联系。旅程本身——及其挑战和回报——被认为与到达顶峰同样重要。" },
         { title: "艺术灵感", content: "山水景观激发了无数艺术作品，从古典水墨画到诗歌和音乐。艺术家们不仅试图捕捉山脉的物理外观，还试图捕捉其本质精神——它们所唤起的永恒感、雄伟感和超越感。" },
         { title: "生态宝库", content: "山地生态系统蕴藏着非凡的生物多样性，拥有地球上其他地方找不到的物种。许多生活在山区的传统社区发展了可持续的做法，在满足自身需求的同时保护这些生态系统——这种智慧在今天仍然具有现实意义。" },
+      ],
+      resources: [
+        { title: "教育材料", content: "获取为各年龄段学习者设计的研究论文、案例研究和教育课程，旨在介绍生态文明概念。这些材料将传统智慧与当代环境科学联系起来。" },
+        { title: "实用指南", content: "找到可持续生活、社区组织和生态修复项目的分步指南。这些资源将理论转化为行动，帮助个人和社区做出有意义的改变。" },
+        { title: "进一步阅读", content: "探索关于生态文明、传统智慧和可持续发展的基本文献书目。这些推荐阅读为整个网站探索的主题提供更深入的背景。" },
+      ],
+      multimedia: [
+        { title: "视频纪录片", content: "观看探索生态修复项目、传统实践和建设可持续未来社区的纪录片。这些影片捕捉了生态转型背后的人文故事。" },
+        { title: "虚拟游览", content: "参加神圣山脉、传统园林和修复生态系统的虚拟游览。通过沉浸式360度影像，从世界任何地方体验这些非凡之地。" },
+        { title: "互动体验", content: "参与互动地图、时间线和教育游戏，使学习生态文明成为一种积极的体验。这些工具专为各年龄段的探索者设计。" },
+      ],
+      contributors: [
+        { title: "项目团队", content: "了解这个教育项目背后的核心团队——教育工作者、研究人员、设计师和开发人员共同努力，为访客创造有意义的体验。" },
+        { title: "学术贡献者", content: "认识那些工作为我们内容提供信息的学者和研究人员。这些专家带来了关于生态学、哲学、文化遗产和可持续发展的深厚知识。" },
+        { title: "社区伙伴", content: "发现与我们合作推进生态文明的组织和社区。从当地修复项目到国际网络，这些伙伴扩展了我们的影响。" },
       ],
     },
   },

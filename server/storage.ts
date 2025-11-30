@@ -210,6 +210,78 @@ const discoveryData: DiscoveryContent[] = [
         content: "Mountain ecosystems harbor remarkable biodiversity, with species found nowhere else on Earth. Many traditional communities living in mountain regions developed sustainable practices that protected these ecosystems while meeting their needs—wisdom that remains relevant today."
       }
     ]
+  },
+  {
+    id: "9",
+    slug: "resources",
+    title: "Resources",
+    icon: "library",
+    shortDescription: "Educational materials and tools",
+    fullDescription: "A curated collection of educational resources to deepen your understanding of ecological civilization. From scholarly articles to practical guides, these materials support learning and action.",
+    positionX: -1,
+    positionY: -1,
+    sections: [
+      {
+        title: "Educational Materials",
+        content: "Access research papers, case studies, and educational curricula designed to introduce ecological civilization concepts to learners of all ages. These materials bridge traditional wisdom with contemporary environmental science."
+      },
+      {
+        title: "Practical Guides",
+        content: "Find step-by-step guides for sustainable living, community organizing, and ecological restoration projects. These resources translate theory into action, helping individuals and communities make meaningful change."
+      },
+      {
+        title: "Further Reading",
+        content: "Explore a bibliography of essential texts on ecological civilization, traditional wisdom, and sustainable development. These recommended readings provide deeper context for the themes explored throughout this site."
+      }
+    ]
+  },
+  {
+    id: "10",
+    slug: "multimedia",
+    title: "Multimedia",
+    icon: "video",
+    shortDescription: "Videos and interactive content",
+    fullDescription: "Experience ecological civilization through video documentaries, virtual tours, and interactive experiences. These multimedia resources bring the concepts to life through engaging visual storytelling.",
+    positionX: -1,
+    positionY: -1,
+    sections: [
+      {
+        title: "Video Documentaries",
+        content: "Watch documentary films exploring ecological restoration projects, traditional practices, and communities building sustainable futures. These films capture the human stories behind the ecological transformation."
+      },
+      {
+        title: "Virtual Tours",
+        content: "Take virtual tours of sacred mountains, traditional gardens, and restored ecosystems. Experience these remarkable places from anywhere in the world through immersive 360-degree imagery."
+      },
+      {
+        title: "Interactive Experiences",
+        content: "Engage with interactive maps, timelines, and educational games that make learning about ecological civilization an active experience. These tools are designed for explorers of all ages."
+      }
+    ]
+  },
+  {
+    id: "11",
+    slug: "contributors",
+    title: "Contributors",
+    icon: "users",
+    shortDescription: "The people behind the project",
+    fullDescription: "Meet the scholars, artists, practitioners, and community members who contribute to the ecological civilization movement. Their diverse expertise and dedication make this work possible.",
+    positionX: -1,
+    positionY: -1,
+    sections: [
+      {
+        title: "Project Team",
+        content: "Learn about the core team behind this educational initiative—educators, researchers, designers, and developers who work together to create meaningful experiences for visitors."
+      },
+      {
+        title: "Contributing Scholars",
+        content: "Meet the academics and researchers whose work informs our content. These experts bring deep knowledge of ecology, philosophy, cultural heritage, and sustainable development."
+      },
+      {
+        title: "Community Partners",
+        content: "Discover the organizations and communities partnering with us to advance ecological civilization. From local restoration projects to international networks, these partners extend our impact."
+      }
+    ]
   }
 ];
 

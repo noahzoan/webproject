@@ -18,7 +18,7 @@ const translations = {
       resources: "Resources",
       multimedia: "Multimedia",
       contributors: "Contributors",
-    },
+    } as Record<string, string>,
     subtitles: {
       restoration: "Reforestation and ecosystem recovery",
       heritage: "Ancient temples and sacred architecture",
@@ -32,7 +32,7 @@ const translations = {
       resources: "Educational materials and tools",
       multimedia: "Videos and interactive content",
       contributors: "The people behind the project",
-    },
+    } as Record<string, string>,
   },
   zh: {
     titles: {
@@ -48,7 +48,7 @@ const translations = {
       resources: "资源中心",
       multimedia: "多媒体",
       contributors: "贡献者",
-    },
+    } as Record<string, string>,
     subtitles: {
       restoration: "植树造林与生态系统恢复",
       heritage: "古老寺庙和神圣建筑",
@@ -62,7 +62,7 @@ const translations = {
       resources: "教育资料与工具",
       multimedia: "视频与互动内容",
       contributors: "项目背后的人们",
-    },
+    } as Record<string, string>,
   },
 };
 
@@ -75,8 +75,8 @@ interface InteractiveHotspotProps {
 export function InteractiveHotspot({ discovery, showAll, onNavigate }: InteractiveHotspotProps) {
   const { language } = useLanguage();
   const t = translations[language];
-  const translatedTitle = t.titles[discovery.slug as keyof typeof t.titles] || discovery.title;
-  const translatedSubtitle = t.subtitles[discovery.slug as keyof typeof t.subtitles] || discovery.shortDescription;
+  const translatedTitle = t.titles[discovery.slug] || discovery.title;
+  const translatedSubtitle = t.subtitles[discovery.slug] || discovery.shortDescription;
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [rippleKey, setRippleKey] = useState(0);

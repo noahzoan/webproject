@@ -1,6 +1,6 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { useLocation } from "wouter";
-import { ChevronDown, Home, Info, Mail, TreePine, Building2, Zap, Heart, BookOpen, Paintbrush, Waypoints, Mountain, Globe, Check } from "lucide-react";
+import { ChevronDown, Home, Info, Mail, TreePine, Building2, Zap, Heart, BookOpen, Paintbrush, Waypoints, Mountain, Globe, Check, Library, Video, Users } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   DropdownMenu,
@@ -32,6 +32,9 @@ const translations = {
       culture: "Arts & Culture",
       community: "Community",
       exploration: "Exploration",
+      resources: "Resources",
+      multimedia: "Multimedia",
+      contributors: "Contributors",
     },
   },
   zh: {
@@ -51,6 +54,9 @@ const translations = {
       culture: "文化艺术",
       community: "社区联结",
       exploration: "探索发现",
+      resources: "资源中心",
+      multimedia: "多媒体",
+      contributors: "贡献者",
     },
   },
 };
@@ -64,6 +70,9 @@ const categoryIcons = {
   culture: Paintbrush,
   community: Waypoints,
   exploration: Mountain,
+  resources: Library,
+  multimedia: Video,
+  contributors: Users,
 };
 
 interface NavLinkProps extends ComponentPropsWithoutRef<"a"> {
