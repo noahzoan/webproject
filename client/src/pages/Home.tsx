@@ -202,7 +202,7 @@ export default function Home() {
               <h1 
                 className="font-display text-4xl md:text-6xl lg:text-7xl"
                 style={{ 
-                  color: '#2d5a3d',
+                  color: '#4a8c5e',
                   textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.6), 2px 2px 4px rgba(255,255,255,0.9)',
                 }}
               >
