@@ -159,7 +159,7 @@ export default function Home() {
         onLanguageChange={setLanguage}
       />
       
-      <div className="fixed top-6 right-6 z-[100]">
+      <div className="fixed top-6 right-6" style={{ zIndex: 9999 }}>
         <ShowAllToggle showAll={showAll} onToggle={() => setShowAll(!showAll)} />
       </div>
 
@@ -181,12 +181,13 @@ export default function Home() {
           data-testid="landscape-section"
         >
           <div 
-            className="fixed top-0 left-0 w-full h-screen overflow-hidden z-0"
+            className="fixed top-0 left-0 w-full h-screen overflow-hidden"
             style={{
               backgroundImage: `url(${landscapeImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center top',
               backgroundRepeat: 'no-repeat',
+              zIndex: 1,
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/30" />
