@@ -47,7 +47,7 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
     <>
       <button
         onClick={onToggle}
-        className="fixed top-6 left-6 z-50 p-3 rounded-md bg-background/60 backdrop-blur-md border border-border/50 hover-elevate active-elevate-2 transition-all duration-200"
+        className="fixed top-6 left-6 z-[60] p-3 rounded-md bg-background/80 backdrop-blur-md border border-border/50 shadow-lg hover-elevate active-elevate-2 transition-all duration-200"
         data-testid="button-menu-toggle"
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
