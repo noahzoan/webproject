@@ -52,11 +52,11 @@ export function InteractiveHotspot({ discovery, showAll, onNavigate }: Interacti
       <div
         className={`
           w-12 h-12 md:w-16 md:h-16 rounded-full cursor-pointer transition-all duration-300
-          ${isVisible ? 'opacity-0' : 'opacity-40 hover:opacity-70'}
+          ${isVisible ? 'opacity-0' : 'opacity-70 hover:opacity-90'}
           ${!showAll && !isClicked ? 'animate-hotspot-pulse' : ''}
         `}
         style={{
-          background: 'radial-gradient(circle, rgba(200,16,46,0.3) 0%, rgba(200,16,46,0) 70%)',
+          background: 'radial-gradient(circle, rgba(180,16,46,0.5) 0%, rgba(180,16,46,0.2) 50%, rgba(180,16,46,0) 70%)',
         }}
       />
       
