@@ -10,6 +10,13 @@ const translations = {
     culture: "Culture",
     community: "Community",
     exploration: "Exploration",
+    restoration: "Restoration",
+    health: "Health",
+    technology: "Technology",
+    tradition: "Tradition",
+    resources: "Resources",
+    multimedia: "Multimedia",
+    contributors: "Contributors",
   },
   zh: {
     conservation: "生态保护",
@@ -17,6 +24,13 @@ const translations = {
     culture: "文化艺术",
     community: "社区联结",
     exploration: "探索发现",
+    restoration: "生态修复",
+    health: "环境健康",
+    technology: "绿色科技",
+    tradition: "传统智慧",
+    resources: "资源中心",
+    multimedia: "多媒体",
+    contributors: "贡献者",
   },
 };
 
@@ -32,6 +46,7 @@ export function InteractiveHotspot({ discovery, showAll, onNavigate }: Interacti
   const translatedTitle = t[discovery.slug as keyof typeof t] || discovery.title;
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [rippleKey, setRippleKey] = useState(0);
   
   const isVisible = showAll || isHovered || isClicked;
 
@@ -49,11 +64,13 @@ export function InteractiveHotspot({ discovery, showAll, onNavigate }: Interacti
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
     setIsClicked(prev => !prev);
+    setRippleKey(prev => prev + 1);
   }, []);
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     e.stopPropagation();
     setIsClicked(prev => !prev);
+    setRippleKey(prev => prev + 1);
   }, []);
 
   return (
@@ -72,21 +89,72 @@ export function InteractiveHotspot({ discovery, showAll, onNavigate }: Interacti
     >
       <div
         className={`
-          w-12 h-12 md:w-16 md:h-16 rounded-full cursor-pointer transition-all duration-300
-          ${isVisible ? 'opacity-0' : 'opacity-70 hover:opacity-90'}
-          ${!showAll && !isClicked ? 'animate-hotspot-pulse' : ''}
+          relative w-14 h-14 md:w-16 md:h-16 cursor-pointer
+          transition-all duration-500
+          ${isVisible ? 'opacity-0 scale-75' : 'opacity-100'}
         `}
-        style={{
-          background: 'radial-gradient(circle, rgba(180,16,46,0.5) 0%, rgba(180,16,46,0.2) 50%, rgba(180,16,46,0) 70%)',
-        }}
-      />
+      >
+        <div
+          className={`
+            absolute inset-0 rounded-full
+            ${!showAll && !isClicked ? 'animate-hotspot-pulse' : ''}
+          `}
+          style={{
+            background: `radial-gradient(circle, 
+              rgba(180,16,46,0.45) 0%, 
+              rgba(180,16,46,0.25) 35%, 
+              rgba(180,16,46,0.08) 60%, 
+              rgba(180,16,46,0) 75%
+            )`,
+            transform: 'translate(-50%, -50%)',
+            left: '50%',
+            top: '50%',
+            width: '100%',
+            height: '100%',
+          }}
+        />
+        
+        <div
+          key={rippleKey}
+          className={`
+            absolute inset-0 rounded-full
+            ${!isVisible ? 'animate-hotspot-ripple' : 'opacity-0'}
+          `}
+          style={{
+            background: `radial-gradient(circle, 
+              rgba(180,16,46,0.3) 0%, 
+              rgba(180,16,46,0.1) 50%, 
+              rgba(180,16,46,0) 70%
+            )`,
+            transform: 'translate(-50%, -50%)',
+            left: '50%',
+            top: '50%',
+          }}
+        />
+
+        <div
+          className={`
+            absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+            w-3 h-3 rounded-full
+            bg-primary/80 shadow-lg
+            transition-all duration-300
+            ${isVisible ? 'scale-0' : 'scale-100'}
+          `}
+          style={{
+            boxShadow: '0 0 12px rgba(180,16,46,0.5), 0 0 24px rgba(180,16,46,0.3)',
+          }}
+        />
+      </div>
       
       <div
         className={`
-          absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-          transition-all duration-300
-          ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
+          absolute top-1/2 left-1/2
+          transition-opacity duration-200
+          ${isVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
         `}
+        style={{
+          zIndex: 50,
+        }}
       >
         <DiscoveryBubble
           title={translatedTitle}
