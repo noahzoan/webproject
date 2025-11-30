@@ -54,38 +54,57 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
         {isOpen ? (
           <X className="w-6 h-6 text-foreground" />
         ) : (
-          <div className="flex flex-col gap-1.5 w-8 justify-center">
-            {/* Top thick brushstroke - compact ink brush style */}
-            <svg viewBox="0 0 100 24" className="w-full h-3">
+          <div className="flex flex-col gap-0.5 w-7 justify-center">
+            {/* Ink brushstroke lines with tapered/faded ends */}
+            <svg viewBox="0 0 100 16" className="w-full h-2.5">
+              <defs>
+                <linearGradient id="brushFade1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="currentColor" stopOpacity="0.2" />
+                  <stop offset="15%" stopColor="currentColor" stopOpacity="1" />
+                  <stop offset="85%" stopColor="currentColor" stopOpacity="1" />
+                  <stop offset="100%" stopColor="currentColor" stopOpacity="0.15" />
+                </linearGradient>
+              </defs>
               <path
-                d="M 5 12 C 20 4, 40 20, 50 12 C 60 4, 80 20, 95 12"
-                stroke="currentColor"
-                strokeWidth="12"
+                d="M 2 8 Q 25 4, 50 8 Q 75 12, 98 8"
+                stroke="url(#brushFade1)"
+                strokeWidth="6"
                 fill="none"
                 strokeLinecap="round"
-                className="text-foreground"
               />
             </svg>
-            {/* Middle thick brushstroke */}
-            <svg viewBox="0 0 100 24" className="w-full h-3">
+            <svg viewBox="0 0 100 16" className="w-full h-2.5">
+              <defs>
+                <linearGradient id="brushFade2" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="currentColor" stopOpacity="0.15" />
+                  <stop offset="12%" stopColor="currentColor" stopOpacity="1" />
+                  <stop offset="88%" stopColor="currentColor" stopOpacity="1" />
+                  <stop offset="100%" stopColor="currentColor" stopOpacity="0.2" />
+                </linearGradient>
+              </defs>
               <path
-                d="M 5 12 C 25 20, 45 4, 50 12 C 55 20, 75 4, 95 12"
-                stroke="currentColor"
-                strokeWidth="12"
+                d="M 2 8 Q 30 12, 50 8 Q 70 4, 98 8"
+                stroke="url(#brushFade2)"
+                strokeWidth="7"
                 fill="none"
                 strokeLinecap="round"
-                className="text-foreground"
               />
             </svg>
-            {/* Bottom thick brushstroke */}
-            <svg viewBox="0 0 100 24" className="w-full h-3">
+            <svg viewBox="0 0 100 16" className="w-full h-2.5">
+              <defs>
+                <linearGradient id="brushFade3" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="currentColor" stopOpacity="0.25" />
+                  <stop offset="18%" stopColor="currentColor" stopOpacity="1" />
+                  <stop offset="82%" stopColor="currentColor" stopOpacity="1" />
+                  <stop offset="100%" stopColor="currentColor" stopOpacity="0.1" />
+                </linearGradient>
+              </defs>
               <path
-                d="M 5 12 C 20 5, 35 19, 50 12 C 65 5, 80 19, 95 12"
-                stroke="currentColor"
-                strokeWidth="12"
+                d="M 2 8 Q 20 5, 50 8 Q 80 11, 98 8"
+                stroke="url(#brushFade3)"
+                strokeWidth="5"
                 fill="none"
                 strokeLinecap="round"
-                className="text-foreground"
               />
             </svg>
           </div>
