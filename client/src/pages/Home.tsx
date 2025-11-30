@@ -149,7 +149,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden m-0 p-0">
+    <div className="min-h-screen bg-background m-0 p-0">
       <ButterflyLoader isLoading={showLoader} onComplete={() => setShowLoader(false)} />
       
       <BrushstrokeMenu 
@@ -167,7 +167,7 @@ export default function Home() {
         ref={containerRef}
         className={`
           relative w-full m-0 p-0
-          ${isMobile ? 'touch-none' : 'overflow-y-auto overflow-x-hidden'}
+          ${isMobile ? 'touch-none overflow-hidden' : ''}
         `}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -177,19 +177,24 @@ export default function Home() {
         }}
       >
         <section 
-          className="relative w-full min-h-[200vh] md:min-h-[150vh] m-0 p-0"
+          className="relative w-full m-0 p-0"
           data-testid="landscape-section"
         >
           <div 
-            className="fixed top-0 left-0 w-full h-screen overflow-hidden"
+            className="relative w-full overflow-hidden"
             style={{
-              backgroundImage: `url(${landscapeImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center top',
-              backgroundRepeat: 'no-repeat',
-              zIndex: 1,
+              height: '150vh',
             }}
           >
+            <div 
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url(${landscapeImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center top',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/30" />
             
             {/* Title overlay - positioned at very top */}
