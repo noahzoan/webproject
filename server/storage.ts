@@ -26,8 +26,8 @@ const discoveryData: DiscoveryContent[] = [
     icon: "droplets",
     shortDescription: "Protecting our natural heritage for future generations",
     fullDescription: "Water and environmental conservation have been central to Asian philosophy for thousands of years. From sacred lotus ponds to carefully maintained streams, every water feature tells a story of respect for nature.",
-    positionX: 25,
-    positionY: 65,
+    positionX: 12,
+    positionY: 72,
     sections: [
       {
         title: "The Sacred Waters",
@@ -50,8 +50,8 @@ const discoveryData: DiscoveryContent[] = [
     icon: "building",
     shortDescription: "Ancient temples and sacred architecture",
     fullDescription: "Ancient temples and pavilions stand as testaments to architectural genius and spiritual devotion. Each structure embodies centuries of accumulated wisdom, artistic excellence, and cultural values that continue to inspire awe.",
-    positionX: 55,
-    positionY: 35,
+    positionX: 42,
+    positionY: 28,
     sections: [
       {
         title: "Architectural Wisdom",
@@ -74,8 +74,8 @@ const discoveryData: DiscoveryContent[] = [
     icon: "flower",
     shortDescription: "Gardens and artistic traditions",
     fullDescription: "The art of the traditional garden represents the pinnacle of cultural achievement—a perfect fusion of philosophy, art, and horticulture that creates spaces for contemplation and connection with nature.",
-    positionX: 75,
-    positionY: 55,
+    positionX: 62,
+    positionY: 58,
     sections: [
       {
         title: "Philosophy in Bloom",
@@ -98,8 +98,8 @@ const discoveryData: DiscoveryContent[] = [
     icon: "bridge",
     shortDescription: "Bridges connecting people and places",
     fullDescription: "Bridges in Asian landscapes serve as powerful symbols of connection—linking not just physical spaces, but also past and present, humanity and nature, the earthly and the divine.",
-    positionX: 40,
-    positionY: 75,
+    positionX: 50,
+    positionY: 72,
     sections: [
       {
         title: "Crossing Over",
@@ -122,8 +122,8 @@ const discoveryData: DiscoveryContent[] = [
     icon: "mountain",
     shortDescription: "Majestic peaks and spiritual journeys",
     fullDescription: "Mountains have always held a special place in Asian spirituality and art. Representing the axis between earth and heaven, these majestic peaks inspire journeys both physical and spiritual.",
-    positionX: 80,
-    positionY: 25,
+    positionX: 82,
+    positionY: 82,
     sections: [
       {
         title: "Sacred Summits",
