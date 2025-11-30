@@ -63,7 +63,7 @@ export default function DiscoverDetail() {
   const [, params] = useRoute("/discover/:slug");
   const slug = params?.slug || "";
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isPageLoading, setIsPageLoading] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
   const { language, setLanguage } = useLanguage();
 
   const { data: discovery, isLoading, error } = useQuery<DiscoveryContent>({
@@ -72,9 +72,7 @@ export default function DiscoverDetail() {
   });
 
   useEffect(() => {
-    setIsPageLoading(true);
-    const timer = setTimeout(() => setIsPageLoading(false), 1700);
-    return () => clearTimeout(timer);
+    setShowLoader(true);
   }, [slug]);
 
   const relatedTopics = relatedTopicsMap[slug] || [];
@@ -98,7 +96,7 @@ export default function DiscoverDetail() {
         <div className="text-center space-y-4">
           <h1 className="font-serif text-2xl text-foreground">Discovery Not Found</h1>
           <p className="text-muted-foreground">The path you seek has faded into the mist.</p>
-          <Link href="/" onClick={() => setIsPageLoading(true)}>
+          <Link href="/" onClick={() => setShowLoader(true)}>
             <Button variant="outline" data-testid="button-back-home">
               Return Home
             </Button>
@@ -110,7 +108,7 @@ export default function DiscoverDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      <ButterflyLoader isLoading={isPageLoading} />
+      <ButterflyLoader isLoading={showLoader} onComplete={() => setShowLoader(false)} />
       <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language={language} onLanguageChange={setLanguage} />
 
       <header className="relative h-[50vh] min-h-[400px] overflow-hidden">
@@ -138,7 +136,7 @@ export default function DiscoverDetail() {
 
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
         
-        <Link href="/" onClick={() => setIsPageLoading(true)} className="absolute top-6 right-6 z-20">
+        <Link href="/" onClick={() => setShowLoader(true)} className="absolute top-6 right-6 z-20">
           <Button 
             variant="outline" 
             size="icon" 

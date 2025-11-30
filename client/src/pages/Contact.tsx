@@ -34,7 +34,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 export default function Contact() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isNavigating, setIsNavigating] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
   const { language, setLanguage } = useLanguage();
   const { toast } = useToast();
 
@@ -79,7 +79,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-background">
-      <ButterflyLoader isLoading={isNavigating} />
+      <ButterflyLoader isLoading={showLoader} onComplete={() => setShowLoader(false)} />
       <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language={language} onLanguageChange={setLanguage} />
 
       <header className="relative h-[35vh] min-h-[280px] overflow-hidden">
@@ -104,7 +104,7 @@ export default function Contact() {
 
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
         
-        <Link href="/" onClick={() => setIsNavigating(true)} className="absolute top-6 right-6 z-20">
+        <Link href="/" onClick={() => setShowLoader(true)} className="absolute top-6 right-6 z-20">
           <Button 
             variant="outline" 
             size="icon" 

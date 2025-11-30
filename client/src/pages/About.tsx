@@ -10,12 +10,12 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function About() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isNavigating, setIsNavigating] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
   const { language, setLanguage } = useLanguage();
 
   return (
     <div className="min-h-screen bg-background">
-      <ButterflyLoader isLoading={isNavigating} />
+      <ButterflyLoader isLoading={showLoader} onComplete={() => setShowLoader(false)} />
       <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language={language} onLanguageChange={setLanguage} />
 
       <header className="relative h-[40vh] min-h-[300px] overflow-hidden">
@@ -124,12 +124,12 @@ export default function About() {
             Start your discovery today.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/" onClick={() => setIsNavigating(true)}>
+            <Link href="/" onClick={() => setShowLoader(true)}>
               <Button data-testid="button-explore">
                 Explore the Landscape
               </Button>
             </Link>
-            <Link href="/contact" onClick={() => setIsNavigating(true)}>
+            <Link href="/contact" onClick={() => setShowLoader(true)}>
               <Button variant="outline" data-testid="button-contact">
                 Get in Touch
               </Button>

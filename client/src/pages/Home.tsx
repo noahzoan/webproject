@@ -39,7 +39,7 @@ const translations = {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
-  const [isNavigating, setIsNavigating] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
   const { language, setLanguage } = useLanguage();
   const isMobile = useIsMobile();
   
@@ -134,7 +134,7 @@ export default function Home() {
   }, [isMobile, velocity, scrollPosition]);
 
   const handleNavigation = useCallback(() => {
-    setIsNavigating(true);
+    setShowLoader(true);
   }, []);
 
   if (isLoading) {
@@ -150,7 +150,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
-      <ButterflyLoader isLoading={isNavigating} />
+      <ButterflyLoader isLoading={showLoader} onComplete={() => setShowLoader(false)} />
       
       <BrushstrokeMenu 
         isOpen={menuOpen} 
