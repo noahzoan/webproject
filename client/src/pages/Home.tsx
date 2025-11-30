@@ -199,7 +199,13 @@ export default function Home() {
             
             {/* Title overlay - positioned at very top */}
             <div className="absolute top-4 md:top-6 left-1/2 -translate-x-1/2 text-center z-20">
-              <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-white drop-shadow-lg" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}>
+              <h1 
+                className="font-display text-4xl md:text-6xl lg:text-7xl"
+                style={{ 
+                  color: '#1a1a1a',
+                  textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.6), 2px 2px 4px rgba(255,255,255,0.9)',
+                }}
+              >
                 {t.title}
               </h1>
             </div>
