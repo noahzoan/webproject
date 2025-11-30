@@ -149,7 +149,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
+    <div className="min-h-screen bg-background overflow-hidden m-0 p-0">
       <ButterflyLoader isLoading={showLoader} onComplete={() => setShowLoader(false)} />
       
       <BrushstrokeMenu 
@@ -159,14 +159,14 @@ export default function Home() {
         onLanguageChange={setLanguage}
       />
       
-      <div className="fixed top-6 right-6 z-[49]">
+      <div className="fixed top-6 right-6 z-[100]">
         <ShowAllToggle showAll={showAll} onToggle={() => setShowAll(!showAll)} />
       </div>
 
       <div
         ref={containerRef}
         className={`
-          relative w-full
+          relative w-full m-0 p-0
           ${isMobile ? 'touch-none' : 'overflow-y-auto overflow-x-hidden'}
         `}
         onTouchStart={handleTouchStart}
@@ -177,11 +177,11 @@ export default function Home() {
         }}
       >
         <section 
-          className="relative w-full min-h-[200vh] md:min-h-[150vh]"
+          className="relative w-full min-h-[200vh] md:min-h-[150vh] m-0 p-0"
           data-testid="landscape-section"
         >
           <div 
-            className="sticky top-0 w-full h-screen overflow-hidden"
+            className="fixed top-0 left-0 w-full h-screen overflow-hidden z-0"
             style={{
               backgroundImage: `url(${landscapeImage})`,
               backgroundSize: 'cover',
