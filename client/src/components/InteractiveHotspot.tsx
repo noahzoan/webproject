@@ -5,32 +5,64 @@ import type { DiscoveryContent } from "@shared/schema";
 
 const translations = {
   en: {
-    conservation: "Conservation",
-    heritage: "Heritage",
-    culture: "Culture",
-    community: "Community",
-    exploration: "Exploration",
-    restoration: "Restoration",
-    health: "Health",
-    technology: "Technology",
-    tradition: "Tradition",
-    resources: "Resources",
-    multimedia: "Multimedia",
-    contributors: "Contributors",
+    titles: {
+      conservation: "Conservation",
+      heritage: "Cultural Heritage",
+      culture: "Arts & Culture",
+      community: "Community",
+      exploration: "Exploration",
+      restoration: "Ecological Restoration",
+      health: "Environmental Health",
+      technology: "Green Technology",
+      tradition: "Traditional Wisdom",
+      resources: "Resources",
+      multimedia: "Multimedia",
+      contributors: "Contributors",
+    },
+    subtitles: {
+      restoration: "Reforestation and ecosystem recovery",
+      heritage: "Ancient temples and sacred architecture",
+      technology: "Solar, wind, and sustainable innovation",
+      health: "Human wellbeing and ecological balance",
+      tradition: "Ancestral knowledge and practices",
+      culture: "Gardens and artistic traditions",
+      community: "Bridges connecting people and places",
+      exploration: "Majestic peaks and spiritual journeys",
+      conservation: "Protecting our natural heritage",
+      resources: "Educational materials and tools",
+      multimedia: "Videos and interactive content",
+      contributors: "The people behind the project",
+    },
   },
   zh: {
-    conservation: "生态保护",
-    heritage: "文化遗产",
-    culture: "文化艺术",
-    community: "社区联结",
-    exploration: "探索发现",
-    restoration: "生态修复",
-    health: "环境健康",
-    technology: "绿色科技",
-    tradition: "传统智慧",
-    resources: "资源中心",
-    multimedia: "多媒体",
-    contributors: "贡献者",
+    titles: {
+      conservation: "生态保护",
+      heritage: "文化遗产",
+      culture: "文化艺术",
+      community: "社区联结",
+      exploration: "探索发现",
+      restoration: "生态修复",
+      health: "环境健康",
+      technology: "绿色科技",
+      tradition: "传统智慧",
+      resources: "资源中心",
+      multimedia: "多媒体",
+      contributors: "贡献者",
+    },
+    subtitles: {
+      restoration: "植树造林与生态系统恢复",
+      heritage: "古老寺庙和神圣建筑",
+      technology: "太阳能、风能和可持续创新",
+      health: "人类福祉与生态平衡",
+      tradition: "祖先的知识与实践",
+      culture: "园林与艺术传统",
+      community: "连接人与地方的桥梁",
+      exploration: "雄伟山峰与精神旅程",
+      conservation: "守护自然遗产",
+      resources: "教育资料与工具",
+      multimedia: "视频与互动内容",
+      contributors: "项目背后的人们",
+    },
   },
 };
 
@@ -43,7 +75,8 @@ interface InteractiveHotspotProps {
 export function InteractiveHotspot({ discovery, showAll, onNavigate }: InteractiveHotspotProps) {
   const { language } = useLanguage();
   const t = translations[language];
-  const translatedTitle = t[discovery.slug as keyof typeof t] || discovery.title;
+  const translatedTitle = t.titles[discovery.slug as keyof typeof t.titles] || discovery.title;
+  const translatedSubtitle = t.subtitles[discovery.slug as keyof typeof t.subtitles] || discovery.shortDescription;
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [rippleKey, setRippleKey] = useState(0);
@@ -158,6 +191,7 @@ export function InteractiveHotspot({ discovery, showAll, onNavigate }: Interacti
       >
         <DiscoveryBubble
           title={translatedTitle}
+          subtitle={translatedSubtitle}
           slug={discovery.slug}
           icon={discovery.icon}
           isVisible={isVisible}

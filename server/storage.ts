@@ -21,32 +21,32 @@ export interface IStorage {
 const discoveryData: DiscoveryContent[] = [
   {
     id: "1",
-    slug: "conservation",
-    title: "Conservation",
-    icon: "droplets",
-    shortDescription: "Protecting our natural heritage for future generations",
-    fullDescription: "Water and environmental conservation have been central to Asian philosophy for thousands of years. From sacred lotus ponds to carefully maintained streams, every water feature tells a story of respect for nature.",
-    positionX: 12,
-    positionY: 72,
+    slug: "restoration",
+    title: "Ecological Restoration",
+    icon: "tree",
+    shortDescription: "Reforestation and ecosystem recovery",
+    fullDescription: "Ecological restoration represents hope in action—the deliberate recovery of ecosystems that have been degraded or destroyed. Through reforestation and habitat renewal, communities are healing the land.",
+    positionX: 15,
+    positionY: 45,
     sections: [
       {
-        title: "The Sacred Waters",
-        content: "In traditional Asian culture, water represents purity, renewal, and the flow of life energy (chi). Ponds and streams in classical gardens were not merely decorative—they served as living ecosystems that supported fish, plants, and the overall harmony of the landscape. The practice of maintaining these water features has been passed down through generations, creating a rich tradition of environmental stewardship."
+        title: "Reforestation Efforts",
+        content: "China has undertaken some of the world's largest reforestation projects, planting billions of trees to combat desertification and restore degraded landscapes. These efforts demonstrate that ecological recovery is possible when communities work together with purpose and dedication."
       },
       {
-        title: "Sustainable Practices",
-        content: "Traditional water management systems in Asia were remarkably sophisticated. Rice paddy terraces, for example, represent centuries of sustainable agriculture that works with nature rather than against it. These systems recycle water, prevent erosion, and create habitats for countless species while feeding communities."
+        title: "Traditional Wisdom Meets Modern Science",
+        content: "Ecological restoration draws on both ancient understanding of natural systems and modern scientific methods. Traditional practices of working with nature rather than against it inform contemporary approaches to ecosystem recovery."
       },
       {
-        title: "Modern Conservation Efforts",
-        content: "Today, these ancient principles inspire modern conservation initiatives around the world. From wetland restoration projects to urban green spaces that incorporate traditional design elements, the wisdom of the past continues to guide efforts to protect our environment for future generations."
+        title: "Community Involvement",
+        content: "Successful restoration projects engage local communities as stewards of the land. When people participate in planting and caring for restored ecosystems, they develop lasting connections to the natural world."
       }
     ]
   },
   {
     id: "2",
     slug: "heritage",
-    title: "Heritage",
+    title: "Cultural Heritage",
     icon: "building",
     shortDescription: "Ancient temples and sacred architecture",
     fullDescription: "Ancient temples and pavilions stand as testaments to architectural genius and spiritual devotion. Each structure embodies centuries of accumulated wisdom, artistic excellence, and cultural values that continue to inspire awe.",
@@ -69,13 +69,85 @@ const discoveryData: DiscoveryContent[] = [
   },
   {
     id: "3",
+    slug: "technology",
+    title: "Green Technology",
+    icon: "zap",
+    shortDescription: "Solar, wind, and sustainable innovation",
+    fullDescription: "Technology in ecological civilization is not opposed to nature but works in harmony with it. Solar panels on traditional rooftops, wind turbines across landscapes, and electric vehicles represent the fusion of innovation and sustainability.",
+    positionX: 75,
+    positionY: 35,
+    sections: [
+      {
+        title: "Renewable Energy Integration",
+        content: "Imagine a pagoda with solar panels gracefully integrated into its ancient design, or wind turbines turning alongside terraced rice paddies. Ecological civilization embraces technology that generates clean energy while respecting the aesthetic harmony of the landscape."
+      },
+      {
+        title: "Sustainable Transportation",
+        content: "Electric vehicle charging stations appearing alongside traditional inns represent the meeting of past and future. Clean transportation reduces pollution while maintaining the connections between communities that have existed for centuries."
+      },
+      {
+        title: "Innovation with Tradition",
+        content: "The most successful green technologies often draw on traditional principles of efficiency, durability, and harmony with nature. Modern innovation at its best extends rather than replaces ancestral wisdom."
+      }
+    ]
+  },
+  {
+    id: "4",
+    slug: "health",
+    title: "Environmental Health",
+    icon: "heart",
+    shortDescription: "Human wellbeing and ecological balance",
+    fullDescription: "Environmental health recognizes the profound connection between ecological wellbeing and human flourishing. Clean air, pure water, and thriving ecosystems are foundations for healthy communities.",
+    positionX: 28,
+    positionY: 65,
+    sections: [
+      {
+        title: "Holistic Wellbeing",
+        content: "Traditional Asian medicine has long understood that human health cannot be separated from environmental health. The same principles that govern the flow of energy in the body apply to the larger landscape."
+      },
+      {
+        title: "Clean Air and Water",
+        content: "Efforts to reduce pollution and protect water sources directly improve public health. Communities that prioritize ecological civilization experience better health outcomes across generations."
+      },
+      {
+        title: "Nature and Mental Health",
+        content: "Access to natural spaces and green environments supports mental and emotional wellbeing. Gardens, parks, and natural landscapes are not luxuries but necessities for human flourishing."
+      }
+    ]
+  },
+  {
+    id: "5",
+    slug: "tradition",
+    title: "Traditional Wisdom",
+    icon: "book",
+    shortDescription: "Ancestral knowledge and practices",
+    fullDescription: "Traditional wisdom represents the accumulated insights of countless generations who lived in close relationship with the natural world. These teachings offer guidance for creating sustainable societies.",
+    positionX: 55,
+    positionY: 50,
+    sections: [
+      {
+        title: "Ancestral Teachings",
+        content: "Libraries filled with bamboo scrolls and ancient texts preserve wisdom about living in harmony with nature. These teachings emphasize balance, reciprocity, and respect for all living things."
+      },
+      {
+        title: "Living Practices",
+        content: "Traditional festivals, agricultural practices, and daily rituals maintain connections to the natural cycles of the earth. These practices embed ecological awareness into the fabric of community life."
+      },
+      {
+        title: "Intergenerational Dialogue",
+        content: "Ecological civilization requires conversations across generations—elders sharing traditional knowledge while youth contribute new perspectives and energy to the work of restoration."
+      }
+    ]
+  },
+  {
+    id: "6",
     slug: "culture",
-    title: "Culture",
-    icon: "flower",
+    title: "Arts & Culture",
+    icon: "paintbrush",
     shortDescription: "Gardens and artistic traditions",
     fullDescription: "The art of the traditional garden represents the pinnacle of cultural achievement—a perfect fusion of philosophy, art, and horticulture that creates spaces for contemplation and connection with nature.",
     positionX: 62,
-    positionY: 58,
+    positionY: 75,
     sections: [
       {
         title: "Philosophy in Bloom",
@@ -92,14 +164,14 @@ const discoveryData: DiscoveryContent[] = [
     ]
   },
   {
-    id: "4",
+    id: "7",
     slug: "community",
     title: "Community",
     icon: "bridge",
     shortDescription: "Bridges connecting people and places",
     fullDescription: "Bridges in Asian landscapes serve as powerful symbols of connection—linking not just physical spaces, but also past and present, humanity and nature, the earthly and the divine.",
-    positionX: 50,
-    positionY: 72,
+    positionX: 38,
+    positionY: 80,
     sections: [
       {
         title: "Crossing Over",
@@ -116,14 +188,14 @@ const discoveryData: DiscoveryContent[] = [
     ]
   },
   {
-    id: "5",
+    id: "8",
     slug: "exploration",
     title: "Exploration",
     icon: "mountain",
     shortDescription: "Majestic peaks and spiritual journeys",
     fullDescription: "Mountains have always held a special place in Asian spirituality and art. Representing the axis between earth and heaven, these majestic peaks inspire journeys both physical and spiritual.",
-    positionX: 82,
-    positionY: 82,
+    positionX: 88,
+    positionY: 25,
     sections: [
       {
         title: "Sacred Summits",

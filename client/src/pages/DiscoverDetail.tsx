@@ -20,40 +20,64 @@ const translations = {
     returnHome: "Return Home",
     loading: "Loading discovery...",
     relatedTopics: {
-      conservation: [
-        { title: "Heritage", slug: "heritage" },
-        { title: "Culture", slug: "culture" },
+      restoration: [
+        { title: "Cultural Heritage", slug: "heritage" },
+        { title: "Environmental Health", slug: "health" },
       ],
       heritage: [
-        { title: "Conservation", slug: "conservation" },
-        { title: "Culture", slug: "culture" },
+        { title: "Traditional Wisdom", slug: "tradition" },
+        { title: "Arts & Culture", slug: "culture" },
+      ],
+      technology: [
+        { title: "Ecological Restoration", slug: "restoration" },
+        { title: "Community", slug: "community" },
+      ],
+      health: [
+        { title: "Ecological Restoration", slug: "restoration" },
+        { title: "Traditional Wisdom", slug: "tradition" },
+      ],
+      tradition: [
+        { title: "Cultural Heritage", slug: "heritage" },
+        { title: "Arts & Culture", slug: "culture" },
       ],
       culture: [
-        { title: "Heritage", slug: "heritage" },
+        { title: "Traditional Wisdom", slug: "tradition" },
         { title: "Community", slug: "community" },
       ],
       community: [
-        { title: "Culture", slug: "culture" },
+        { title: "Arts & Culture", slug: "culture" },
         { title: "Exploration", slug: "exploration" },
       ],
       exploration: [
-        { title: "Conservation", slug: "conservation" },
+        { title: "Green Technology", slug: "technology" },
         { title: "Community", slug: "community" },
       ],
     },
     subtitles: {
-      conservation: "Preserving Nature's Legacy",
+      restoration: "Healing the Land",
       heritage: "Temples of Time",
+      technology: "Innovation in Harmony",
+      health: "Wellbeing Through Nature",
+      tradition: "Wisdom of the Ages",
       culture: "Gardens of the Soul",
       community: "Bridges of Connection",
       exploration: "Peaks of Enlightenment",
     },
     highlights: {
-      conservation: {
-        0: "Ancient wisdom teaches us that when we care for water, we care for all life."
+      restoration: {
+        0: "When we plant a tree, we plant hope for generations to come."
       },
       heritage: {
         0: "Every beam and tile carries the spirit of countless artisans."
+      },
+      technology: {
+        0: "The future grows from the soil of ancient wisdom."
+      },
+      health: {
+        0: "A healthy earth nurtures healthy communities."
+      },
+      tradition: {
+        0: "The old texts speak of balance—between action and stillness, between taking and giving."
       },
       culture: {
         0: "The garden is a poem written in plants and stone."
@@ -66,29 +90,50 @@ const translations = {
       },
     },
     titles: {
-      conservation: "Conservation",
-      heritage: "Heritage",
-      culture: "Culture",
+      restoration: "Ecological Restoration",
+      heritage: "Cultural Heritage",
+      technology: "Green Technology",
+      health: "Environmental Health",
+      tradition: "Traditional Wisdom",
+      culture: "Arts & Culture",
       community: "Community",
       exploration: "Exploration",
     },
     fullDescriptions: {
-      conservation: "Water and environmental conservation have been central to Asian philosophy for thousands of years. From sacred lotus ponds to carefully maintained streams, every water feature tells a story of respect for nature.",
+      restoration: "Ecological restoration represents hope in action—the deliberate recovery of ecosystems that have been degraded or destroyed. Through reforestation and habitat renewal, communities are healing the land.",
       heritage: "Ancient temples and pavilions stand as testaments to architectural genius and spiritual devotion. Each structure embodies centuries of accumulated wisdom, artistic excellence, and cultural values that continue to inspire awe.",
+      technology: "Technology in ecological civilization is not opposed to nature but works in harmony with it. Solar panels on traditional rooftops, wind turbines across landscapes, and electric vehicles represent the fusion of innovation and sustainability.",
+      health: "Environmental health recognizes the profound connection between ecological wellbeing and human flourishing. Clean air, pure water, and thriving ecosystems are foundations for healthy communities.",
+      tradition: "Traditional wisdom represents the accumulated insights of countless generations who lived in close relationship with the natural world. These teachings offer guidance for creating sustainable societies.",
       culture: "The art of the traditional garden represents the pinnacle of cultural achievement—a perfect fusion of philosophy, art, and horticulture that creates spaces for contemplation and connection with nature.",
       community: "Bridges in Asian landscapes serve as powerful symbols of connection—linking not just physical spaces, but also past and present, humanity and nature, the earthly and the divine.",
       exploration: "Mountains have always held a special place in Asian spirituality and art. Representing the axis between earth and heaven, these majestic peaks inspire journeys both physical and spiritual.",
     },
     sections: {
-      conservation: [
-        { title: "The Sacred Waters", content: "In traditional Asian culture, water represents purity, renewal, and the flow of life energy (chi). Ponds and streams in classical gardens were not merely decorative—they served as living ecosystems that supported fish, plants, and the overall harmony of the landscape. The practice of maintaining these water features has been passed down through generations, creating a rich tradition of environmental stewardship." },
-        { title: "Sustainable Practices", content: "Traditional water management systems in Asia were remarkably sophisticated. Rice paddy terraces, for example, represent centuries of sustainable agriculture that works with nature rather than against it. These systems recycle water, prevent erosion, and create habitats for countless species while feeding communities." },
-        { title: "Modern Conservation Efforts", content: "Today, these ancient principles inspire modern conservation initiatives around the world. From wetland restoration projects to urban green spaces that incorporate traditional design elements, the wisdom of the past continues to guide efforts to protect our environment for future generations." },
+      restoration: [
+        { title: "Reforestation Efforts", content: "China has undertaken some of the world's largest reforestation projects, planting billions of trees to combat desertification and restore degraded landscapes. These efforts demonstrate that ecological recovery is possible when communities work together with purpose and dedication." },
+        { title: "Traditional Wisdom Meets Modern Science", content: "Ecological restoration draws on both ancient understanding of natural systems and modern scientific methods. Traditional practices of working with nature rather than against it inform contemporary approaches to ecosystem recovery." },
+        { title: "Community Involvement", content: "Successful restoration projects engage local communities as stewards of the land. When people participate in planting and caring for restored ecosystems, they develop lasting connections to the natural world." },
       ],
       heritage: [
         { title: "Architectural Wisdom", content: "Traditional Asian architecture follows principles of harmony with nature, using materials like wood, stone, and tile that age gracefully and blend with their surroundings. The curved rooflines of pagodas and temples are not merely decorative—they were designed to handle heavy rain and snow while symbolizing the connection between earth and heaven." },
         { title: "Sacred Spaces", content: "Temples serve as more than places of worship; they are centers of community, learning, and cultural preservation. The layout of temple complexes follows careful geomantic principles, orienting structures to harmonize with the natural flow of energy in the landscape." },
         { title: "Preservation Challenges", content: "Maintaining these historic structures requires specialized knowledge and traditional craftsmanship that is increasingly rare. Restoration efforts worldwide are working to train new generations of artisans in ancient techniques while adapting to modern challenges like climate change and urbanization." },
+      ],
+      technology: [
+        { title: "Renewable Energy Integration", content: "Imagine a pagoda with solar panels gracefully integrated into its ancient design, or wind turbines turning alongside terraced rice paddies. Ecological civilization embraces technology that generates clean energy while respecting the aesthetic harmony of the landscape." },
+        { title: "Sustainable Transportation", content: "Electric vehicle charging stations appearing alongside traditional inns represent the meeting of past and future. Clean transportation reduces pollution while maintaining the connections between communities that have existed for centuries." },
+        { title: "Innovation with Tradition", content: "The most successful green technologies often draw on traditional principles of efficiency, durability, and harmony with nature. Modern innovation at its best extends rather than replaces ancestral wisdom." },
+      ],
+      health: [
+        { title: "Holistic Wellbeing", content: "Traditional Asian medicine has long understood that human health cannot be separated from environmental health. The same principles that govern the flow of energy in the body apply to the larger landscape." },
+        { title: "Clean Air and Water", content: "Efforts to reduce pollution and protect water sources directly improve public health. Communities that prioritize ecological civilization experience better health outcomes across generations." },
+        { title: "Nature and Mental Health", content: "Access to natural spaces and green environments supports mental and emotional wellbeing. Gardens, parks, and natural landscapes are not luxuries but necessities for human flourishing." },
+      ],
+      tradition: [
+        { title: "Ancestral Teachings", content: "Libraries filled with bamboo scrolls and ancient texts preserve wisdom about living in harmony with nature. These teachings emphasize balance, reciprocity, and respect for all living things." },
+        { title: "Living Practices", content: "Traditional festivals, agricultural practices, and daily rituals maintain connections to the natural cycles of the earth. These practices embed ecological awareness into the fabric of community life." },
+        { title: "Intergenerational Dialogue", content: "Ecological civilization requires conversations across generations—elders sharing traditional knowledge while youth contribute new perspectives and energy to the work of restoration." },
       ],
       culture: [
         { title: "Philosophy in Bloom", content: "Every element in a traditional Asian garden carries symbolic meaning. Cherry blossoms represent the transient beauty of life, pine trees symbolize longevity and resilience, and bamboo embodies flexibility and strength. Walking through such a garden is meant to be a meditative journey through these philosophical concepts." },
@@ -116,16 +161,28 @@ const translations = {
     returnHome: "返回首页",
     loading: "加载中...",
     relatedTopics: {
-      conservation: [
+      restoration: [
         { title: "文化遗产", slug: "heritage" },
-        { title: "文化艺术", slug: "culture" },
+        { title: "环境健康", slug: "health" },
       ],
       heritage: [
-        { title: "生态保护", slug: "conservation" },
+        { title: "传统智慧", slug: "tradition" },
+        { title: "文化艺术", slug: "culture" },
+      ],
+      technology: [
+        { title: "生态修复", slug: "restoration" },
+        { title: "社区联结", slug: "community" },
+      ],
+      health: [
+        { title: "生态修复", slug: "restoration" },
+        { title: "传统智慧", slug: "tradition" },
+      ],
+      tradition: [
+        { title: "文化遗产", slug: "heritage" },
         { title: "文化艺术", slug: "culture" },
       ],
       culture: [
-        { title: "文化遗产", slug: "heritage" },
+        { title: "传统智慧", slug: "tradition" },
         { title: "社区联结", slug: "community" },
       ],
       community: [
@@ -133,23 +190,35 @@ const translations = {
         { title: "探索发现", slug: "exploration" },
       ],
       exploration: [
-        { title: "生态保护", slug: "conservation" },
+        { title: "绿色科技", slug: "technology" },
         { title: "社区联结", slug: "community" },
       ],
     },
     subtitles: {
-      conservation: "守护自然遗产",
+      restoration: "修复大地",
       heritage: "时光中的殿堂",
+      technology: "和谐中的创新",
+      health: "自然中的健康",
+      tradition: "岁月的智慧",
       culture: "心灵的园林",
       community: "连接的桥梁",
       exploration: "悟道之巅",
     },
     highlights: {
-      conservation: {
-        0: "古老的智慧告诉我们，当我们呵护水源，我们就是在呵护所有生命。"
+      restoration: {
+        0: "种下一棵树，就是为后代种下希望。"
       },
       heritage: {
         0: "每一根梁柱，每一片瓦砾，都承载着无数工匠的精神。"
+      },
+      technology: {
+        0: "未来从古老智慧的土壤中生长。"
+      },
+      health: {
+        0: "健康的地球孕育健康的社区。"
+      },
+      tradition: {
+        0: "古籍中记载着平衡之道——行动与静止之间，索取与给予之间。"
       },
       culture: {
         0: "园林是用植物和石头写成的诗篇。"
@@ -162,29 +231,50 @@ const translations = {
       },
     },
     titles: {
-      conservation: "生态保护",
+      restoration: "生态修复",
       heritage: "文化遗产",
+      technology: "绿色科技",
+      health: "环境健康",
+      tradition: "传统智慧",
       culture: "文化艺术",
       community: "社区联结",
       exploration: "探索发现",
     },
     fullDescriptions: {
-      conservation: "数千年来，水资源和环境保护一直是亚洲哲学的核心。从神圣的莲花池到精心维护的溪流，每一处水景都讲述着对自然的尊重。",
+      restoration: "生态修复代表着行动中的希望——对退化或被破坏的生态系统的刻意恢复。通过植树造林和栖息地更新，社区正在治愈大地。",
       heritage: "古老的寺庙和亭阁是建筑天才和精神奉献的见证。每一座建筑都凝聚了几个世纪积累的智慧、艺术卓越和文化价值，至今仍令人叹为观止。",
+      technology: "生态文明中的技术并不与自然对立，而是与自然和谐共处。传统屋顶上的太阳能板、景观中的风力发电机和电动汽车代表着创新与可持续发展的融合。",
+      health: "环境健康认识到生态福祉与人类繁荣之间的深刻联系。清洁的空气、纯净的水和繁荣的生态系统是健康社区的基础。",
+      tradition: "传统智慧代表着无数代人与自然世界密切相处所积累的见解。这些教导为创建可持续社会提供了指导。",
       culture: "传统园林的艺术代表着文化成就的巅峰——哲学、艺术和园艺的完美融合，创造出供人沉思和与自然连接的空间。",
       community: "亚洲景观中的桥梁是连接的有力象征——不仅连接物理空间，还连接过去与现在、人类与自然、尘世与神圣。",
       exploration: "山脉在亚洲灵性和艺术中一直占有特殊地位。作为天地之间的轴心，这些雄伟的山峰激发着身体和精神的双重旅程。",
     },
     sections: {
-      conservation: [
-        { title: "神圣之水", content: "在传统亚洲文化中，水代表着纯净、更新和生命能量（气）的流动。古典园林中的池塘和溪流不仅仅是装饰——它们是支持鱼类、植物和整体景观和谐的活生态系统。维护这些水景的做法代代相传，形成了丰富的环境管理传统。" },
-        { title: "可持续实践", content: "亚洲传统的水管理系统非常精密。例如，水稻梯田代表着几个世纪以来与自然和谐共处而非对抗的可持续农业。这些系统循环利用水资源，防止侵蚀，为无数物种创造栖息地，同时养活社区。" },
-        { title: "现代保护努力", content: "今天，这些古老的原则激励着世界各地的现代保护行动。从湿地恢复项目到融入传统设计元素的城市绿地，过去的智慧继续指导着为子孙后代保护环境的努力。" },
+      restoration: [
+        { title: "植树造林努力", content: "中国开展了世界上规模最大的植树造林项目之一，种植了数十亿棵树木来对抗荒漠化和恢复退化的景观。这些努力表明，当社区团结一致、有目的地行动时，生态恢复是可能的。" },
+        { title: "传统智慧与现代科学相遇", content: "生态修复既借鉴了对自然系统的古老理解，也借鉴了现代科学方法。与自然合作而非对抗的传统做法为当代生态系统恢复方法提供了借鉴。" },
+        { title: "社区参与", content: "成功的修复项目让当地社区成为土地的管理者。当人们参与种植和照料恢复的生态系统时，他们与自然世界建立起持久的联系。" },
       ],
       heritage: [
         { title: "建筑智慧", content: "传统亚洲建筑遵循与自然和谐的原则，使用木材、石头和瓦片等材料，这些材料随着时间的推移优雅地老化并与周围环境融为一体。宝塔和寺庙的曲线屋顶不仅仅是装饰性的——它们被设计用来处理大雨和积雪，同时象征着天地之间的联系。" },
         { title: "神圣空间", content: "寺庙不仅仅是礼拜场所；它们是社区、学习和文化保护的中心。寺庙建筑群的布局遵循谨慎的风水原则，使建筑与景观中能量的自然流动相协调。" },
         { title: "保护挑战", content: "维护这些历史建筑需要越来越稀少的专业知识和传统工艺。世界各地的修复工作正在努力培训新一代工匠学习古老技术，同时适应气候变化和城市化等现代挑战。" },
+      ],
+      technology: [
+        { title: "可再生能源整合", content: "想象一座宝塔上优雅地整合着太阳能板，或者风力发电机在层层梯田旁转动。生态文明拥抱能够产生清洁能源同时尊重景观审美和谐的技术。" },
+        { title: "可持续交通", content: "电动汽车充电站出现在传统客栈旁边，代表着过去与未来的相遇。清洁交通减少了污染，同时维护着几个世纪以来社区之间的联系。" },
+        { title: "创新与传统", content: "最成功的绿色技术往往借鉴了效率、耐久性和与自然和谐相处的传统原则。最好的现代创新是延续而非取代祖先的智慧。" },
+      ],
+      health: [
+        { title: "整体健康", content: "传统亚洲医学早就理解人类健康与环境健康不可分割。支配身体能量流动的原则同样适用于更大的景观。" },
+        { title: "清洁空气和水", content: "减少污染和保护水源的努力直接改善了公共健康。优先考虑生态文明的社区在几代人中都能体验到更好的健康结果。" },
+        { title: "自然与心理健康", content: "接触自然空间和绿色环境支持心理和情感健康。花园、公园和自然景观不是奢侈品，而是人类繁荣的必需品。" },
+      ],
+      tradition: [
+        { title: "祖先教导", content: "装满竹简和古籍的图书馆保存着与自然和谐相处的智慧。这些教导强调平衡、互惠和对所有生命的尊重。" },
+        { title: "活着的实践", content: "传统节日、农业实践和日常仪式保持着与地球自然循环的联系。这些实践将生态意识融入社区生活的方方面面。" },
+        { title: "代际对话", content: "生态文明需要跨代对话——长辈分享传统知识，而青年为修复工作贡献新的视角和能量。" },
       ],
       culture: [
         { title: "花中哲学", content: "传统亚洲园林中的每一个元素都承载着象征意义。樱花代表生命转瞬即逝的美丽，松树象征长寿和坚韧，竹子体现灵活和力量。漫步于这样的园林中，意味着通过这些哲学概念进行一次冥想之旅。" },

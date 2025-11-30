@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Droplets, Building2, Flower2, Waypoints, Mountain, Loader2 } from "lucide-react";
+import { Droplets, Building2, Flower2, Waypoints, Mountain, Loader2, TreePine, Zap, Heart, BookOpen, Paintbrush } from "lucide-react";
 import type { DiscoveryContent } from "@shared/schema";
 import landscapeImage from "@assets/generated_images/traditional_asian_landscape_painting.png";
 
@@ -17,19 +17,27 @@ const iconComponents: Record<string, typeof Droplets> = {
   flower: Flower2,
   bridge: Waypoints,
   mountain: Mountain,
+  tree: TreePine,
+  zap: Zap,
+  heart: Heart,
+  book: BookOpen,
+  paintbrush: Paintbrush,
 };
 
 const translations = {
   en: {
     title: "Ecological Civilization",
     subtitle: "Discover the Stories Within",
-    description: "Each element in this traditional landscape holds centuries of wisdom and cultural significance. Hover or tap on the glowing areas to uncover hidden stories about conservation, heritage, culture, and the timeless connection between humanity and nature.",
+    description: "Each element in this traditional landscape holds centuries of wisdom and cultural significance. Hover or tap on the glowing areas to uncover hidden stories about restoration, heritage, technology, and the timeless connection between humanity and nature.",
     dragToExplore: "Drag to explore",
     scrollToExplore: "Scroll to explore",
     discoveryTitles: {
-      conservation: "Conservation",
-      heritage: "Heritage",
-      culture: "Culture",
+      restoration: "Ecological Restoration",
+      heritage: "Cultural Heritage",
+      technology: "Green Technology",
+      health: "Environmental Health",
+      tradition: "Traditional Wisdom",
+      culture: "Arts & Culture",
       community: "Community",
       exploration: "Exploration",
     },
@@ -37,12 +45,15 @@ const translations = {
   zh: {
     title: "生态文明",
     subtitle: "发现内在的故事",
-    description: "传统风景中的每一个元素都蕴含着几个世纪的智慧和文化意义。悬停或点击发光区域以发现有关保护、遗产、文化以及人类与自然之间永恒联系的隐藏故事。",
+    description: "传统风景中的每一个元素都蕴含着几个世纪的智慧和文化意义。悬停或点击发光区域以发现有关生态修复、文化遗产、绿色科技以及人类与自然之间永恒联系的隐藏故事。",
     dragToExplore: "拖动以探索",
     scrollToExplore: "滚动以探索",
     discoveryTitles: {
-      conservation: "生态保护",
+      restoration: "生态修复",
       heritage: "文化遗产",
+      technology: "绿色科技",
+      health: "环境健康",
+      tradition: "传统智慧",
       culture: "文化艺术",
       community: "社区联结",
       exploration: "探索发现",
