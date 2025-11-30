@@ -134,13 +134,13 @@ export default {
           },
         },
         "hotspot-pulse": {
-          "0%, 100%": { 
-            boxShadow: "0 0 0 0 rgba(200, 16, 46, 0.3)",
+          "0%, 40%, 60%, 100%": { 
+            boxShadow: "0 0 0 0 rgba(200, 16, 46, 0.15)",
             transform: "scale(1)"
           },
-          "50%": { 
-            boxShadow: "0 0 0 12px rgba(200, 16, 46, 0)",
-            transform: "scale(1.02)"
+          "48%, 52%": { 
+            boxShadow: "0 0 0 8px rgba(200, 16, 46, 0)",
+            transform: "scale(1.01)"
           },
         },
         "menu-slide": {
@@ -168,7 +168,7 @@ export default {
         "butterfly-fly": "butterfly-fly 1.2s ease-in-out forwards",
         "wing-flap": "wing-flap 0.15s ease-in-out infinite",
         "bubble-reveal": "bubble-reveal 0.3s ease-out forwards",
-        "hotspot-pulse": "hotspot-pulse 20s ease-in-out infinite",
+        "hotspot-pulse": "hotspot-pulse 25s linear infinite",
         "menu-slide": "menu-slide 0.4s ease-out forwards",
         "fade-in": "fade-in 0.3s ease-out forwards",
         "float": "float 3s ease-in-out infinite",
