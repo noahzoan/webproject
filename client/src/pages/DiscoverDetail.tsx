@@ -1,13 +1,16 @@
 import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Heart, Share2, Bookmark, Loader2 } from "lucide-react";
+import { ArrowLeft, Heart, Share2, Bookmark, Loader2, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Footer } from "@/components/Footer";
 import { BrushstrokeMenu } from "@/components/BrushstrokeMenu";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion } from "framer-motion";
 import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { FlipTile } from "@/components/FlipTile";
+import { SidebarNav } from "@/components/SidebarNav";
 import type { DiscoveryContent } from "@shared/schema";
 
 const translations = {
@@ -390,7 +393,9 @@ export default function DiscoverDetail() {
   const slug = params?.slug || "";
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
+  const [activeSection, setActiveSection] = useState(0);
   const { language, setLanguage } = useLanguage();
+  const sectionNodes = useRef(new Map<number, HTMLDivElement>());
   
   const t = translations[language];
 
@@ -399,16 +404,92 @@ export default function DiscoverDetail() {
     enabled: !!slug,
   });
 
-  useEffect(() => {
-    setShowLoader(true);
-  }, [slug]);
-
   const relatedTopics = t.relatedTopics[slug as keyof typeof t.relatedTopics] || [];
   const subtitle = t.subtitles[slug as keyof typeof t.subtitles] || "";
   const highlights = t.highlights[slug as keyof typeof t.highlights] || {};
   const title = t.titles[slug as keyof typeof t.titles] || discovery?.title || "";
   const fullDescription = t.fullDescriptions[slug as keyof typeof t.fullDescriptions] || discovery?.fullDescription || "";
   const sections = t.sections[slug as keyof typeof t.sections] || discovery?.sections || [];
+
+  useEffect(() => {
+    setShowLoader(true);
+    setActiveSection(0);
+  }, [slug]);
+
+  const [observerKey, setObserverKey] = useState(0);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const registerSection = useCallback((index: number) => (node: HTMLDivElement | null) => {
+    if (node) {
+      sectionNodes.current.set(index, node);
+    } else {
+      sectionNodes.current.delete(index);
+    }
+  }, []);
+
+  useEffect(() => {
+    setObserverKey(k => k + 1);
+  }, [slug, language]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          let bestEntry: IntersectionObserverEntry | null = null;
+          let bestRatio = 0;
+          
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > bestRatio) {
+              bestRatio = entry.intersectionRatio;
+              bestEntry = entry;
+            }
+          });
+          
+          if (bestEntry) {
+            sectionNodes.current.forEach((node, idx) => {
+              if (node === bestEntry!.target) {
+                setActiveSection(idx);
+              }
+            });
+          }
+        },
+        { 
+          rootMargin: '-20% 0px -60% 0px',
+          threshold: [0, 0.1, 0.25, 0.5, 0.75, 1]
+        }
+      );
+      
+      observerRef.current = observer;
+
+      sectionNodes.current.forEach((node) => {
+        observer.observe(node);
+      });
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+    };
+  }, [observerKey]);
+
+  const scrollToSection = useCallback((index: number) => {
+    setActiveSection(index);
+    sectionNodes.current.get(index)?.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'center' 
+    });
+  }, []);
 
   if (isLoading) {
     return (
@@ -441,115 +522,197 @@ export default function DiscoverDetail() {
     <div className="min-h-screen bg-background">
       <ButterflyLoader isLoading={showLoader} onComplete={() => setShowLoader(false)} />
       <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language={language} onLanguageChange={setLanguage} />
+      
+      <SidebarNav
+        currentSlug={slug}
+        currentTitle={title}
+        sections={sections}
+        onSectionClick={scrollToSection}
+        activeSection={activeSection}
+      />
 
-      <header className="relative h-[50vh] min-h-[400px] overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-background"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M20 80 Q50 20 80 80' fill='none' stroke='%23C8102E' stroke-opacity='0.1' stroke-width='2'/%3E%3C/svg%3E")`,
-            backgroundSize: '200px 200px',
-          }}
-        />
-        
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center space-y-4 px-6 max-w-3xl animate-fade-in">
-            <p className="text-primary font-medium tracking-wider uppercase text-sm">
-              {t.discover}
-            </p>
-            <h1 className="font-serif text-4xl md:text-6xl text-foreground">
-              {title}
-            </h1>
-            <p className="font-serif text-xl md:text-2xl text-muted-foreground">
-              {subtitle}
-            </p>
+      <div className="lg:pl-64">
+        <header className="relative h-[60vh] min-h-[500px] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-background to-amber-500/10" />
+          
+          <div 
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 400'%3E%3Cpath d='M0 300 Q200 200 400 280 Q600 360 800 250 Q900 200 1000 220 L1000 400 L0 400 Z' fill='%23C8102E'/%3E%3Cpath d='M0 350 Q250 280 500 320 Q750 360 1000 300 L1000 400 L0 400 Z' fill='%23B8860B'/%3E%3C/svg%3E")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'bottom',
+            }}
+          />
+
+          <div className="absolute inset-0 opacity-20">
+            <svg className="w-full h-full" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <filter id="watercolor-blur">
+                  <feGaussianBlur stdDeviation="2" />
+                </filter>
+              </defs>
+              <circle cx="20%" cy="30%" r="100" fill="hsl(var(--primary))" opacity="0.1" filter="url(#watercolor-blur)" />
+              <circle cx="80%" cy="60%" r="80" fill="hsl(var(--accent))" opacity="0.1" filter="url(#watercolor-blur)" />
+              <circle cx="60%" cy="20%" r="60" fill="hsl(var(--primary))" opacity="0.05" filter="url(#watercolor-blur)" />
+            </svg>
           </div>
-        </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
-        
-        <Link href="/" onClick={() => setShowLoader(true)} className="absolute top-6 right-6 z-20">
-          <Button 
-            variant="outline" 
-            size="icon" 
-            className="bg-background/60 backdrop-blur-md border-border/50"
-            data-testid="button-back"
+          <motion.div 
+            className="absolute inset-0 flex items-center justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <ArrowLeft className="w-5 h-5" />
-          </Button>
-        </Link>
-      </header>
-
-      <main className="relative max-w-4xl mx-auto px-6 py-12">
-        <p 
-          className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-16 text-center"
-          data-testid="text-hero-description"
-        >
-          {fullDescription}
-        </p>
-
-        <div className="space-y-16">
-          {sections.map((section, index) => (
-            <section 
-              key={index} 
-              className="space-y-6"
-              data-testid={`section-${index}`}
-            >
-              <h2 className="font-serif text-2xl md:text-3xl text-foreground flex items-center gap-4">
-                <span className="w-12 h-px bg-primary/30" />
-                {section.title}
-              </h2>
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                {section.content}
+            <div className="text-center space-y-6 px-6 max-w-4xl">
+              <div className="flex items-center justify-center gap-3">
+                <span className="w-12 h-px bg-primary/50" />
+                <p className="text-primary font-medium tracking-[0.2em] uppercase text-xs">
+                  {t.discover}
+                </p>
+                <span className="w-12 h-px bg-primary/50" />
+              </div>
+              
+              <h1 className="font-display text-5xl md:text-7xl text-foreground leading-tight">
+                {title}
+              </h1>
+              
+              <p className="font-serif text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+                {subtitle}
               </p>
-              {highlights[index] && (
-                <blockquote className="border-l-4 border-primary pl-6 py-4 bg-card rounded-r-lg">
-                  <p className="font-serif text-lg italic text-foreground">
-                    "{highlights[index]}"
-                  </p>
-                </blockquote>
-              )}
-            </section>
-          ))}
-        </div>
 
-        <div className="flex items-center justify-center gap-4 mt-16 pt-8 border-t border-border">
-          <Button variant="outline" size="icon" data-testid="button-like">
-            <Heart className="w-5 h-5" />
-          </Button>
-          <Button variant="outline" size="icon" data-testid="button-share">
-            <Share2 className="w-5 h-5" />
-          </Button>
-          <Button variant="outline" size="icon" data-testid="button-bookmark">
-            <Bookmark className="w-5 h-5" />
-          </Button>
-        </div>
+              <div className="pt-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <span className="text-sm text-primary font-medium">{sections.length} {language === 'en' ? 'sections to explore' : '个章节等待探索'}</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-        <div className="mt-16">
-          <h3 className="font-serif text-xl text-foreground mb-6 text-center">
-            {t.continueExploring}
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {relatedTopics.map((topic) => (
-              <Link key={topic.slug} href={`/discover/${topic.slug}`}>
-                <Card className="hover-elevate active-elevate-2 transition-all cursor-pointer">
-                  <CardContent className="p-6">
-                    <p className="font-medium text-foreground">{topic.title}</p>
+          <div className="absolute bottom-0 left-0 right-0">
+            <svg className="w-full h-32" viewBox="0 0 1440 120" preserveAspectRatio="none">
+              <path 
+                d="M0,60 C240,120 480,30 720,80 C960,130 1200,40 1440,90 L1440,120 L0,120 Z" 
+                fill="hsl(var(--background))"
+                opacity="0.9"
+              />
+              <path 
+                d="M0,80 C360,120 720,60 1080,100 C1260,120 1350,90 1440,100 L1440,120 L0,120 Z" 
+                fill="hsl(var(--background))"
+              />
+            </svg>
+          </div>
+          
+          <Link href="/" onClick={() => setShowLoader(true)} className="absolute top-6 right-6 z-20">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="bg-background/60 backdrop-blur-md border-border/50 hover:bg-background/80"
+              data-testid="button-back"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </Button>
+          </Link>
+        </header>
+
+        <main className="relative max-w-5xl mx-auto px-6 py-16">
+          <motion.div 
+            className="mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <div className="relative">
+              <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-amber-500/50 to-transparent rounded-full" />
+              <p 
+                className="text-lg md:text-xl text-muted-foreground leading-relaxed pl-6"
+                data-testid="text-hero-description"
+              >
+                {fullDescription}
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+            {sections.map((section, index) => (
+              <motion.div
+                key={`${slug}-${language}-${index}`}
+                ref={registerSection(index)}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
+              >
+                <FlipTile
+                  title={section.title}
+                  content={section.content}
+                  index={index}
+                  highlight={highlights[index]}
+                  slug={slug}
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-4 py-8 border-y border-border/30">
+            <Button variant="outline" size="icon" className="hover:border-primary/50 hover:text-primary" data-testid="button-like">
+              <Heart className="w-5 h-5" />
+            </Button>
+            <Button variant="outline" size="icon" className="hover:border-primary/50 hover:text-primary" data-testid="button-share">
+              <Share2 className="w-5 h-5" />
+            </Button>
+            <Button variant="outline" size="icon" className="hover:border-primary/50 hover:text-primary" data-testid="button-bookmark">
+              <Bookmark className="w-5 h-5" />
+            </Button>
+          </div>
+
+          <motion.div 
+            className="mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
+            <div className="text-center mb-10">
+              <h3 className="font-serif text-2xl text-foreground mb-2">
+                {t.continueExploring}
+              </h3>
+              <div className="flex items-center justify-center gap-2">
+                <span className="w-8 h-px bg-primary/30" />
+                <span className="w-2 h-2 rounded-full bg-primary/50" />
+                <span className="w-8 h-px bg-primary/30" />
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              {relatedTopics.map((topic) => (
+                <Link key={topic.slug} href={`/discover/${topic.slug}`} onClick={() => setShowLoader(true)}>
+                  <Card className="hover-elevate active-elevate-2 transition-all cursor-pointer group overflow-hidden">
+                    <CardContent className="p-6 relative">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="flex items-center gap-3 relative">
+                        <p className="font-medium text-foreground">{topic.title}</p>
+                        <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+              <Link href="/" onClick={() => setShowLoader(true)}>
+                <Card className="hover-elevate active-elevate-2 transition-all cursor-pointer border-primary/30 group overflow-hidden">
+                  <CardContent className="p-6 relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="flex items-center gap-3 relative">
+                      <p className="font-medium text-primary">{t.backToLandscape}</p>
+                      <ChevronRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </CardContent>
                 </Card>
               </Link>
-            ))}
-            <Link href="/">
-              <Card className="hover-elevate active-elevate-2 transition-all cursor-pointer border-primary/30">
-                <CardContent className="p-6">
-                  <p className="font-medium text-primary">{t.backToLandscape}</p>
-                </CardContent>
-              </Card>
-            </Link>
-          </div>
-        </div>
-      </main>
+            </div>
+          </motion.div>
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }
