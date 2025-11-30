@@ -1,6 +1,24 @@
 import { useState, useCallback } from "react";
 import { DiscoveryBubble } from "./DiscoveryBubble";
+import { useLanguage } from "@/contexts/LanguageContext";
 import type { DiscoveryContent } from "@shared/schema";
+
+const translations = {
+  en: {
+    conservation: "Conservation",
+    heritage: "Heritage",
+    culture: "Culture",
+    community: "Community",
+    exploration: "Exploration",
+  },
+  zh: {
+    conservation: "生态保护",
+    heritage: "文化遗产",
+    culture: "文化艺术",
+    community: "社区联结",
+    exploration: "探索发现",
+  },
+};
 
 interface InteractiveHotspotProps {
   discovery: DiscoveryContent;
@@ -9,6 +27,9 @@ interface InteractiveHotspotProps {
 }
 
 export function InteractiveHotspot({ discovery, showAll, onNavigate }: InteractiveHotspotProps) {
+  const { language } = useLanguage();
+  const t = translations[language];
+  const translatedTitle = t[discovery.slug as keyof typeof t] || discovery.title;
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   
@@ -68,7 +89,7 @@ export function InteractiveHotspot({ discovery, showAll, onNavigate }: Interacti
         `}
       >
         <DiscoveryBubble
-          title={discovery.title}
+          title={translatedTitle}
           slug={discovery.slug}
           icon={discovery.icon}
           isVisible={isVisible}

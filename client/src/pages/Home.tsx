@@ -26,6 +26,13 @@ const translations = {
     description: "Each element in this traditional landscape holds centuries of wisdom and cultural significance. Hover or tap on the glowing areas to uncover hidden stories about conservation, heritage, culture, and the timeless connection between humanity and nature.",
     dragToExplore: "Drag to explore",
     scrollToExplore: "Scroll to explore",
+    discoveryTitles: {
+      conservation: "Conservation",
+      heritage: "Heritage",
+      culture: "Culture",
+      community: "Community",
+      exploration: "Exploration",
+    },
   },
   zh: {
     title: "生态文明",
@@ -33,6 +40,13 @@ const translations = {
     description: "传统风景中的每一个元素都蕴含着几个世纪的智慧和文化意义。悬停或点击发光区域以发现有关保护、遗产、文化以及人类与自然之间永恒联系的隐藏故事。",
     dragToExplore: "拖动以探索",
     scrollToExplore: "滚动以探索",
+    discoveryTitles: {
+      conservation: "生态保护",
+      heritage: "文化遗产",
+      culture: "文化艺术",
+      community: "社区联结",
+      exploration: "探索发现",
+    },
   },
 };
 
@@ -254,6 +268,7 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-12">
               {discoveries.map((discovery) => {
                 const IconComponent = iconComponents[discovery.icon] || Droplets;
+                const translatedTitle = t.discoveryTitles[discovery.slug as keyof typeof t.discoveryTitles] || discovery.title;
                 return (
                   <a
                     key={discovery.id}
@@ -264,7 +279,7 @@ export default function Home() {
                     <div className="w-8 h-8 mb-2 text-primary group-hover:scale-110 transition-transform">
                       <IconComponent className="w-full h-full" />
                     </div>
-                    <h3 className="font-medium text-sm text-foreground">{discovery.title}</h3>
+                    <h3 className="font-medium text-sm text-foreground">{translatedTitle}</h3>
                   </a>
                 );
               })}
