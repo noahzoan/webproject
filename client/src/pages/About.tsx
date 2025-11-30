@@ -6,11 +6,12 @@ import { Footer } from "@/components/Footer";
 import { BrushstrokeMenu } from "@/components/BrushstrokeMenu";
 import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function About() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
-  const [language, setLanguage] = useState<"en" | "zh">("en");
+  const { language, setLanguage } = useLanguage();
 
   return (
     <div className="min-h-screen bg-background">

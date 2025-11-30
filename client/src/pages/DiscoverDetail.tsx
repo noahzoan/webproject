@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { BrushstrokeMenu } from "@/components/BrushstrokeMenu";
 import { useState, useEffect } from "react";
 import { ButterflyLoader } from "@/components/ButterflyLoader";
+import { useLanguage } from "@/contexts/LanguageContext";
 import type { DiscoveryContent } from "@shared/schema";
 
 const relatedTopicsMap: Record<string, { title: string; slug: string }[]> = {
@@ -63,7 +64,7 @@ export default function DiscoverDetail() {
   const slug = params?.slug || "";
   const [menuOpen, setMenuOpen] = useState(false);
   const [isPageLoading, setIsPageLoading] = useState(true);
-  const [language, setLanguage] = useState<"en" | "zh">("en");
+  const { language, setLanguage } = useLanguage();
 
   const { data: discovery, isLoading, error } = useQuery<DiscoveryContent>({
     queryKey: ['/api/discoveries', slug],

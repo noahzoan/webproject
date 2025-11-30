@@ -6,6 +6,7 @@ import { InteractiveHotspot } from "@/components/InteractiveHotspot";
 import { Footer } from "@/components/Footer";
 import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Droplets, Building2, Flower2, Waypoints, Mountain, Loader2 } from "lucide-react";
 import type { DiscoveryContent } from "@shared/schema";
 import landscapeImage from "@assets/generated_images/traditional_asian_landscape_painting.png";
@@ -39,7 +40,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
-  const [language, setLanguage] = useState<"en" | "zh">("en");
+  const { language, setLanguage } = useLanguage();
   const isMobile = useIsMobile();
   
   const t = translations[language];
@@ -190,8 +191,8 @@ export default function Home() {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/30" />
             
-            {/* Title overlay */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 text-center z-20">
+            {/* Title overlay - positioned higher */}
+            <div className="absolute top-[10%] left-1/2 -translate-x-1/2 text-center z-20">
               <h1 className="font-display text-5xl md:text-7xl text-white drop-shadow-lg" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}>
                 {t.title}
               </h1>

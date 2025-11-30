@@ -54,13 +54,13 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
         {isOpen ? (
           <X className="w-6 h-6 text-foreground" />
         ) : (
-          <div className="flex flex-col gap-1.5 w-8 justify-center">
-            {/* Top thick brushstroke */}
-            <svg viewBox="0 0 100 20" className="w-full h-2.5">
+          <div className="flex flex-col gap-2 w-8 justify-center">
+            {/* Top thick brushstroke - organic ink brush style */}
+            <svg viewBox="0 0 100 24" className="w-full h-4">
               <path
-                d="M 5 10 Q 20 2, 50 10 Q 80 18, 95 10"
+                d="M 3 12 C 15 4, 35 18, 50 12 C 65 6, 85 16, 97 12"
                 stroke="currentColor"
-                strokeWidth="7"
+                strokeWidth="10"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -68,11 +68,11 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
               />
             </svg>
             {/* Middle thick brushstroke */}
-            <svg viewBox="0 0 100 20" className="w-full h-2.5">
+            <svg viewBox="0 0 100 24" className="w-full h-4">
               <path
-                d="M 5 10 Q 30 16, 50 10 Q 70 4, 95 10"
+                d="M 3 12 C 20 18, 40 6, 50 12 C 60 18, 80 8, 97 12"
                 stroke="currentColor"
-                strokeWidth="7"
+                strokeWidth="10"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -80,11 +80,11 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
               />
             </svg>
             {/* Bottom thick brushstroke */}
-            <svg viewBox="0 0 100 20" className="w-full h-2.5">
+            <svg viewBox="0 0 100 24" className="w-full h-4">
               <path
-                d="M 5 10 Q 15 3, 50 10 Q 85 17, 95 10"
+                d="M 3 12 C 18 6, 32 16, 50 12 C 68 8, 82 18, 97 12"
                 stroke="currentColor"
-                strokeWidth="7"
+                strokeWidth="10"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"

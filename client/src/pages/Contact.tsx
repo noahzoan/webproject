@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Form,
   FormControl,
@@ -34,7 +35,7 @@ export default function Contact() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
-  const [language, setLanguage] = useState<"en" | "zh">("en");
+  const { language, setLanguage } = useLanguage();
   const { toast } = useToast();
 
   const form = useForm<ContactFormData>({
