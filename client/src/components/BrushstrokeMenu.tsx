@@ -54,9 +54,9 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
         {isOpen ? (
           <X className="w-6 h-6 text-foreground" />
         ) : (
-          <div className="flex flex-col gap-0.5 w-8 justify-center">
+          <div className="flex flex-col gap-1 w-9 justify-center">
             {/* Ink brushstroke lines with tapered/faded ends */}
-            <svg viewBox="0 0 100 20" className="w-full h-3">
+            <svg viewBox="0 0 100 28" className="w-full h-4">
               <defs>
                 <linearGradient id="brushFade1" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="currentColor" stopOpacity="0.2" />
@@ -66,14 +66,14 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
                 </linearGradient>
               </defs>
               <path
-                d="M 2 10 Q 25 5, 50 10 Q 75 15, 98 10"
+                d="M 2 14 Q 25 6, 50 14 Q 75 22, 98 14"
                 stroke="url(#brushFade1)"
-                strokeWidth="10"
+                strokeWidth="16"
                 fill="none"
                 strokeLinecap="round"
               />
             </svg>
-            <svg viewBox="0 0 100 20" className="w-full h-3">
+            <svg viewBox="0 0 100 28" className="w-full h-4">
               <defs>
                 <linearGradient id="brushFade2" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="currentColor" stopOpacity="0.15" />
@@ -83,14 +83,14 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
                 </linearGradient>
               </defs>
               <path
-                d="M 2 10 Q 30 15, 50 10 Q 70 5, 98 10"
+                d="M 2 14 Q 30 22, 50 14 Q 70 6, 98 14"
                 stroke="url(#brushFade2)"
-                strokeWidth="11"
+                strokeWidth="18"
                 fill="none"
                 strokeLinecap="round"
               />
             </svg>
-            <svg viewBox="0 0 100 20" className="w-full h-3">
+            <svg viewBox="0 0 100 28" className="w-full h-4">
               <defs>
                 <linearGradient id="brushFade3" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="currentColor" stopOpacity="0.25" />
@@ -100,9 +100,9 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
                 </linearGradient>
               </defs>
               <path
-                d="M 2 10 Q 20 6, 50 10 Q 80 14, 98 10"
+                d="M 2 14 Q 20 7, 50 14 Q 80 21, 98 14"
                 stroke="url(#brushFade3)"
-                strokeWidth="9"
+                strokeWidth="14"
                 fill="none"
                 strokeLinecap="round"
               />
