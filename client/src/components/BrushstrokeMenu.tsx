@@ -54,40 +54,37 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
         {isOpen ? (
           <X className="w-6 h-6 text-foreground" />
         ) : (
-          <div className="flex flex-col gap-2 w-8 justify-center">
-            {/* Top thick brushstroke - organic ink brush style */}
-            <svg viewBox="0 0 100 24" className="w-full h-4">
+          <div className="flex flex-col gap-1 w-7 justify-center">
+            {/* Top thick brushstroke - compact ink brush style */}
+            <svg viewBox="0 0 100 20" className="w-full h-2">
               <path
-                d="M 3 12 C 15 4, 35 18, 50 12 C 65 6, 85 16, 97 12"
+                d="M 5 10 C 20 4, 40 16, 50 10 C 60 4, 80 16, 95 10"
                 stroke="currentColor"
-                strokeWidth="10"
+                strokeWidth="8"
                 fill="none"
                 strokeLinecap="round"
-                strokeLinejoin="round"
                 className="text-foreground"
               />
             </svg>
             {/* Middle thick brushstroke */}
-            <svg viewBox="0 0 100 24" className="w-full h-4">
+            <svg viewBox="0 0 100 20" className="w-full h-2">
               <path
-                d="M 3 12 C 20 18, 40 6, 50 12 C 60 18, 80 8, 97 12"
+                d="M 5 10 C 25 16, 45 4, 50 10 C 55 16, 75 4, 95 10"
                 stroke="currentColor"
-                strokeWidth="10"
+                strokeWidth="8"
                 fill="none"
                 strokeLinecap="round"
-                strokeLinejoin="round"
                 className="text-foreground"
               />
             </svg>
             {/* Bottom thick brushstroke */}
-            <svg viewBox="0 0 100 24" className="w-full h-4">
+            <svg viewBox="0 0 100 20" className="w-full h-2">
               <path
-                d="M 3 12 C 18 6, 32 16, 50 12 C 68 8, 82 18, 97 12"
+                d="M 5 10 C 20 5, 35 15, 50 10 C 65 5, 80 15, 95 10"
                 stroke="currentColor"
-                strokeWidth="10"
+                strokeWidth="8"
                 fill="none"
                 strokeLinecap="round"
-                strokeLinejoin="round"
                 className="text-foreground"
               />
             </svg>
