@@ -54,35 +54,35 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
         {isOpen ? (
           <X className="w-6 h-6 text-foreground" />
         ) : (
-          <div className="flex flex-col gap-1 w-7 justify-center">
+          <div className="flex flex-col gap-1.5 w-8 justify-center">
             {/* Top thick brushstroke - compact ink brush style */}
-            <svg viewBox="0 0 100 20" className="w-full h-2">
+            <svg viewBox="0 0 100 24" className="w-full h-3">
               <path
-                d="M 5 10 C 20 4, 40 16, 50 10 C 60 4, 80 16, 95 10"
+                d="M 5 12 C 20 4, 40 20, 50 12 C 60 4, 80 20, 95 12"
                 stroke="currentColor"
-                strokeWidth="8"
+                strokeWidth="12"
                 fill="none"
                 strokeLinecap="round"
                 className="text-foreground"
               />
             </svg>
             {/* Middle thick brushstroke */}
-            <svg viewBox="0 0 100 20" className="w-full h-2">
+            <svg viewBox="0 0 100 24" className="w-full h-3">
               <path
-                d="M 5 10 C 25 16, 45 4, 50 10 C 55 16, 75 4, 95 10"
+                d="M 5 12 C 25 20, 45 4, 50 12 C 55 20, 75 4, 95 12"
                 stroke="currentColor"
-                strokeWidth="8"
+                strokeWidth="12"
                 fill="none"
                 strokeLinecap="round"
                 className="text-foreground"
               />
             </svg>
             {/* Bottom thick brushstroke */}
-            <svg viewBox="0 0 100 20" className="w-full h-2">
+            <svg viewBox="0 0 100 24" className="w-full h-3">
               <path
-                d="M 5 10 C 20 5, 35 15, 50 10 C 65 5, 80 15, 95 10"
+                d="M 5 12 C 20 5, 35 19, 50 12 C 65 5, 80 19, 95 12"
                 stroke="currentColor"
-                strokeWidth="8"
+                strokeWidth="12"
                 fill="none"
                 strokeLinecap="round"
                 className="text-foreground"
