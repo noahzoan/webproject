@@ -5,6 +5,188 @@ interface ButterflyLoaderProps {
   onComplete?: () => void;
 }
 
+function InkWashButterfly({ 
+  delay = 0, 
+  size = 1, 
+  startX = 0, 
+  startY = 0,
+  rotation = 0,
+  variant = 1
+}: { 
+  delay?: number; 
+  size?: number; 
+  startX?: number; 
+  startY?: number;
+  rotation?: number;
+  variant?: number;
+}) {
+  const baseSize = 120 * size;
+  
+  return (
+    <div
+      className="absolute"
+      style={{
+        left: `calc(50% + ${startX}px)`,
+        top: `calc(50% + ${startY}px)`,
+        transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
+        animation: `ink-flutter ${2.8 - delay}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s forwards`,
+        opacity: 0,
+      }}
+    >
+      <svg
+        width={baseSize}
+        height={baseSize * 0.8}
+        viewBox="0 0 120 96"
+        style={{ overflow: 'visible' }}
+      >
+        <defs>
+          <filter id={`ink-wash-${variant}`} x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="0.5" />
+          </filter>
+          <linearGradient id={`wing-fade-${variant}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#2a2a2a" stopOpacity="0.9" />
+            <stop offset="50%" stopColor="#4a4a4a" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="#6a6a6a" stopOpacity="0.4" />
+          </linearGradient>
+          <linearGradient id={`wing-fade-light-${variant}`} x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#3a3a3a" stopOpacity="0.8" />
+            <stop offset="60%" stopColor="#5a5a5a" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#8a8a8a" stopOpacity="0.2" />
+          </linearGradient>
+        </defs>
+
+        {/* Left wings group */}
+        <g style={{ 
+          transformOrigin: '60px 48px', 
+          animation: `ink-wing-flap ${0.8 + variant * 0.1}s ease-in-out infinite` 
+        }}>
+          {/* Upper left wing - watercolor wash effect */}
+          <path
+            d="M 60 48 
+               C 45 35, 25 20, 12 15
+               C 8 25, 15 40, 28 50
+               C 40 55, 52 52, 60 48"
+            fill={`url(#wing-fade-${variant})`}
+            filter={`url(#ink-wash-${variant})`}
+          />
+          {/* Wing wash overlay for watercolor effect */}
+          <path
+            d="M 55 45 
+               C 42 35, 28 25, 18 22
+               C 22 32, 30 42, 42 48"
+            fill="#4a4a4a"
+            opacity="0.3"
+          />
+          {/* Delicate vein lines */}
+          <path
+            d="M 58 46 C 45 38, 32 28, 22 22"
+            stroke="#1a1a1a"
+            strokeWidth="0.5"
+            fill="none"
+            opacity="0.4"
+          />
+          
+          {/* Lower left wing */}
+          <path
+            d="M 60 48 
+               C 48 58, 30 72, 20 82
+               C 28 78, 42 68, 52 58
+               C 56 54, 59 50, 60 48"
+            fill={`url(#wing-fade-light-${variant})`}
+            filter={`url(#ink-wash-${variant})`}
+          />
+        </g>
+
+        {/* Right wings group */}
+        <g style={{ 
+          transformOrigin: '60px 48px', 
+          animation: `ink-wing-flap ${0.8 + variant * 0.1}s ease-in-out infinite`,
+          animationDelay: '0.05s'
+        }}>
+          {/* Upper right wing */}
+          <path
+            d="M 60 48 
+               C 75 35, 95 20, 108 15
+               C 112 25, 105 40, 92 50
+               C 80 55, 68 52, 60 48"
+            fill={`url(#wing-fade-${variant})`}
+            filter={`url(#ink-wash-${variant})`}
+          />
+          {/* Wing wash overlay */}
+          <path
+            d="M 65 45 
+               C 78 35, 92 25, 102 22
+               C 98 32, 90 42, 78 48"
+            fill="#4a4a4a"
+            opacity="0.3"
+          />
+          {/* Vein line */}
+          <path
+            d="M 62 46 C 75 38, 88 28, 98 22"
+            stroke="#1a1a1a"
+            strokeWidth="0.5"
+            fill="none"
+            opacity="0.4"
+          />
+          
+          {/* Lower right wing */}
+          <path
+            d="M 60 48 
+               C 72 58, 90 72, 100 82
+               C 92 78, 78 68, 68 58
+               C 64 54, 61 50, 60 48"
+            fill={`url(#wing-fade-light-${variant})`}
+            filter={`url(#ink-wash-${variant})`}
+          />
+        </g>
+
+        {/* Body - ink brush stroke */}
+        <g style={{ animation: 'ink-body-bob 0.8s ease-in-out infinite' }}>
+          {/* Abdomen - tapered brush stroke */}
+          <ellipse
+            cx="60"
+            cy="52"
+            rx="4"
+            ry="18"
+            fill="#1a1a1a"
+            opacity="0.9"
+          />
+          
+          {/* Head */}
+          <circle 
+            cx="60" 
+            cy="32" 
+            r="5" 
+            fill="#1a1a1a"
+            opacity="0.95"
+          />
+
+          {/* Antennae - delicate ink strokes */}
+          <path
+            d="M 57 30 Q 50 20, 45 12"
+            stroke="#1a1a1a"
+            strokeWidth="1.2"
+            fill="none"
+            strokeLinecap="round"
+            opacity="0.8"
+          />
+          <circle cx="45" cy="11" r="1.5" fill="#1a1a1a" opacity="0.7" />
+          
+          <path
+            d="M 63 30 Q 70 20, 75 12"
+            stroke="#1a1a1a"
+            strokeWidth="1.2"
+            fill="none"
+            strokeLinecap="round"
+            opacity="0.8"
+          />
+          <circle cx="75" cy="11" r="1.5" fill="#1a1a1a" opacity="0.7" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
 export function ButterflyLoader({ isLoading, onComplete }: ButterflyLoaderProps) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -23,7 +205,7 @@ export function ButterflyLoader({ isLoading, onComplete }: ButterflyLoaderProps)
 
   return (
     <div 
-      className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-sm flex items-center justify-center"
+      className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center"
       data-testid="butterfly-loader"
     >
       <style>{`
@@ -32,175 +214,62 @@ export function ButterflyLoader({ isLoading, onComplete }: ButterflyLoaderProps)
             transform: scaleX(1) rotateY(0deg); 
           }
           50% { 
-            transform: scaleX(0.3) rotateY(15deg); 
+            transform: scaleX(0.4) rotateY(12deg); 
           }
         }
-        @keyframes ink-float-away {
+        @keyframes ink-flutter {
           0% {
-            transform: translate(0, 0) scale(1) rotate(0deg);
-            opacity: 1;
+            opacity: 0;
+            transform: translate(-50%, -50%) translateY(20px) rotate(var(--rotation, 0deg));
           }
-          60% {
-            transform: translate(-60px, -80px) scale(0.9) rotate(-8deg);
+          15% {
             opacity: 1;
+            transform: translate(-50%, -50%) translateY(0) rotate(var(--rotation, 0deg));
+          }
+          70% {
+            opacity: 1;
+            transform: translate(-50%, -50%) translateY(-30px) translateX(-20px) rotate(var(--rotation, 0deg));
           }
           100% {
-            transform: translate(-180px, -250px) scale(0.4) rotate(-25deg);
             opacity: 0;
+            transform: translate(-50%, -50%) translateY(-120px) translateX(-60px) rotate(var(--rotation, 0deg));
           }
         }
         @keyframes ink-body-bob {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-3px); }
+          50% { transform: translateY(-2px); }
         }
         @keyframes fade-out-text {
-          0%, 70% { opacity: 1; }
+          0%, 60% { opacity: 1; }
           100% { opacity: 0; }
         }
       `}</style>
       
-      <div 
-        className="relative"
-        style={{ animation: 'ink-float-away 2.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards' }}
-      >
-        <svg
-          width="180"
-          height="160"
-          viewBox="0 0 180 160"
-          className="drop-shadow-lg"
-        >
-          {/* Traditional ink wash background effect */}
-          <defs>
-            <filter id="ink-blur" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" />
-            </filter>
-            <filter id="ink-texture" x="0" y="0" width="100%" height="100%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
-            </filter>
-          </defs>
-
-          {/* Left Wing - ink brush stroke style */}
-          <g 
-            style={{ 
-              transformOrigin: '90px 80px', 
-              animation: 'ink-wing-flap 1.2s ease-in-out infinite' 
-            }}
-          >
-            {/* Upper left wing - broad ink wash */}
-            <path
-              d="M 90 80 
-                 C 70 60, 45 35, 30 25
-                 C 25 35, 28 55, 40 70
-                 C 50 78, 70 82, 90 80"
-              fill="currentColor"
-              className="text-foreground/85"
-              filter="url(#ink-texture)"
-            />
-            {/* Wing vein - delicate brush stroke */}
-            <path
-              d="M 88 78 C 65 60, 50 45, 38 35"
-              stroke="currentColor"
-              className="text-foreground/30"
-              strokeWidth="1.5"
-              fill="none"
-              strokeLinecap="round"
-            />
-            {/* Lower left wing */}
-            <path
-              d="M 90 80 
-                 C 65 90, 40 105, 32 125
-                 C 42 115, 55 100, 70 90
-                 C 80 85, 88 82, 90 80"
-              fill="currentColor"
-              className="text-foreground/75"
-              filter="url(#ink-texture)"
-            />
-          </g>
-
-          {/* Right Wing - ink brush stroke style */}
-          <g 
-            style={{ 
-              transformOrigin: '90px 80px', 
-              animation: 'ink-wing-flap 1.2s ease-in-out infinite',
-              animationDelay: '0.1s'
-            }}
-          >
-            {/* Upper right wing - broad ink wash */}
-            <path
-              d="M 90 80 
-                 C 110 60, 135 35, 150 25
-                 C 155 35, 152 55, 140 70
-                 C 130 78, 110 82, 90 80"
-              fill="currentColor"
-              className="text-foreground/85"
-              filter="url(#ink-texture)"
-            />
-            {/* Wing vein */}
-            <path
-              d="M 92 78 C 115 60, 130 45, 142 35"
-              stroke="currentColor"
-              className="text-foreground/30"
-              strokeWidth="1.5"
-              fill="none"
-              strokeLinecap="round"
-            />
-            {/* Lower right wing */}
-            <path
-              d="M 90 80 
-                 C 115 90, 140 105, 148 125
-                 C 138 115, 125 100, 110 90
-                 C 100 85, 92 82, 90 80"
-              fill="currentColor"
-              className="text-foreground/75"
-              filter="url(#ink-texture)"
-            />
-          </g>
-
-          {/* Body - calligraphic brush stroke */}
-          <g style={{ animation: 'ink-body-bob 1.2s ease-in-out infinite' }}>
-            {/* Thorax/abdomen - single brush stroke feel */}
-            <ellipse
-              cx="90"
-              cy="82"
-              rx="6"
-              ry="28"
-              fill="currentColor"
-              className="text-foreground/95"
-            />
-            
-            {/* Head - ink dot */}
-            <circle 
-              cx="90" 
-              cy="52" 
-              r="7" 
-              fill="currentColor" 
-              className="text-foreground"
-            />
-
-            {/* Antennae - delicate ink strokes curving outward */}
-            <path
-              d="M 86 48 Q 78 35, 72 22 Q 70 18, 68 15"
-              stroke="currentColor"
-              className="text-foreground/80"
-              strokeWidth="1.8"
-              fill="none"
-              strokeLinecap="round"
-            />
-            <circle cx="68" cy="14" r="2" fill="currentColor" className="text-foreground/70" />
-            
-            <path
-              d="M 94 48 Q 102 35, 108 22 Q 110 18, 112 15"
-              stroke="currentColor"
-              className="text-foreground/80"
-              strokeWidth="1.8"
-              fill="none"
-              strokeLinecap="round"
-            />
-            <circle cx="112" cy="14" r="2" fill="currentColor" className="text-foreground/70" />
-          </g>
-        </svg>
-      </div>
+      {/* Three butterflies in ink wash style like the reference image */}
+      <InkWashButterfly 
+        delay={0} 
+        size={0.9} 
+        startX={-120} 
+        startY={20}
+        rotation={-8}
+        variant={1}
+      />
+      <InkWashButterfly 
+        delay={0.2} 
+        size={1.2} 
+        startX={0} 
+        startY={0}
+        rotation={5}
+        variant={2}
+      />
+      <InkWashButterfly 
+        delay={0.4} 
+        size={1} 
+        startX={130} 
+        startY={15}
+        rotation={12}
+        variant={3}
+      />
 
       <p 
         className="absolute bottom-1/4 font-serif text-xl text-muted-foreground tracking-wider"
