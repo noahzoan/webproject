@@ -245,30 +245,14 @@ export function ButterflyLoader({ isLoading, onComplete }: ButterflyLoaderProps)
         }
       `}</style>
       
-      {/* Three butterflies in ink wash style like the reference image */}
+      {/* Single ink wash butterfly */}
       <InkWashButterfly 
         delay={0} 
-        size={0.9} 
-        startX={-120} 
-        startY={20}
-        rotation={-8}
-        variant={1}
-      />
-      <InkWashButterfly 
-        delay={0.2} 
-        size={1.2} 
+        size={1.3} 
         startX={0} 
         startY={0}
-        rotation={5}
-        variant={2}
-      />
-      <InkWashButterfly 
-        delay={0.4} 
-        size={1} 
-        startX={130} 
-        startY={15}
-        rotation={12}
-        variant={3}
+        rotation={0}
+        variant={1}
       />
 
       <p 
