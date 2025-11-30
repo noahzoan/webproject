@@ -54,7 +54,7 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
         {isOpen ? (
           <X className="w-6 h-6 text-foreground" />
         ) : (
-          <div className="flex flex-col gap-1 w-9 justify-center">
+          <div className="flex flex-col -space-y-1 w-9 justify-center">
             {/* Ink brushstroke lines with tapered/faded ends */}
             <svg viewBox="0 0 100 28" className="w-full h-4">
               <defs>
