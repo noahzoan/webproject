@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Footer } from "@/components/Footer";
 import { BrushstrokeMenu } from "@/components/BrushstrokeMenu";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -406,7 +406,8 @@ export default function DiscoverDetail() {
 
   const relatedTopics = t.relatedTopics[slug as keyof typeof t.relatedTopics] || [];
   const subtitle = t.subtitles[slug as keyof typeof t.subtitles] || "";
-  const highlights = t.highlights[slug as keyof typeof t.highlights] || {};
+  const highlightsObj = t.highlights[slug as keyof typeof t.highlights] || {};
+  const highlights = Object.values(highlightsObj) as string[];
   const title = t.titles[slug as keyof typeof t.titles] || discovery?.title || "";
   const fullDescription = t.fullDescriptions[slug as keyof typeof t.fullDescriptions] || discovery?.fullDescription || "";
   const sections = t.sections[slug as keyof typeof t.sections] || discovery?.sections || [];
@@ -416,80 +417,132 @@ export default function DiscoverDetail() {
     setActiveSection(0);
   }, [slug]);
 
-  const [observerKey, setObserverKey] = useState(0);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const visibilityMap = useRef(new Map<Element, IntersectionObserverEntry>());
+  const userInteractionLock = useRef(false);
+  const lockTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const findActiveSection = useCallback(() => {
+    if (userInteractionLock.current) return;
+    const viewportCenterY = window.innerHeight / 2;
+    
+    const candidates: Array<{idx: number, rect: DOMRect, ratio: number}> = [];
+    
+    sectionNodes.current.forEach((node, idx) => {
+      const entry = visibilityMap.current.get(node);
+      if (entry && entry.isIntersecting) {
+        candidates.push({ 
+          idx, 
+          rect: entry.boundingClientRect, 
+          ratio: entry.intersectionRatio 
+        });
+      }
+    });
+    
+    if (candidates.length === 0) return;
+    
+    candidates.sort((a, b) => {
+      const aDistY = Math.abs((a.rect.top + a.rect.height / 2) - viewportCenterY);
+      const bDistY = Math.abs((b.rect.top + b.rect.height / 2) - viewportCenterY);
+      
+      if (Math.abs(aDistY - bDistY) > 20) {
+        return aDistY - bDistY;
+      }
+      
+      if (Math.abs(a.ratio - b.ratio) > 0.1) {
+        return b.ratio - a.ratio;
+      }
+      
+      return a.idx - b.idx;
+    });
+    
+    setActiveSection(candidates[0].idx);
+  }, []);
+
+  const createObserver = useCallback(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      return null;
+    }
+    
+    return new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          visibilityMap.current.set(entry.target, entry);
+        });
+        findActiveSection();
+      },
+      { 
+        rootMargin: '-20% 0px -40% 0px',
+        threshold: [0, 0.25, 0.5, 0.75, 1]
+      }
+    );
+  }, [findActiveSection]);
 
   const registerSection = useCallback((index: number) => (node: HTMLDivElement | null) => {
+    const prevNode = sectionNodes.current.get(index);
+    
+    if (prevNode && prevNode !== node) {
+      if (observerRef.current) {
+        observerRef.current.unobserve(prevNode);
+      }
+      visibilityMap.current.delete(prevNode);
+    }
+    
     if (node) {
       sectionNodes.current.set(index, node);
+      if (observerRef.current) {
+        observerRef.current.observe(node);
+      }
     } else {
       sectionNodes.current.delete(index);
     }
   }, []);
 
-  useEffect(() => {
-    setObserverKey(k => k + 1);
-  }, [slug, language]);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      return;
+  const lockObserver = useCallback((duration: number) => {
+    if (lockTimeoutRef.current) {
+      clearTimeout(lockTimeoutRef.current);
     }
+    userInteractionLock.current = true;
+    lockTimeoutRef.current = setTimeout(() => {
+      userInteractionLock.current = false;
+    }, duration);
+  }, []);
 
-    const timer = setTimeout(() => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
+  const handleTileInteraction = useCallback((index: number) => {
+    lockObserver(300);
+    setActiveSection(index);
+  }, [lockObserver]);
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          let bestEntry: IntersectionObserverEntry | null = null;
-          let bestRatio = 0;
-          
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > bestRatio) {
-              bestRatio = entry.intersectionRatio;
-              bestEntry = entry;
-            }
-          });
-          
-          if (bestEntry) {
-            sectionNodes.current.forEach((node, idx) => {
-              if (node === bestEntry!.target) {
-                setActiveSection(idx);
-              }
-            });
-          }
-        },
-        { 
-          rootMargin: '-20% 0px -60% 0px',
-          threshold: [0, 0.1, 0.25, 0.5, 0.75, 1]
-        }
-      );
-      
-      observerRef.current = observer;
-
-      sectionNodes.current.forEach((node) => {
-        observer.observe(node);
-      });
-    }, 200);
+  useLayoutEffect(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+    visibilityMap.current.clear();
+    
+    const observer = createObserver();
+    if (!observer) return;
+    
+    observerRef.current = observer;
+    
+    sectionNodes.current.forEach((node) => {
+      observer.observe(node);
+    });
 
     return () => {
-      clearTimeout(timer);
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-        observerRef.current = null;
-      }
+      observer.disconnect();
+      observerRef.current = null;
+      visibilityMap.current.clear();
     };
-  }, [observerKey]);
+  }, [slug, language, createObserver]);
 
   const scrollToSection = useCallback((index: number) => {
+    lockObserver(800);
     setActiveSection(index);
     sectionNodes.current.get(index)?.scrollIntoView({ 
       behavior: 'smooth', 
       block: 'center' 
     });
-  }, []);
+  }, [lockObserver]);
 
   if (isLoading) {
     return (
@@ -648,6 +701,7 @@ export default function DiscoverDetail() {
                   index={index}
                   highlight={highlights[index]}
                   slug={slug}
+                  onInteraction={() => handleTileInteraction(index)}
                 />
               </motion.div>
             ))}

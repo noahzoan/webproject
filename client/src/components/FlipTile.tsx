@@ -10,6 +10,7 @@ interface FlipTileProps {
   index: number;
   highlight?: string;
   slug: string;
+  onInteraction?: () => void;
 }
 
 const translations = {
@@ -25,10 +26,14 @@ const translations = {
   },
 };
 
-export function FlipTile({ title, content, index, highlight, slug }: FlipTileProps) {
+export function FlipTile({ title, content, index, highlight, slug, onInteraction }: FlipTileProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const { language } = useLanguage();
   const t = translations[language];
+
+  const handleInteraction = useCallback(() => {
+    onInteraction?.();
+  }, [onInteraction]);
 
   const colors = [
     { gradient: "from-primary/10 via-primary/5 to-transparent", accent: "bg-primary/20" },
@@ -55,6 +60,8 @@ export function FlipTile({ title, content, index, highlight, slug }: FlipTilePro
       style={{ perspective: "1000px" }}
       onClick={handleFlip}
       onKeyDown={handleKeyDown}
+      onMouseEnter={handleInteraction}
+      onFocus={handleInteraction}
       role="button"
       tabIndex={0}
       aria-expanded={isFlipped}
