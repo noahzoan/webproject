@@ -580,11 +580,11 @@ export default function DiscoverDetail() {
       <Link href="/" onClick={() => setShowLoader(true)} className="fixed top-6 left-1/2 -translate-x-1/2" style={{ zIndex: 9998 }}>
         <Button 
           variant="outline" 
-          size="icon" 
-          className="bg-background/60 backdrop-blur-md border-border/50 hover:bg-background/80"
+          className="bg-background/60 backdrop-blur-md border-border/50 hover:bg-background/80 gap-2"
           data-testid="button-back"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <ArrowLeft className="w-4 h-4" />
+          <span>{t.backToLandscape}</span>
         </Button>
       </Link>
       
