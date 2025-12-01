@@ -577,6 +577,17 @@ export default function DiscoverDetail() {
       <ButterflyLoader isLoading={showLoader} onComplete={() => setShowLoader(false)} />
       <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language={language} onLanguageChange={setLanguage} />
       
+      <Link href="/" onClick={() => setShowLoader(true)} className="fixed top-6 right-6" style={{ zIndex: 9998 }}>
+        <Button 
+          variant="outline" 
+          size="icon" 
+          className="bg-background/60 backdrop-blur-md border-border/50 hover:bg-background/80"
+          data-testid="button-back"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </Button>
+      </Link>
+      
       <SidebarNav
         currentSlug={slug}
         currentTitle={title}
@@ -657,16 +668,6 @@ export default function DiscoverDetail() {
             </svg>
           </div>
           
-          <Link href="/" onClick={() => setShowLoader(true)} className="fixed top-6 right-6" style={{ zIndex: 9998 }}>
-            <Button 
-              variant="outline" 
-              size="icon" 
-              className="bg-background/60 backdrop-blur-md border-border/50 hover:bg-background/80"
-              data-testid="button-back"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </Button>
-          </Link>
         </header>
 
         <main className="relative max-w-5xl mx-auto px-6 py-16">
