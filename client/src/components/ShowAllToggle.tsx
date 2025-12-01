@@ -36,7 +36,7 @@ export function ShowAllToggle({ showAll, onToggle }: ShowAllToggleProps) {
       aria-label={showAll ? "Hide all discoveries" : "Show all discoveries"}
       title={showAll ? "Hide all discoveries" : "Show all discoveries"}
     >
-      <InkBrushIcon className={`w-6 h-6 transition-opacity duration-200 ${showAll ? 'text-primary' : 'text-foreground opacity-70'}`} />
+      <InkBrushIcon className={`w-6 h-6 transition-opacity duration-200 rotate-[225deg] ${showAll ? 'text-primary' : 'text-foreground opacity-70'}`} />
     </button>
   );
 }
