@@ -1,0 +1,61 @@
+{
+  "category": "team",
+  "en": {
+    "title": "Project Team",
+    "description": "The core team bringing this educational initiative to life."
+  },
+  "zh": {
+    "title": "项目团队",
+    "description": "实现这一教育计划的核心团队。"
+  },
+  "members": [
+    {
+      "id": "team-1",
+      "name": {
+        "en": "Dr. Chen Wei",
+        "zh": "陈伟博士"
+      },
+      "role": {
+        "en": "Project Director",
+        "zh": "项目总监"
+      },
+      "connection": {
+        "en": "Leading research on traditional ecological knowledge and its application to modern sustainability challenges.",
+        "zh": "领导传统生态知识及其在现代可持续发展挑战中应用的研究。"
+      },
+      "imageUrl": null
+    },
+    {
+      "id": "team-2",
+      "name": {
+        "en": "Li Mei",
+        "zh": "李梅"
+      },
+      "role": {
+        "en": "Educational Content Lead",
+        "zh": "教育内容负责人"
+      },
+      "connection": {
+        "en": "Developing curriculum that bridges ancient wisdom with contemporary environmental education.",
+        "zh": "开发将古代智慧与当代环境教育相结合的课程。"
+      },
+      "imageUrl": null
+    },
+    {
+      "id": "team-3",
+      "name": {
+        "en": "Zhang Lin",
+        "zh": "张林"
+      },
+      "role": {
+        "en": "Visual Design Director",
+        "zh": "视觉设计总监"
+      },
+      "connection": {
+        "en": "Creating visual experiences that honor traditional aesthetics while embracing modern accessibility.",
+        "zh": "创造尊重传统美学同时拥抱现代可访问性的视觉体验。"
+      },
+      "imageUrl": null
+    }
+  ]
+}

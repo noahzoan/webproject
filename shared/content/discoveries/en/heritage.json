@@ -1,0 +1,25 @@
+{
+  "slug": "heritage",
+  "title": "Cultural Heritage",
+  "subtitle": "Temples Through Time",
+  "icon": "building",
+  "positionX": 42,
+  "positionY": 28,
+  "highlight": "Each beam and tile carries the spirit of countless artisans.",
+  "shortDescription": "Ancient temples and sacred architecture",
+  "fullDescription": "Ancient temples and pavilions stand as testaments to architectural genius and spiritual devotion. Each structure embodies centuries of accumulated wisdom, artistic excellence, and cultural values that continue to inspire awe.",
+  "sections": [
+    {
+      "title": "Architectural Wisdom",
+      "content": "Traditional Asian architecture follows principles of harmony with nature, using materials like wood, stone, and tile that age gracefully and blend with their surroundings. The curved rooflines of pagodas and temples are not merely decorative—they were designed to handle heavy rain and snow while symbolizing the connection between earth and heaven."
+    },
+    {
+      "title": "Sacred Spaces",
+      "content": "Temples serve as more than places of worship; they are centers of community, learning, and cultural preservation. The layout of temple complexes follows careful geomantic principles, orienting structures to harmonize with the natural flow of energy in the landscape."
+    },
+    {
+      "title": "Preservation Challenges",
+      "content": "Maintaining these historic structures requires specialized knowledge and traditional craftsmanship that is increasingly rare. Restoration efforts worldwide are working to train new generations of artisans in ancient techniques while adapting to modern challenges like climate change and urbanization."
+    }
+  ]
+}

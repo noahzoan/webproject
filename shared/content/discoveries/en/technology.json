@@ -1,0 +1,25 @@
+{
+  "slug": "technology",
+  "title": "Green Technology",
+  "subtitle": "Innovation in Harmony",
+  "icon": "zap",
+  "positionX": 75,
+  "positionY": 35,
+  "highlight": "The future grows from the soil of ancient wisdom.",
+  "shortDescription": "Solar, wind, and sustainable innovation",
+  "fullDescription": "Technology in ecological civilization is not opposed to nature but works in harmony with it. Solar panels on traditional rooftops, wind turbines across landscapes, and electric vehicles represent the fusion of innovation and sustainability.",
+  "sections": [
+    {
+      "title": "Renewable Energy Integration",
+      "content": "Imagine a pagoda with solar panels gracefully integrated into its ancient design, or wind turbines turning alongside terraced rice paddies. Ecological civilization embraces technology that generates clean energy while respecting the aesthetic harmony of the landscape."
+    },
+    {
+      "title": "Sustainable Transportation",
+      "content": "Electric vehicle charging stations appearing alongside traditional inns represent the meeting of past and future. Clean transportation reduces pollution while maintaining the connections between communities that have existed for centuries."
+    },
+    {
+      "title": "Innovation with Tradition",
+      "content": "The most successful green technologies often draw on traditional principles of efficiency, durability, and harmony with nature. Modern innovation at its best extends rather than replaces ancestral wisdom."
+    }
+  ]
+}

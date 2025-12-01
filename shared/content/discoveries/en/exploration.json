@@ -1,0 +1,39 @@
+{
+  "slug": "exploration",
+  "title": "Exploration",
+  "subtitle": "Mountains that Move the Soul",
+  "icon": "mountain",
+  "positionX": 88,
+  "positionY": 25,
+  "highlight": "The mountain does not move, yet it teaches us everything about the journey.",
+  "shortDescription": "Majestic peaks and spiritual journeys",
+  "fullDescription": "Mountains have always held a special place in Asian spirituality and art. Representing the axis between earth and heaven, these majestic peaks inspire journeys both physical and spiritual.",
+  "sections": [
+    {
+      "title": "Sacred Summits",
+      "content": "Throughout Asia, certain mountains are venerated as sacred sites where heaven and earth meet. Pilgrims have climbed these peaks for millennia, seeking spiritual transformation, wisdom, and connection with the divine. The journey itself—with its challenges and rewards—is considered as important as reaching the summit.",
+      "storyMap": {
+        "url": "https://storymaps.arcgis.com/stories/df468704609b472f846330f84b42334b",
+        "title": "Sacred Mountains of Asia",
+        "hideHeader": true,
+        "hideCover": false,
+        "height": 600
+      }
+    },
+    {
+      "title": "Artistic Inspiration",
+      "content": "Mountain landscapes have inspired countless works of art, from classical ink paintings to poetry and music. Artists sought to capture not just the physical appearance of mountains but their essential spirit—the sense of timelessness, majesty, and transcendence they evoke."
+    },
+    {
+      "title": "Ecological Treasures",
+      "content": "Mountain ecosystems harbor remarkable biodiversity, with species found nowhere else on Earth. Many traditional communities living in mountain regions developed sustainable practices that protected these ecosystems while meeting their needs—wisdom that remains relevant today.",
+      "storyMap": {
+        "url": "https://storymaps.arcgis.com/stories/3437507798874a08b9d92824d5a865e1",
+        "title": "Mountain Biodiversity",
+        "hideHeader": true,
+        "hideCover": true,
+        "height": 500
+      }
+    }
+  ]
+}

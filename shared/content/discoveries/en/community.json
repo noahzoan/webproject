@@ -1,0 +1,25 @@
+{
+  "slug": "community",
+  "title": "Community",
+  "subtitle": "Bridges of Connection",
+  "icon": "bridge",
+  "positionX": 38,
+  "positionY": 80,
+  "highlight": "A bridge is not just a path—it is a threshold between worlds.",
+  "shortDescription": "Bridges connecting people and places",
+  "fullDescription": "Bridges in Asian landscapes serve as powerful symbols of connection—linking not just physical spaces, but also past and present, humanity and nature, the earthly and the divine.",
+  "sections": [
+    {
+      "title": "Crossing Over",
+      "content": "Traditional bridges were often placed at carefully chosen locations where they would frame the most beautiful views or mark transitions between different areas of a garden or temple complex. Crossing a bridge was understood as a moment of transformation, a brief journey that changed one's perspective."
+    },
+    {
+      "title": "Gathering Places",
+      "content": "Many traditional bridges include covered sections or pavilions where travelers can rest, enjoy the scenery, or meet with friends. These spaces fostered community connection and served as important social gathering points throughout history."
+    },
+    {
+      "title": "Engineering Marvels",
+      "content": "From simple stone slabs to elaborate arched structures, traditional bridges showcase remarkable engineering skills developed over centuries. Many ancient bridges remain standing today, their construction techniques still studied and admired by modern engineers."
+    }
+  ]
+}

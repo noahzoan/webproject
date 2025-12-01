@@ -1,0 +1,25 @@
+{
+  "slug": "resources",
+  "title": "Resources",
+  "subtitle": "Knowledge into Action",
+  "icon": "library",
+  "positionX": -1,
+  "positionY": -1,
+  "highlight": "To know without acting is not truly knowing; to act without knowing is reckless.",
+  "shortDescription": "Educational materials and tools",
+  "fullDescription": "A curated collection of educational resources to deepen your understanding of ecological civilization. From scholarly articles to practical guides, these materials support learning and action.",
+  "sections": [
+    {
+      "title": "Educational Materials",
+      "content": "Access research papers, case studies, and educational curricula designed to introduce ecological civilization concepts to learners of all ages. These materials bridge traditional wisdom with contemporary environmental science."
+    },
+    {
+      "title": "Practical Guides",
+      "content": "Find step-by-step guides for sustainable living, community organizing, and ecological restoration projects. These resources translate theory into action, helping individuals and communities make meaningful change."
+    },
+    {
+      "title": "Further Reading",
+      "content": "Explore a bibliography of essential texts on ecological civilization, traditional wisdom, and sustainable development. These recommended readings provide deeper context for the themes explored throughout this site."
+    }
+  ]
+}

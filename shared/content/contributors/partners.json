@@ -1,0 +1,61 @@
+{
+  "category": "partner",
+  "en": {
+    "title": "Community Partners",
+    "description": "Organizations working with us to advance ecological civilization."
+  },
+  "zh": {
+    "title": "社区伙伴",
+    "description": "与我们合作推进生态文明的组织。"
+  },
+  "members": [
+    {
+      "id": "partner-1",
+      "name": {
+        "en": "Green Horizon Foundation",
+        "zh": "绿色地平线基金会"
+      },
+      "role": {
+        "en": "Environmental NGO",
+        "zh": "环保非政府组织"
+      },
+      "connection": {
+        "en": "Supporting community-led reforestation projects across rural China.",
+        "zh": "支持中国农村社区主导的植树造林项目。"
+      },
+      "imageUrl": null
+    },
+    {
+      "id": "partner-2",
+      "name": {
+        "en": "Mountain Village Collective",
+        "zh": "山村合作社"
+      },
+      "role": {
+        "en": "Community Group",
+        "zh": "社区团体"
+      },
+      "connection": {
+        "en": "Preserving traditional farming practices and local ecological knowledge.",
+        "zh": "保护传统农业实践和当地生态知识。"
+      },
+      "imageUrl": null
+    },
+    {
+      "id": "partner-3",
+      "name": {
+        "en": "Heritage Architecture Society",
+        "zh": "建筑遗产学会"
+      },
+      "role": {
+        "en": "Cultural Organization",
+        "zh": "文化组织"
+      },
+      "connection": {
+        "en": "Training new generations in traditional building techniques that work with nature.",
+        "zh": "培训新一代掌握与自然和谐相处的传统建筑技术。"
+      },
+      "imageUrl": null
+    }
+  ]
+}

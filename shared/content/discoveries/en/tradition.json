@@ -1,0 +1,25 @@
+{
+  "slug": "tradition",
+  "title": "Traditional Wisdom",
+  "subtitle": "Wisdom Through Ages",
+  "icon": "book",
+  "positionX": 55,
+  "positionY": 50,
+  "highlight": "Ancient texts record the balance between action and stillness, taking and giving.",
+  "shortDescription": "Ancestral knowledge and practices",
+  "fullDescription": "Traditional wisdom represents the accumulated insights of countless generations who lived in close relationship with the natural world. These teachings offer guidance for creating sustainable societies.",
+  "sections": [
+    {
+      "title": "Ancestral Teachings",
+      "content": "Libraries filled with bamboo scrolls and ancient texts preserve wisdom about living in harmony with nature. These teachings emphasize balance, reciprocity, and respect for all living things."
+    },
+    {
+      "title": "Living Practices",
+      "content": "Traditional festivals, agricultural practices, and daily rituals maintain connections to the natural cycles of the earth. These practices embed ecological awareness into the fabric of community life."
+    },
+    {
+      "title": "Intergenerational Dialogue",
+      "content": "Ecological civilization requires conversations across generations—elders sharing traditional knowledge while youth contribute new perspectives and energy to the work of restoration."
+    }
+  ]
+}

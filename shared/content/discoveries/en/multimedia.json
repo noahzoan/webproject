@@ -1,0 +1,25 @@
+{
+  "slug": "multimedia",
+  "title": "Multimedia",
+  "subtitle": "A Journey of Light and Sound",
+  "icon": "video",
+  "positionX": -1,
+  "positionY": -1,
+  "highlight": "Seeing begins understanding; experiencing brings wisdom.",
+  "shortDescription": "Videos and interactive content",
+  "fullDescription": "Experience ecological civilization through video documentaries, virtual tours, and interactive experiences. These multimedia resources bring the concepts to life through engaging visual storytelling.",
+  "sections": [
+    {
+      "title": "Video Documentaries",
+      "content": "Watch documentary films exploring ecological restoration projects, traditional practices, and communities building sustainable futures. These films capture the human stories behind the ecological transformation."
+    },
+    {
+      "title": "Virtual Tours",
+      "content": "Take virtual tours of sacred mountains, traditional gardens, and restored ecosystems. Experience these remarkable places from anywhere in the world through immersive 360-degree imagery."
+    },
+    {
+      "title": "Interactive Experiences",
+      "content": "Engage with interactive maps, timelines, and educational games that make learning about ecological civilization an active experience. These tools are designed for explorers of all ages."
+    }
+  ]
+}

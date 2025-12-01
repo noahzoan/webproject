@@ -1,0 +1,58 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "contributors": "Contributors",
+    "language": "Language"
+  },
+  "homepage": {
+    "title": "Discover the Landscape",
+    "subtitle": "Explore hidden treasures within",
+    "scrollPrompt": "Scroll to explore",
+    "showAllHotspots": "Show All",
+    "hideHotspots": "Hide"
+  },
+  "discovery": {
+    "backToHome": "Back to Home",
+    "continueExploring": "Continue Exploring",
+    "relatedTopics": "Related Topics",
+    "interactiveMap": "Interactive Map Experience",
+    "clickToExplore": "Click to explore",
+    "flipToReveal": "Click to reveal more"
+  },
+  "storyMap": {
+    "loading": "Loading interactive map...",
+    "loadError": "Unable to load the interactive map. Click to open in a new tab.",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit Fullscreen",
+    "openNew": "Open in new tab"
+  },
+  "contributors": {
+    "pageTitle": "Contributors",
+    "pageSubtitle": "Fellow Travelers",
+    "projectTeam": "Project Team",
+    "contributingScholars": "Contributing Scholars",
+    "communityPartners": "Community Partners",
+    "connectionLabel": "Connection to Ecological Civilization",
+    "flipPrompt": "Click to learn more"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Your email",
+    "messagePlaceholder": "Your message",
+    "submit": "Send Message",
+    "success": "Thank you! Your message has been sent.",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "copyright": "© 2025 Ecological Civilization Project",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "loader": {
+    "title": "Entering the Landscape",
+    "subtitle": "A moment of transition..."
+  }
+}

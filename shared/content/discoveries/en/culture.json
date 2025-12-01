@@ -1,0 +1,25 @@
+{
+  "slug": "culture",
+  "title": "Arts & Culture",
+  "subtitle": "Gardens of the Soul",
+  "icon": "paintbrush",
+  "positionX": 62,
+  "positionY": 75,
+  "highlight": "A garden is a poem written in plants and stones.",
+  "shortDescription": "Gardens and artistic traditions",
+  "fullDescription": "The art of the traditional garden represents the pinnacle of cultural achievement—a perfect fusion of philosophy, art, and horticulture that creates spaces for contemplation and connection with nature.",
+  "sections": [
+    {
+      "title": "Philosophy in Bloom",
+      "content": "Every element in a traditional Asian garden carries symbolic meaning. Cherry blossoms represent the transient beauty of life, pine trees symbolize longevity and resilience, and bamboo embodies flexibility and strength. Walking through such a garden is meant to be a meditative journey through these philosophical concepts."
+    },
+    {
+      "title": "The Art of Arrangement",
+      "content": "Unlike Western formal gardens with their geometric precision, traditional Asian gardens follow principles of asymmetry and natural flow. Rocks are placed to suggest mountains, raked gravel evokes water, and carefully pruned trees create scenes that change with the seasons."
+    },
+    {
+      "title": "Living Traditions",
+      "content": "Garden arts like bonsai, ikebana (flower arrangement), and the tea ceremony continue to flourish today. These practices teach patience, attention to detail, and a deep appreciation for the subtle beauty found in nature's imperfections."
+    }
+  ]
+}

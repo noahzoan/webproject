@@ -1,0 +1,39 @@
+{
+  "slug": "exploration",
+  "title": "探索发现",
+  "subtitle": "悟道之巅",
+  "icon": "mountain",
+  "positionX": 88,
+  "positionY": 25,
+  "highlight": "山不动，却教会我们关于旅程的一切。",
+  "shortDescription": "壮丽山峰与精神之旅",
+  "fullDescription": "山脉在亚洲灵性和艺术中一直占有特殊地位。作为天地之间的轴心，这些雄伟的山峰激发着身体和精神的双重旅程。",
+  "sections": [
+    {
+      "title": "神圣之巅",
+      "content": "在整个亚洲，某些山脉被尊为天地相接的神圣之地。几千年来，朝圣者攀登这些山峰，寻求精神转化、智慧和与神圣的联系。旅程本身——及其挑战和回报——被认为与到达顶峰同样重要。",
+      "storyMap": {
+        "url": "https://storymaps.arcgis.com/stories/df468704609b472f846330f84b42334b",
+        "title": "亚洲神圣山脉",
+        "hideHeader": true,
+        "hideCover": false,
+        "height": 600
+      }
+    },
+    {
+      "title": "艺术灵感",
+      "content": "山水景观激发了无数艺术作品，从古典水墨画到诗歌和音乐。艺术家们不仅试图捕捉山脉的物理外观，还试图捕捉其本质精神——它们所唤起的永恒感、雄伟感和超越感。"
+    },
+    {
+      "title": "生态宝库",
+      "content": "山地生态系统蕴藏着非凡的生物多样性，拥有地球上其他地方找不到的物种。许多生活在山区的传统社区发展了可持续的做法，在满足自身需求的同时保护这些生态系统——这种智慧在今天仍然具有现实意义。",
+      "storyMap": {
+        "url": "https://storymaps.arcgis.com/stories/3437507798874a08b9d92824d5a865e1",
+        "title": "山地生物多样性",
+        "hideHeader": true,
+        "hideCover": true,
+        "height": 500
+      }
+    }
+  ]
+}

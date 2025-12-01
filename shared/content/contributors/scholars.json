@@ -1,0 +1,61 @@
+{
+  "category": "scholar",
+  "en": {
+    "title": "Contributing Scholars",
+    "description": "Academic experts whose research and insights inform our content."
+  },
+  "zh": {
+    "title": "学术贡献者",
+    "description": "他们的研究和见解为我们的内容提供支撑的学术专家。"
+  },
+  "members": [
+    {
+      "id": "scholar-1",
+      "name": {
+        "en": "Prof. Wang Xiaoming",
+        "zh": "王晓明教授"
+      },
+      "role": {
+        "en": "Ecology & Restoration",
+        "zh": "生态学与修复"
+      },
+      "connection": {
+        "en": "30 years researching forest ecosystem restoration and community-based conservation in East Asia.",
+        "zh": "30年来研究东亚森林生态系统恢复和社区保护。"
+      },
+      "imageUrl": null
+    },
+    {
+      "id": "scholar-2",
+      "name": {
+        "en": "Dr. Liu Hua",
+        "zh": "刘华博士"
+      },
+      "role": {
+        "en": "Philosophy & Ethics",
+        "zh": "哲学与伦理"
+      },
+      "connection": {
+        "en": "Exploring the philosophical foundations of ecological civilization in classical Chinese thought.",
+        "zh": "探索中国古典思想中生态文明的哲学基础。"
+      },
+      "imageUrl": null
+    },
+    {
+      "id": "scholar-3",
+      "name": {
+        "en": "Prof. Huang Yan",
+        "zh": "黄燕教授"
+      },
+      "role": {
+        "en": "Cultural Heritage",
+        "zh": "文化遗产"
+      },
+      "connection": {
+        "en": "Documenting traditional architectural wisdom and its relevance to sustainable building practices.",
+        "zh": "记录传统建筑智慧及其与可持续建筑实践的相关性。"
+      },
+      "imageUrl": null
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "slug": "health",
+  "title": "Environmental Health",
+  "subtitle": "Wellbeing in Nature",
+  "icon": "heart",
+  "positionX": 28,
+  "positionY": 65,
+  "highlight": "A healthy earth nurtures healthy communities.",
+  "shortDescription": "Human wellbeing and ecological balance",
+  "fullDescription": "Environmental health recognizes the profound connection between ecological wellbeing and human flourishing. Clean air, pure water, and thriving ecosystems are foundations for healthy communities.",
+  "sections": [
+    {
+      "title": "Holistic Wellbeing",
+      "content": "Traditional Asian medicine has long understood that human health cannot be separated from environmental health. The same principles that govern the flow of energy in the body apply to the larger landscape."
+    },
+    {
+      "title": "Clean Air and Water",
+      "content": "Efforts to reduce pollution and protect water sources directly improve public health. Communities that prioritize ecological civilization experience better health outcomes across generations."
+    },
+    {
+      "title": "Nature and Mental Health",
+      "content": "Access to natural spaces and green environments supports mental and emotional wellbeing. Gardens, parks, and natural landscapes are not luxuries but necessities for human flourishing."
+    }
+  ]
+}

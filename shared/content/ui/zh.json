@@ -1,0 +1,58 @@
+{
+  "navigation": {
+    "home": "首页",
+    "about": "关于",
+    "contact": "联系",
+    "contributors": "贡献者",
+    "language": "语言"
+  },
+  "homepage": {
+    "title": "发现风景",
+    "subtitle": "探索其中隐藏的宝藏",
+    "scrollPrompt": "滚动探索",
+    "showAllHotspots": "显示全部",
+    "hideHotspots": "隐藏"
+  },
+  "discovery": {
+    "backToHome": "返回首页",
+    "continueExploring": "继续探索",
+    "relatedTopics": "相关主题",
+    "interactiveMap": "互动地图体验",
+    "clickToExplore": "点击探索",
+    "flipToReveal": "点击查看更多"
+  },
+  "storyMap": {
+    "loading": "正在加载互动地图...",
+    "loadError": "无法加载互动地图。点击在新标签页中打开。",
+    "fullscreen": "全屏",
+    "exitFullscreen": "退出全屏",
+    "openNew": "在新标签页打开"
+  },
+  "contributors": {
+    "pageTitle": "贡献者",
+    "pageSubtitle": "同行者",
+    "projectTeam": "项目团队",
+    "contributingScholars": "学术贡献者",
+    "communityPartners": "社区伙伴",
+    "connectionLabel": "与生态文明的联系",
+    "flipPrompt": "点击了解更多"
+  },
+  "contact": {
+    "title": "联系我们",
+    "namePlaceholder": "您的姓名",
+    "emailPlaceholder": "您的邮箱",
+    "messagePlaceholder": "您的留言",
+    "submit": "发送消息",
+    "success": "感谢！您的消息已发送。",
+    "error": "出了点问题。请重试。"
+  },
+  "footer": {
+    "copyright": "© 2025 生态文明项目",
+    "privacy": "隐私政策",
+    "terms": "使用条款"
+  },
+  "loader": {
+    "title": "进入风景",
+    "subtitle": "片刻的过渡..."
+  }
+}

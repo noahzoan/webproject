@@ -1,0 +1,25 @@
+{
+  "slug": "restoration",
+  "title": "Ecological Restoration",
+  "subtitle": "Healing the Land",
+  "icon": "tree",
+  "positionX": 15,
+  "positionY": 45,
+  "highlight": "To plant a tree is to plant hope for generations yet to come.",
+  "shortDescription": "Reforestation and ecosystem recovery",
+  "fullDescription": "Ecological restoration represents hope in action—the deliberate recovery of ecosystems that have been degraded or destroyed. Through reforestation and habitat renewal, communities are healing the land.",
+  "sections": [
+    {
+      "title": "Reforestation Efforts",
+      "content": "China has undertaken some of the world's largest reforestation projects, planting billions of trees to combat desertification and restore degraded landscapes. These efforts demonstrate that ecological recovery is possible when communities work together with purpose and dedication."
+    },
+    {
+      "title": "Traditional Wisdom Meets Modern Science",
+      "content": "Ecological restoration draws on both ancient understanding of natural systems and modern scientific methods. Traditional practices of working with nature rather than against it inform contemporary approaches to ecosystem recovery."
+    },
+    {
+      "title": "Community Involvement",
+      "content": "Successful restoration projects engage local communities as stewards of the land. When people participate in planting and caring for restored ecosystems, they develop lasting connections to the natural world."
+    }
+  ]
+}

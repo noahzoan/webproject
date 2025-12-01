@@ -78,6 +78,12 @@ Preferred communication style: Simple, everyday language.
 - Discovery content defined as typed arrays in server/storage.ts
 - Contact messages stored in-memory (ephemeral)
 
+**Content Organization (shared/content/):**
+- Discovery content organized by category and language in JSON files
+- UI translations in shared/content/ui/en.json and zh.json
+- Contributor profiles in shared/content/contributors/
+- README with editing guidelines and migration documentation
+
 **Schema Design (Drizzle ORM):**
 - `users` table: id, username, password (authentication ready but not implemented)
 - `discovery_elements` table: id, slug, title, icon, descriptions, position coordinates
