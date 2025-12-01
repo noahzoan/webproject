@@ -1,4 +1,14 @@
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+
+const translations = {
+  en: {
+    discovering: "Discovering..."
+  },
+  zh: {
+    discovering: "探索中……"
+  }
+};
 
 interface ButterflyLoaderProps {
   isLoading: boolean;
@@ -189,6 +199,8 @@ function InkWashButterfly({
 
 export function ButterflyLoader({ isLoading, onComplete }: ButterflyLoaderProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language];
 
   useEffect(() => {
     if (isLoading && !isVisible) {
@@ -259,7 +271,7 @@ export function ButterflyLoader({ isLoading, onComplete }: ButterflyLoaderProps)
         className="absolute bottom-1/4 font-serif text-xl text-muted-foreground tracking-wider"
         style={{ animation: 'fade-out-text 2.8s ease-out forwards' }}
       >
-        Discovering...
+        {t.discovering}
       </p>
     </div>
   );

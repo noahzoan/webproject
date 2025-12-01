@@ -53,6 +53,7 @@
   },
   "loader": {
     "title": "Entering the Landscape",
-    "subtitle": "A moment of transition..."
+    "subtitle": "A moment of transition...",
+    "discovering": "Discovering..."
   }
 }

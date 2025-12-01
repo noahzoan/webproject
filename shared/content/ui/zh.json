@@ -53,6 +53,7 @@
   },
   "loader": {
     "title": "进入风景",
-    "subtitle": "片刻的过渡..."
+    "subtitle": "片刻的过渡……",
+    "discovering": "探索中……"
   }
 }
