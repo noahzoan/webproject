@@ -104,18 +104,34 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
             className="w-6 h-6 text-foreground"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            {/* Rolled scroll body - horizontal tube */}
-            <rect x="3" y="8" width="18" height="8" rx="4" ry="4" />
+            {/* Top rod */}
+            <rect x="5" y="2" width="14" height="3" rx="1.5" />
+            {/* Top rod end knobs */}
+            <circle cx="4" cy="3.5" r="1.5" />
+            <circle cx="20" cy="3.5" r="1.5" />
             
-            {/* Left spiral curl showing rolled paper */}
-            <path d="M3 12 c0-2.5 1.5-4 3-4 c1.5 0 2.5 1 2.5 2 s-0.8 1.5-1.5 1.5" />
+            {/* Paper/parchment body */}
+            <path d="M6 5 L6 19 L18 19 L18 5" />
+            {/* Decorative inner frame corners */}
+            <path d="M8 7 L8 8.5 L9.5 8.5" />
+            <path d="M16 7 L16 8.5 L14.5 8.5" />
+            <path d="M8 17 L8 15.5 L9.5 15.5" />
+            <path d="M16 17 L16 15.5 L14.5 15.5" />
             
-            {/* Right spiral curl showing rolled paper */}
-            <path d="M21 12 c0-2.5 -1.5-4 -3-4 c-1.5 0 -2.5 1 -2.5 2 s0.8 1.5 1.5 1.5" />
+            {/* Text lines */}
+            <line x1="9" y1="10" x2="15" y2="10" />
+            <line x1="9" y1="12" x2="15" y2="12" />
+            <line x1="9" y1="14" x2="15" y2="14" />
+            
+            {/* Bottom rod */}
+            <rect x="5" y="19" width="14" height="3" rx="1.5" />
+            {/* Bottom rod end knobs */}
+            <circle cx="4" cy="20.5" r="1.5" />
+            <circle cx="20" cy="20.5" r="1.5" />
           </svg>
         )}
       </button>
