@@ -100,25 +100,26 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
           <X className="w-6 h-6 text-foreground" />
         ) : (
           <svg 
-            viewBox="0 0 40 40" 
-            className="w-7 h-7 text-foreground"
+            viewBox="0 0 24 24" 
+            className="w-6 h-6 text-foreground"
             fill="none"
             stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <defs>
-              <linearGradient id="scrollGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="currentColor" stopOpacity="0.3" />
-                <stop offset="50%" stopColor="currentColor" stopOpacity="1" />
-                <stop offset="100%" stopColor="currentColor" stopOpacity="0.3" />
-              </linearGradient>
-            </defs>
-            <ellipse cx="20" cy="8" rx="16" ry="5" strokeWidth="2" fill="none" stroke="url(#scrollGradient)" />
-            <path d="M 4 8 L 4 32" strokeWidth="2" strokeLinecap="round" />
-            <path d="M 36 8 L 36 32" strokeWidth="2" strokeLinecap="round" />
-            <ellipse cx="20" cy="32" rx="16" ry="5" strokeWidth="2" fill="none" stroke="url(#scrollGradient)" />
-            <line x1="10" y1="14" x2="30" y2="14" strokeWidth="1.5" strokeOpacity="0.4" />
-            <line x1="10" y1="20" x2="30" y2="20" strokeWidth="1.5" strokeOpacity="0.4" />
-            <line x1="10" y1="26" x2="30" y2="26" strokeWidth="1.5" strokeOpacity="0.4" />
+            {/* Top wooden rod with end caps */}
+            <path d="M6 4 h12" />
+            <circle cx="5" cy="4" r="1.5" fill="currentColor" stroke="none" />
+            <circle cx="19" cy="4" r="1.5" fill="currentColor" stroke="none" />
+            
+            {/* Hanging parchment with slight curve */}
+            <path d="M7 4 v14 q1 2 5 2 q4 0 5 -2 v-14" strokeWidth="1.5" />
+            
+            {/* Text lines on parchment */}
+            <line x1="9" y1="8" x2="15" y2="8" strokeWidth="1" strokeOpacity="0.5" />
+            <line x1="9" y1="11" x2="15" y2="11" strokeWidth="1" strokeOpacity="0.5" />
+            <line x1="9" y1="14" x2="15" y2="14" strokeWidth="1" strokeOpacity="0.5" />
           </svg>
         )}
       </button>
