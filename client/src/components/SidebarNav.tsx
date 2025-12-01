@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { ChevronDown, ChevronRight, Home, X } from "lucide-react";
+import { ChevronDown, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Section {
@@ -21,14 +20,10 @@ interface SidebarNavProps {
 const translations = {
   en: {
     sections: "Sections",
-    backToHome: "Back to Landscape",
-    expandSections: "Expand sections",
     collapse: "Collapse",
   },
   zh: {
     sections: "章节",
-    backToHome: "返回山水画",
-    expandSections: "展开章节",
     collapse: "收起",
   },
 };
@@ -64,21 +59,7 @@ export function SidebarNav({
             </svg>
           </div>
 
-          <div className="relative p-6 border-b border-border/30">
-            <Link href="/">
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="w-full justify-start gap-2 text-muted-foreground hover:text-foreground"
-                data-testid="sidebar-home-link"
-              >
-                <Home className="w-4 h-4" />
-                {t.backToHome}
-              </Button>
-            </Link>
-          </div>
-
-          <div className="relative flex-1 p-6 overflow-y-auto">
+          <div className="relative flex-1 p-6 pt-20 overflow-y-auto">
             <div className="mb-6">
               <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{t.sections}</p>
               <h2 className="font-serif text-lg text-foreground leading-tight">{currentTitle}</h2>
