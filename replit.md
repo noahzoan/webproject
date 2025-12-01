@@ -25,9 +25,10 @@ Preferred communication style: Simple, everyday language.
 - Typography: Noto Serif TC for headings, Noto Sans for UI elements, Ma Shan Zheng for decorative display text
 
 **Component Architecture:**
-- **Page Components**: Home (interactive landscape), DiscoverDetail (content pages), About, Contact, NotFound
-- **Interactive Components**: InteractiveHotspot (clickable areas on landscape), DiscoveryBubble (animated reveal UI), BrushstrokeMenu (navigation with hand-painted aesthetic), ShowAllToggle (visibility control)
-- **Utility Components**: ButterflyLoader (transition animation), Footer (site-wide footer with links)
+- **Page Components**: Home (interactive landscape), DiscoverDetail (content pages), Contributors (contributor profiles), About, Contact, NotFound
+- **Interactive Components**: InteractiveHotspot (clickable areas on landscape), DiscoveryBubble (animated reveal UI), BrushstrokeMenu (navigation with hand-painted aesthetic), ShowAllToggle (visibility control), FlipTile (3D flip cards for section content), ContributorTile (flip-over contributor photo cards)
+- **Tertiary Content Components**: StoryMapEmbed (responsive ArcGIS StoryMap iframe embeds with fullscreen support)
+- **Utility Components**: ButterflyLoader (transition animation), Footer (site-wide footer with links), SidebarNav (section navigation with scroll-tracking)
 
 **State Management:**
 - React hooks (useState, useCallback, useEffect) for local component state

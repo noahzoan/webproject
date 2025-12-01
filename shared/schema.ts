@@ -50,6 +50,20 @@ export const insertContactMessageSchema = createInsertSchema(contactMessages).om
 export type InsertContactMessage = z.infer<typeof insertContactMessageSchema>;
 export type ContactMessage = typeof contactMessages.$inferSelect;
 
+export interface DiscoverySection {
+  title: string;
+  content: string;
+  image?: string;
+  storyMap?: {
+    url: string;
+    title?: string;
+    hideHeader?: boolean;
+    hideCover?: boolean;
+    autoplay?: boolean;
+    height?: number;
+  };
+}
+
 export interface DiscoveryContent {
   id: string;
   slug: string;
@@ -60,11 +74,7 @@ export interface DiscoveryContent {
   heroImage?: string;
   positionX: number;
   positionY: number;
-  sections?: {
-    title: string;
-    content: string;
-    image?: string;
-  }[];
+  sections?: DiscoverySection[];
 }
 
 export interface Contributor {

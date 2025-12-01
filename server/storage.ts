@@ -202,7 +202,14 @@ const discoveryData: DiscoveryContent[] = [
     sections: [
       {
         title: "Sacred Summits",
-        content: "Throughout Asia, certain mountains are venerated as sacred sites where heaven and earth meet. Pilgrims have climbed these peaks for millennia, seeking spiritual transformation, wisdom, and connection with the divine. The journey itself—with its challenges and rewards—is considered as important as reaching the summit."
+        content: "Throughout Asia, certain mountains are venerated as sacred sites where heaven and earth meet. Pilgrims have climbed these peaks for millennia, seeking spiritual transformation, wisdom, and connection with the divine. The journey itself—with its challenges and rewards—is considered as important as reaching the summit.",
+        storyMap: {
+          url: "https://storymaps.arcgis.com/stories/df468704609b472f846330f84b42334b",
+          title: "Sacred Mountains of Asia",
+          hideHeader: true,
+          hideCover: false,
+          height: 600
+        }
       },
       {
         title: "Artistic Inspiration",
@@ -210,7 +217,14 @@ const discoveryData: DiscoveryContent[] = [
       },
       {
         title: "Ecological Treasures",
-        content: "Mountain ecosystems harbor remarkable biodiversity, with species found nowhere else on Earth. Many traditional communities living in mountain regions developed sustainable practices that protected these ecosystems while meeting their needs—wisdom that remains relevant today."
+        content: "Mountain ecosystems harbor remarkable biodiversity, with species found nowhere else on Earth. Many traditional communities living in mountain regions developed sustainable practices that protected these ecosystems while meeting their needs—wisdom that remains relevant today.",
+        storyMap: {
+          url: "https://storymaps.arcgis.com/stories/3437507798874a08b9d92824d5a865e1",
+          title: "Mountain Biodiversity",
+          hideHeader: true,
+          hideCover: true,
+          height: 500
+        }
       }
     ]
   },

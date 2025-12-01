@@ -11,7 +11,8 @@ import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { FlipTile } from "@/components/FlipTile";
 import { SidebarNav } from "@/components/SidebarNav";
-import type { DiscoveryContent } from "@shared/schema";
+import { StoryMapEmbed } from "@/components/StoryMapEmbed";
+import type { DiscoveryContent, DiscoverySection } from "@shared/schema";
 
 const translations = {
   en: {
@@ -179,9 +180,9 @@ const translations = {
         { title: "Engineering Marvels", content: "From simple stone slabs to elaborate arched structures, traditional bridges showcase remarkable engineering skills developed over centuries. Many ancient bridges remain standing today, their construction techniques still studied and admired by modern engineers." },
       ],
       exploration: [
-        { title: "Sacred Summits", content: "Throughout Asia, certain mountains are venerated as sacred sites where heaven and earth meet. Pilgrims have climbed these peaks for millennia, seeking spiritual transformation, wisdom, and connection with the divine. The journey itself—with its challenges and rewards—is considered as important as reaching the summit." },
+        { title: "Sacred Summits", content: "Throughout Asia, certain mountains are venerated as sacred sites where heaven and earth meet. Pilgrims have climbed these peaks for millennia, seeking spiritual transformation, wisdom, and connection with the divine. The journey itself—with its challenges and rewards—is considered as important as reaching the summit.", storyMap: { url: "https://storymaps.arcgis.com/stories/df468704609b472f846330f84b42334b", title: "Sacred Mountains of Asia", hideHeader: true, hideCover: false, height: 600 } },
         { title: "Artistic Inspiration", content: "Mountain landscapes have inspired countless works of art, from classical ink paintings to poetry and music. Artists sought to capture not just the physical appearance of mountains but their essential spirit—the sense of timelessness, majesty, and transcendence they evoke." },
-        { title: "Ecological Treasures", content: "Mountain ecosystems harbor remarkable biodiversity, with species found nowhere else on Earth. Many traditional communities living in mountain regions developed sustainable practices that protected these ecosystems while meeting their needs—wisdom that remains relevant today." },
+        { title: "Ecological Treasures", content: "Mountain ecosystems harbor remarkable biodiversity, with species found nowhere else on Earth. Many traditional communities living in mountain regions developed sustainable practices that protected these ecosystems while meeting their needs—wisdom that remains relevant today.", storyMap: { url: "https://storymaps.arcgis.com/stories/3437507798874a08b9d92824d5a865e1", title: "Mountain Biodiversity", hideHeader: true, hideCover: true, height: 500 } },
       ],
       resources: [
         { title: "Educational Materials", content: "Access research papers, case studies, and educational curricula designed to introduce ecological civilization concepts to learners of all ages. These materials bridge traditional wisdom with contemporary environmental science." },
@@ -365,9 +366,9 @@ const translations = {
         { title: "工程奇迹", content: "从简单的石板到精心设计的拱形结构，传统桥梁展示了几个世纪发展起来的非凡工程技术。许多古桥至今仍屹立不倒，其建造技术仍被现代工程师研究和钦佩。" },
       ],
       exploration: [
-        { title: "神圣之巅", content: "在整个亚洲，某些山脉被尊为天地相接的神圣之地。几千年来，朝圣者攀登这些山峰，寻求精神转化、智慧和与神圣的联系。旅程本身——及其挑战和回报——被认为与到达顶峰同样重要。" },
+        { title: "神圣之巅", content: "在整个亚洲，某些山脉被尊为天地相接的神圣之地。几千年来，朝圣者攀登这些山峰，寻求精神转化、智慧和与神圣的联系。旅程本身——及其挑战和回报——被认为与到达顶峰同样重要。", storyMap: { url: "https://storymaps.arcgis.com/stories/df468704609b472f846330f84b42334b", title: "亚洲神圣山脉", hideHeader: true, hideCover: false, height: 600 } },
         { title: "艺术灵感", content: "山水景观激发了无数艺术作品，从古典水墨画到诗歌和音乐。艺术家们不仅试图捕捉山脉的物理外观，还试图捕捉其本质精神——它们所唤起的永恒感、雄伟感和超越感。" },
-        { title: "生态宝库", content: "山地生态系统蕴藏着非凡的生物多样性，拥有地球上其他地方找不到的物种。许多生活在山区的传统社区发展了可持续的做法，在满足自身需求的同时保护这些生态系统——这种智慧在今天仍然具有现实意义。" },
+        { title: "生态宝库", content: "山地生态系统蕴藏着非凡的生物多样性，拥有地球上其他地方找不到的物种。许多生活在山区的传统社区发展了可持续的做法，在满足自身需求的同时保护这些生态系统——这种智慧在今天仍然具有现实意义。", storyMap: { url: "https://storymaps.arcgis.com/stories/3437507798874a08b9d92824d5a865e1", title: "山地生物多样性", hideHeader: true, hideCover: true, height: 500 } },
       ],
       resources: [
         { title: "教育材料", content: "获取为各年龄段学习者设计的研究论文、案例研究和教育课程，旨在介绍生态文明概念。这些材料将传统智慧与当代环境科学联系起来。" },
@@ -686,7 +687,7 @@ export default function DiscoverDetail() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {sections.map((section, index) => (
               <motion.div
                 key={`${slug}-${language}-${index}`}
@@ -706,6 +707,38 @@ export default function DiscoverDetail() {
               </motion.div>
             ))}
           </div>
+
+          {sections.some((section: DiscoverySection) => section.storyMap) && (
+            <div className="space-y-8 mb-20">
+              {sections.map((section: DiscoverySection, index: number) => (
+                section.storyMap && (
+                  <motion.div
+                    key={`storymap-${slug}-${language}-${index}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + index * 0.15, duration: 0.6 }}
+                  >
+                    <div className="mb-4">
+                      <h3 className="font-serif text-xl text-foreground mb-1">
+                        {section.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {language === 'en' ? 'Interactive Map Experience' : '互动地图体验'}
+                      </p>
+                    </div>
+                    <StoryMapEmbed
+                      url={section.storyMap.url}
+                      title={section.storyMap.title}
+                      hideHeader={section.storyMap.hideHeader}
+                      hideCover={section.storyMap.hideCover}
+                      autoplay={section.storyMap.autoplay}
+                      height={section.storyMap.height}
+                    />
+                  </motion.div>
+                )
+              ))}
+            </div>
+          )}
 
           <div className="flex items-center justify-center gap-4 py-8 border-y border-border/30">
             <Button variant="outline" size="icon" className="hover:border-primary/50 hover:text-primary" data-testid="button-like">
