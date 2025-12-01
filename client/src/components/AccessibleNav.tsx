@@ -112,7 +112,7 @@ export function AccessibleNav() {
   const t = translations[language];
 
   const discoveryItems = Object.entries(t.categories).map(([slug, label]) => ({
-    href: `/discover/${slug}`,
+    href: slug === 'contributors' ? '/contributors' : `/discover/${slug}`,
     label,
     icon: categoryIcons[slug as keyof typeof categoryIcons],
     slug,

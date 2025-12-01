@@ -66,3 +66,15 @@ export interface DiscoveryContent {
     image?: string;
   }[];
 }
+
+export interface Contributor {
+  id: string;
+  name: string;
+  nameChinese: string;
+  role: string;
+  roleChinese: string;
+  category: 'team' | 'scholar' | 'partner';
+  avatar?: string;
+  connection: string;
+  connectionChinese: string;
+}

@@ -33,6 +33,15 @@ export async function registerRoutes(
     }
   });
 
+  app.get("/api/contributors", async (_req, res) => {
+    try {
+      const contributors = await storage.getContributors();
+      res.json(contributors);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch contributors" });
+    }
+  });
+
   app.post("/api/contact", async (req, res) => {
     try {
       const validatedData = insertContactMessageSchema.parse(req.body);

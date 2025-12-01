@@ -3,7 +3,8 @@ import {
   type InsertUser,
   type DiscoveryContent,
   type InsertContactMessage,
-  type ContactMessage 
+  type ContactMessage,
+  type Contributor
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -14,6 +15,8 @@ export interface IStorage {
   
   getDiscoveries(): Promise<DiscoveryContent[]>;
   getDiscoveryBySlug(slug: string): Promise<DiscoveryContent | undefined>;
+  
+  getContributors(): Promise<Contributor[]>;
   
   createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
 }
@@ -285,6 +288,99 @@ const discoveryData: DiscoveryContent[] = [
   }
 ];
 
+const contributorData: Contributor[] = [
+  {
+    id: "1",
+    name: "Dr. Mary Chen",
+    nameChinese: "陈美玲博士",
+    role: "Project Director",
+    roleChinese: "项目主任",
+    category: "team",
+    connection: "With 25 years studying traditional ecological knowledge, Mary believes that ecological civilization offers a bridge between ancient wisdom and modern sustainability challenges.",
+    connectionChinese: "陈博士从事传统生态知识研究二十五年，她认为生态文明为古代智慧与当代可持续发展挑战之间架起了桥梁。"
+  },
+  {
+    id: "2",
+    name: "James Liu",
+    nameChinese: "刘建明",
+    role: "Lead Developer",
+    roleChinese: "首席开发者",
+    category: "team",
+    connection: "James combines his passion for technology with environmental awareness, building digital tools that make ecological education accessible to all.",
+    connectionChinese: "建明将他对技术的热爱与环境意识相结合，开发让生态教育触手可及的数字工具。"
+  },
+  {
+    id: "3",
+    name: "Dr. Sarah Park",
+    nameChinese: "朴善英博士",
+    role: "Content Director",
+    roleChinese: "内容总监",
+    category: "team",
+    connection: "Sarah's background in environmental communication shapes how we translate complex ecological concepts into stories that inspire action.",
+    connectionChinese: "善英在环境传播方面的专业背景，帮助我们将复杂的生态概念转化为激励行动的故事。"
+  },
+  {
+    id: "4",
+    name: "Prof. Wang Mingde",
+    nameChinese: "王明德教授",
+    role: "Ecological Philosophy",
+    roleChinese: "生态哲学",
+    category: "scholar",
+    connection: "Professor Wang's groundbreaking work on the philosophical foundations of ecological civilization informs our approach to integrating Eastern and Western perspectives.",
+    connectionChinese: "王教授在生态文明哲学基础方面的开创性研究，为我们融合东西方视角提供了指导。"
+  },
+  {
+    id: "5",
+    name: "Dr. Yuki Tanaka",
+    nameChinese: "田中由纪博士",
+    role: "Traditional Gardens Expert",
+    roleChinese: "传统园林专家",
+    category: "scholar",
+    connection: "Dr. Tanaka's research on Japanese garden traditions reveals how designed landscapes can embody ecological principles and foster human-nature connection.",
+    connectionChinese: "田中博士对日本园林传统的研究揭示了设计景观如何体现生态原则并促进人与自然的联系。"
+  },
+  {
+    id: "6",
+    name: "Prof. Li Huiming",
+    nameChinese: "李惠明教授",
+    role: "Restoration Ecology",
+    roleChinese: "恢复生态学",
+    category: "scholar",
+    connection: "Professor Li brings decades of field experience in ecosystem restoration, demonstrating how traditional practices can accelerate ecological recovery.",
+    connectionChinese: "李教授带来了数十年的生态系统恢复实地经验，展示了传统方法如何加速生态恢复。"
+  },
+  {
+    id: "7",
+    name: "Green Valley Foundation",
+    nameChinese: "绿谷基金会",
+    role: "Conservation Partner",
+    roleChinese: "保护合作伙伴",
+    category: "partner",
+    connection: "The Foundation's community-based conservation projects across Asia demonstrate ecological civilization principles in action.",
+    connectionChinese: "基金会在亚洲各地的社区保护项目展示了生态文明原则的实际应用。"
+  },
+  {
+    id: "8",
+    name: "Harmony Village Network",
+    nameChinese: "和谐乡村网络",
+    role: "Rural Communities",
+    roleChinese: "乡村社区",
+    category: "partner",
+    connection: "This network of traditional villages preserves ancestral ecological practices while adapting to contemporary challenges.",
+    connectionChinese: "这个传统村庄网络在适应当代挑战的同时保护着祖先的生态实践。"
+  },
+  {
+    id: "9",
+    name: "Youth for Nature Alliance",
+    nameChinese: "青年自然联盟",
+    role: "Youth Engagement",
+    roleChinese: "青年参与",
+    category: "partner",
+    connection: "Young people across the region are learning and sharing ecological civilization principles through this vibrant network.",
+    connectionChinese: "该地区的年轻人通过这个充满活力的网络学习和分享生态文明理念。"
+  }
+];
+
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
   private contactMessages: Map<string, ContactMessage>;
@@ -317,6 +413,10 @@ export class MemStorage implements IStorage {
 
   async getDiscoveryBySlug(slug: string): Promise<DiscoveryContent | undefined> {
     return discoveryData.find(d => d.slug === slug);
+  }
+
+  async getContributors(): Promise<Contributor[]> {
+    return contributorData;
   }
 
   async createContactMessage(insertMessage: InsertContactMessage): Promise<ContactMessage> {
