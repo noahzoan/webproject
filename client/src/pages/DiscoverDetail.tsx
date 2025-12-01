@@ -577,7 +577,7 @@ export default function DiscoverDetail() {
       <ButterflyLoader isLoading={showLoader} onComplete={() => setShowLoader(false)} />
       <BrushstrokeMenu isOpen={menuOpen} onToggle={() => setMenuOpen(!menuOpen)} language={language} onLanguageChange={setLanguage} />
       
-      <Link href="/" onClick={() => setShowLoader(true)} className="fixed top-6 right-6" style={{ zIndex: 9998 }}>
+      <Link href="/" onClick={() => setShowLoader(true)} className="fixed top-6 left-1/2 -translate-x-1/2" style={{ zIndex: 9998 }}>
         <Button 
           variant="outline" 
           size="icon" 
