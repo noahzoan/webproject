@@ -108,18 +108,14 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            {/* Top wooden rod with end caps */}
-            <path d="M6 4 h12" />
-            <circle cx="5" cy="4" r="1.5" fill="currentColor" stroke="none" />
-            <circle cx="19" cy="4" r="1.5" fill="currentColor" stroke="none" />
+            {/* Rolled scroll body - horizontal tube */}
+            <rect x="3" y="8" width="18" height="8" rx="4" ry="4" />
             
-            {/* Hanging parchment with slight curve */}
-            <path d="M7 4 v14 q1 2 5 2 q4 0 5 -2 v-14" strokeWidth="1.5" />
+            {/* Left spiral curl showing rolled paper */}
+            <path d="M3 12 c0-2.5 1.5-4 3-4 c1.5 0 2.5 1 2.5 2 s-0.8 1.5-1.5 1.5" />
             
-            {/* Text lines on parchment */}
-            <line x1="9" y1="8" x2="15" y2="8" strokeWidth="1" strokeOpacity="0.5" />
-            <line x1="9" y1="11" x2="15" y2="11" strokeWidth="1" strokeOpacity="0.5" />
-            <line x1="9" y1="14" x2="15" y2="14" strokeWidth="1" strokeOpacity="0.5" />
+            {/* Right spiral curl showing rolled paper */}
+            <path d="M21 12 c0-2.5 -1.5-4 -3-4 c-1.5 0 -2.5 1 -2.5 2 s0.8 1.5 1.5 1.5" />
           </svg>
         )}
       </button>
