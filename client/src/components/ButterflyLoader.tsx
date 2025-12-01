@@ -6,7 +6,7 @@ const translations = {
     discovering: "Discovering..."
   },
   zh: {
-    discovering: "寻觅中……"
+    discovering: "查询中……"
   }
 };
 
