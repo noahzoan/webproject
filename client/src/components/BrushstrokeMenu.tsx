@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Home, Info, Mail, Globe, TreePine, Building2, Zap, Heart, BookOpen, Paintbrush, Waypoints, Mountain, Library, Video, Users } from "lucide-react";
+import { X, Home, Info, Mail, Globe, TreePine, Building2, Zap, Heart, BookOpen, Paintbrush, Waypoints, Mountain, Library, Video, Users } from "lucide-react";
 
 interface BrushstrokeMenuProps {
   isOpen: boolean;
@@ -96,40 +96,39 @@ export function BrushstrokeMenu({ isOpen, onToggle, language = "en", onLanguageC
         data-testid="button-menu-toggle"
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
-        <svg 
-          viewBox="0 0 24 24" 
-          className="w-6 h-6 text-foreground"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          {/* Top rod */}
-          <rect x="5" y="2" width="14" height="3" rx="1.5" />
-          {/* Top rod end knobs */}
-          <circle cx="4" cy="3.5" r="1.5" />
-          <circle cx="20" cy="3.5" r="1.5" />
-          
-          {/* Paper/parchment body */}
-          <path d="M6 5 L6 19 L18 19 L18 5" />
-          {/* Decorative inner frame corners */}
-          <path d="M8 7 L8 8.5 L9.5 8.5" />
-          <path d="M16 7 L16 8.5 L14.5 8.5" />
-          <path d="M8 17 L8 15.5 L9.5 15.5" />
-          <path d="M16 17 L16 15.5 L14.5 15.5" />
-          
-          {/* Text lines */}
-          <line x1="9" y1="10" x2="15" y2="10" />
-          <line x1="9" y1="12" x2="15" y2="12" />
-          <line x1="9" y1="14" x2="15" y2="14" />
-          
-          {/* Bottom rod */}
-          <rect x="5" y="19" width="14" height="3" rx="1.5" />
-          {/* Bottom rod end knobs */}
-          <circle cx="4" cy="20.5" r="1.5" />
-          <circle cx="20" cy="20.5" r="1.5" />
-        </svg>
+        {isOpen ? (
+          <X className="w-6 h-6 text-foreground" />
+        ) : (
+          <svg 
+            viewBox="0 0 24 24" 
+            className="w-6 h-6 text-foreground"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {/* Top rod */}
+            <rect x="5" y="2" width="14" height="3" rx="1.5" />
+            {/* Top rod end knobs */}
+            <circle cx="4" cy="3.5" r="1.5" />
+            <circle cx="20" cy="3.5" r="1.5" />
+            
+            {/* Paper/parchment body */}
+            <path d="M6 5 L6 19 L18 19 L18 5" />
+            
+            {/* Text lines */}
+            <line x1="9" y1="10" x2="15" y2="10" />
+            <line x1="9" y1="12" x2="15" y2="12" />
+            <line x1="9" y1="14" x2="15" y2="14" />
+            
+            {/* Bottom rod */}
+            <rect x="5" y="19" width="14" height="3" rx="1.5" />
+            {/* Bottom rod end knobs */}
+            <circle cx="4" cy="20.5" r="1.5" />
+            <circle cx="20" cy="20.5" r="1.5" />
+          </svg>
+        )}
       </button>
 
       {isOpen && (
