@@ -657,7 +657,7 @@ export default function DiscoverDetail() {
             </svg>
           </div>
           
-          <Link href="/" onClick={() => setShowLoader(true)} className="absolute top-6 right-6" style={{ zIndex: 9998 }}>
+          <Link href="/" onClick={() => setShowLoader(true)} className="fixed top-6 right-6" style={{ zIndex: 9998 }}>
             <Button 
               variant="outline" 
               size="icon" 
