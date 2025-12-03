@@ -1,5 +1,4 @@
 import { useState, useRef, useCallback } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { BrushstrokeMenu } from "@/components/BrushstrokeMenu";
 import { ShowAllToggle } from "@/components/ShowAllToggle";
 import { InteractiveHotspot } from "@/components/InteractiveHotspot";
@@ -7,8 +6,8 @@ import { Footer } from "@/components/Footer";
 import { ButterflyLoader } from "@/components/ButterflyLoader";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Droplets, Building2, Flower2, Waypoints, Mountain, Loader2, TreePine, Zap, Heart, BookOpen, Paintbrush, Library, Video, Users } from "lucide-react";
-import type { DiscoveryContent } from "@shared/schema";
+import { Droplets, Building2, Flower2, Waypoints, Mountain, TreePine, Zap, Heart, BookOpen, Paintbrush, Library, Video, Users } from "lucide-react";
+import { getStaticDiscoveries } from "@/lib/staticContent";
 import landscapeImage from "@assets/generated_images/traditional_asian_landscape_painting.png";
 
 const iconComponents: Record<string, typeof Droplets> = {
@@ -79,9 +78,7 @@ export default function Home() {
   
   const t = translations[language];
   
-  const { data: discoveries = [], isLoading } = useQuery<DiscoveryContent[]>({
-    queryKey: ['/api/discoveries'],
-  });
+  const discoveries = getStaticDiscoveries(language);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -170,17 +167,6 @@ export default function Home() {
   const handleNavigation = useCallback(() => {
     setShowLoader(true);
   }, []);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <Loader2 className="w-12 h-12 text-primary animate-spin" />
-          <p className="text-muted-foreground font-serif">Loading landscape...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background m-0 p-0">
