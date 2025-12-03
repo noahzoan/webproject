@@ -67,8 +67,8 @@ const discoveriesZhRaw: DiscoveryJSON[] = [
 ];
 
 function transformToDiscoveryContent(items: DiscoveryJSON[]): DiscoveryContent[] {
-  return items.map((content, index) => ({
-    id: String(index + 1),
+  return items.map((content) => ({
+    id: content.slug,
     slug: content.slug,
     title: content.title,
     icon: content.icon,

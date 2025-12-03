@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Single Page App redirect for GitHub Pages
+    // For a site served at https://username.github.io/websiteproj/
+    // This redirects to index.html while preserving the path for client-side routing
+    var basePath = '/websiteproj';
+    var l = window.location;
+    
+    // Get the path after the base path
+    var appPath = l.pathname;
+    if (appPath.startsWith(basePath)) {
+      appPath = appPath.slice(basePath.length);
+    }
+    
+    // Store the intended path for the SPA to pick up
+    sessionStorage.redirect = appPath + l.search + l.hash;
+    
+    // Redirect to the base path (where index.html lives)
+    l.replace(basePath + '/');
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>

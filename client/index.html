@@ -15,6 +15,18 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Handle SPA redirects from 404.html for GitHub Pages
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== '/') {
+          // Restore the original path for client-side routing
+          var basePath = window.location.pathname.replace(/\/$/, '');
+          window.history.replaceState(null, null, basePath + redirect);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
