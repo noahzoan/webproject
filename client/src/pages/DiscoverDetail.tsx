@@ -1,6 +1,5 @@
 import { useRoute, Link } from "wouter";
-import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Heart, Share2, Bookmark, Loader2, ChevronRight } from "lucide-react";
+import { ArrowLeft, Heart, Share2, Bookmark, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Footer } from "@/components/Footer";
@@ -12,6 +11,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { FlipTile } from "@/components/FlipTile";
 import { SidebarNav } from "@/components/SidebarNav";
 import { StoryMapEmbed } from "@/components/StoryMapEmbed";
+import { getStaticDiscoveryBySlug } from "@/lib/staticContent";
 import type { DiscoveryContent, DiscoverySection } from "@shared/schema";
 
 const translations = {
@@ -400,10 +400,7 @@ export default function DiscoverDetail() {
   
   const t = translations[language];
 
-  const { data: discovery, isLoading, error } = useQuery<DiscoveryContent>({
-    queryKey: ['/api/discoveries', slug],
-    enabled: !!slug,
-  });
+  const discovery = getStaticDiscoveryBySlug(slug, language);
 
   const relatedTopics = t.relatedTopics[slug as keyof typeof t.relatedTopics] || [];
   const subtitle = t.subtitles[slug as keyof typeof t.subtitles] || "";
@@ -545,18 +542,7 @@ export default function DiscoverDetail() {
     });
   }, [lockObserver]);
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <Loader2 className="w-12 h-12 text-primary animate-spin" />
-          <p className="text-muted-foreground font-serif">{t.loading}</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !discovery) {
+  if (!discovery) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center space-y-4">
