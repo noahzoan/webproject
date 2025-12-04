@@ -14,11 +14,8 @@ import NotFound from "@/pages/not-found";
 
 // Get base path for GitHub Pages deployment
 const getBasePath = () => {
-  // In production (GitHub Pages), use the repo name as base
-  if (import.meta.env.PROD) {
-    return "/webproject";
-  }
-  // In development, no base path needed
+  // With custom domain (www.noah-zhou.com), no base path needed
+  // The site is served from root, not a subdirectory
   return "";
 };
 
