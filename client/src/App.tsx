@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router as WouterRouter } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,7 +12,17 @@ import Contact from "@/pages/Contact";
 import Contributors from "@/pages/Contributors";
 import NotFound from "@/pages/not-found";
 
-function Router() {
+// Get base path for GitHub Pages deployment
+const getBasePath = () => {
+  // In production (GitHub Pages), use the repo name as base
+  if (import.meta.env.PROD) {
+    return "/websiteproj";
+  }
+  // In development, no base path needed
+  return "";
+};
+
+function AppRoutes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -26,13 +36,17 @@ function Router() {
 }
 
 function App() {
+  const base = getBasePath();
+  
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <LanguageProvider>
-          <AccessibleNav />
-          <Toaster />
-          <Router />
+          <WouterRouter base={base}>
+            <AccessibleNav />
+            <Toaster />
+            <AppRoutes />
+          </WouterRouter>
         </LanguageProvider>
       </TooltipProvider>
     </QueryClientProvider>

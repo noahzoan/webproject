@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { Link } from "wouter";
 import { BrushstrokeMenu } from "@/components/BrushstrokeMenu";
 import { ShowAllToggle } from "@/components/ShowAllToggle";
 import { InteractiveHotspot } from "@/components/InteractiveHotspot";
@@ -278,7 +279,7 @@ export default function Home() {
                 const IconComponent = iconComponents[discovery.icon] || Droplets;
                 const translatedTitle = t.discoveryTitles[discovery.slug as keyof typeof t.discoveryTitles] || discovery.title;
                 return (
-                  <a
+                  <Link
                     key={discovery.id}
                     href={`/discover/${discovery.slug}`}
                     className="group p-4 rounded-lg bg-card border border-card-border hover-elevate active-elevate-2 transition-all duration-300"
@@ -288,7 +289,7 @@ export default function Home() {
                       <IconComponent className="w-full h-full" />
                     </div>
                     <h3 className="font-medium text-sm text-foreground">{translatedTitle}</h3>
-                  </a>
+                  </Link>
                 );
               })}
             </div>
