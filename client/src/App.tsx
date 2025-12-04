@@ -16,7 +16,7 @@ import NotFound from "@/pages/not-found";
 const getBasePath = () => {
   // In production (GitHub Pages), use the repo name as base
   if (import.meta.env.PROD) {
-    return "/websiteproj";
+    return "/webproject";
   }
   // In development, no base path needed
   return "";
