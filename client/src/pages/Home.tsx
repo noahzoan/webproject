@@ -1,11 +1,10 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { Link } from "wouter";
 import { BrushstrokeMenu } from "@/components/BrushstrokeMenu";
 import { ShowAllToggle } from "@/components/ShowAllToggle";
 import { InteractiveHotspot } from "@/components/InteractiveHotspot";
 import { Footer } from "@/components/Footer";
 import { ButterflyLoader } from "@/components/ButterflyLoader";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Droplets, Building2, Flower2, Waypoints, Mountain, TreePine, Zap, Heart, BookOpen, Paintbrush, Library, Video, Users } from "lucide-react";
 import { getStaticDiscoveries } from "@/lib/staticContent";
@@ -75,95 +74,9 @@ export default function Home() {
   const [showAll, setShowAll] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
   const { language, setLanguage } = useLanguage();
-  const isMobile = useIsMobile();
   
   const t = translations[language];
-  
   const discoveries = getStaticDiscoveries(language);
-  
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [scrollPosition, setScrollPosition] = useState({ x: 0, y: 0 });
-  const [velocity, setVelocity] = useState({ x: 0, y: 0 });
-  const lastMoveTime = useRef(Date.now());
-  const lastMovePos = useRef({ x: 0, y: 0 });
-
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    if (!isMobile) return;
-    const touch = e.touches[0];
-    setIsDragging(true);
-    setDragStart({ x: touch.clientX, y: touch.clientY });
-    lastMovePos.current = { x: touch.clientX, y: touch.clientY };
-    lastMoveTime.current = Date.now();
-    setVelocity({ x: 0, y: 0 });
-  }, [isMobile]);
-
-  const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    if (!isDragging || !isMobile || !containerRef.current) return;
-    
-    const touch = e.touches[0];
-    const now = Date.now();
-    const dt = now - lastMoveTime.current;
-    
-    if (dt > 0) {
-      setVelocity({
-        x: (touch.clientX - lastMovePos.current.x) / dt,
-        y: (touch.clientY - lastMovePos.current.y) / dt,
-      });
-    }
-    
-    lastMovePos.current = { x: touch.clientX, y: touch.clientY };
-    lastMoveTime.current = now;
-    
-    const deltaX = touch.clientX - dragStart.x;
-    const deltaY = touch.clientY - dragStart.y;
-    
-    const newX = Math.max(
-      Math.min(scrollPosition.x + deltaX, 0),
-      -(containerRef.current.scrollWidth - window.innerWidth)
-    );
-    const newY = Math.max(
-      Math.min(scrollPosition.y + deltaY, 0),
-      -(containerRef.current.scrollHeight - window.innerHeight)
-    );
-    
-    containerRef.current.style.transform = `translate(${newX}px, ${newY}px)`;
-    setDragStart({ x: touch.clientX, y: touch.clientY });
-    setScrollPosition({ x: newX, y: newY });
-  }, [isDragging, isMobile, dragStart, scrollPosition]);
-
-  const handleTouchEnd = useCallback(() => {
-    if (!isMobile) return;
-    setIsDragging(false);
-    
-    if (Math.abs(velocity.x) > 0.5 || Math.abs(velocity.y) > 0.5) {
-      const momentum = () => {
-        if (!containerRef.current) return;
-        
-        const friction = 0.95;
-        velocity.x *= friction;
-        velocity.y *= friction;
-        
-        const newX = Math.max(
-          Math.min(scrollPosition.x + velocity.x * 16, 0),
-          -(containerRef.current.scrollWidth - window.innerWidth)
-        );
-        const newY = Math.max(
-          Math.min(scrollPosition.y + velocity.y * 16, 0),
-          -(containerRef.current.scrollHeight - window.innerHeight)
-        );
-        
-        containerRef.current.style.transform = `translate(${newX}px, ${newY}px)`;
-        setScrollPosition({ x: newX, y: newY });
-        
-        if (Math.abs(velocity.x) > 0.01 || Math.abs(velocity.y) > 0.01) {
-          requestAnimationFrame(momentum);
-        }
-      };
-      requestAnimationFrame(momentum);
-    }
-  }, [isMobile, velocity, scrollPosition]);
 
   const handleNavigation = useCallback(() => {
     setShowLoader(true);
@@ -184,19 +97,7 @@ export default function Home() {
         <ShowAllToggle showAll={showAll} onToggle={() => setShowAll(!showAll)} />
       </div>
 
-      <div
-        ref={containerRef}
-        className={`
-          relative w-full m-0 p-0
-          ${isMobile ? 'touch-none overflow-hidden' : ''}
-        `}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        style={{
-          cursor: isMobile && isDragging ? 'grabbing' : isMobile ? 'grab' : 'default',
-        }}
-      >
+      <div className="relative w-full m-0 p-0">
         <section 
           className="relative w-full m-0 p-0"
           data-testid="landscape-section"
@@ -246,7 +147,7 @@ export default function Home() {
 
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
               <p className="text-sm font-medium text-white/80 drop-shadow-lg">
-                {isMobile ? t.dragToExplore : t.scrollToExplore}
+                {t.scrollToExplore}
               </p>
               <svg 
                 viewBox="0 0 24 24" 
