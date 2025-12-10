@@ -1,7 +1,12 @@
-import type { DiscoveryContent, DiscoverySection } from "@shared/schema";
+import type { DiscoveryContent, DiscoverySection, Contributor } from "@shared/schema";
 
 import restorationEn from "../../../shared/content/discoveries/en/restoration.json";
 import heritageEn from "../../../shared/content/discoveries/en/heritage.json";
+
+// Import contributor content
+import teamData from "../../../shared/content/contributors/team.json";
+import scholarsData from "../../../shared/content/contributors/scholars.json";
+import partnersData from "../../../shared/content/contributors/partners.json";
 import technologyEn from "../../../shared/content/discoveries/en/technology.json";
 import healthEn from "../../../shared/content/discoveries/en/health.json";
 import traditionEn from "../../../shared/content/discoveries/en/tradition.json";
@@ -94,3 +99,47 @@ export function getStaticDiscoveryBySlug(slug: string, language: 'en' | 'zh' = '
 }
 
 export { discoveriesEn, discoveriesZh };
+
+// Contributor types for JSON structure
+interface ContributorMember {
+  id: string;
+  name: { en: string; zh: string };
+  role: { en: string; zh: string };
+  connection: { en: string; zh: string };
+  imageUrl: string | null;
+}
+
+interface ContributorCategory {
+  category: string;
+  en: { title: string; description: string };
+  zh: { title: string; description: string };
+  members: ContributorMember[];
+}
+
+const contributorCategories: ContributorCategory[] = [
+  teamData as ContributorCategory,
+  scholarsData as ContributorCategory,
+  partnersData as ContributorCategory,
+];
+
+export function getStaticContributors(): Contributor[] {
+  const contributors: Contributor[] = [];
+  
+  for (const category of contributorCategories) {
+    for (const member of category.members) {
+      contributors.push({
+        id: member.id,
+        name: member.name.en,
+        nameChinese: member.name.zh,
+        role: member.role.en,
+        roleChinese: member.role.zh,
+        connection: member.connection.en,
+        connectionChinese: member.connection.zh,
+        category: category.category as "team" | "scholar" | "partner",
+        avatar: member.imageUrl || undefined,
+      });
+    }
+  }
+  
+  return contributors;
+}

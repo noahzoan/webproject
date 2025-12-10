@@ -1,11 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { ArrowLeft, Users, BookOpen, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ContributorTile } from "@/components/ContributorTile";
-import type { Contributor } from "@shared/schema";
 import { Footer } from "@/components/Footer";
+import { getStaticContributors } from "@/lib/staticContent";
 
 const translations = {
   en: {
@@ -18,8 +17,6 @@ const translations = {
     scholarsDesc: "Academics and researchers whose work informs our content",
     partnersTitle: "Community Partners",
     partnersDesc: "Organizations advancing ecological civilization",
-    loading: "Loading contributors...",
-    error: "Unable to load contributors",
   },
   zh: {
     backToExplore: "返回探索",
@@ -31,8 +28,6 @@ const translations = {
     scholarsDesc: "其研究为我们内容提供参考的学者和研究人员",
     partnersTitle: "社区合作伙伴",
     partnersDesc: "推进生态文明的组织机构",
-    loading: "正在加载贡献者信息……",
-    error: "无法加载贡献者信息",
   },
 };
 
@@ -46,48 +41,17 @@ export default function Contributors() {
   const { language } = useLanguage();
   const t = translations[language];
 
-  const { data: contributors, isLoading, error } = useQuery<Contributor[]>({
-    queryKey: ['/api/contributors'],
-  });
+  const contributors = getStaticContributors();
 
-  const teamMembers = contributors?.filter(c => c.category === 'team') || [];
-  const scholars = contributors?.filter(c => c.category === 'scholar') || [];
-  const partners = contributors?.filter(c => c.category === 'partner') || [];
+  const teamMembers = contributors.filter(c => c.category === 'team');
+  const scholars = contributors.filter(c => c.category === 'scholar');
+  const partners = contributors.filter(c => c.category === 'partner');
 
   const sections = [
     { key: 'team', title: t.teamTitle, desc: t.teamDesc, members: teamMembers, Icon: categoryIcons.team },
     { key: 'scholar', title: t.scholarsTitle, desc: t.scholarsDesc, members: scholars, Icon: categoryIcons.scholar },
     { key: 'partner', title: t.partnersTitle, desc: t.partnersDesc, members: partners, Icon: categoryIcons.partner },
   ];
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center animate-pulse">
-            <Users className="w-8 h-8 text-primary" />
-          </div>
-          <p className="text-muted-foreground">{t.loading}</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-destructive">{t.error}</p>
-          <Link href="/">
-            <a className="mt-4 inline-flex items-center gap-2 text-primary hover:underline" data-testid="link-back-home">
-              <ArrowLeft className="w-4 h-4" />
-              {t.backToExplore}
-            </a>
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background">
